@@ -44,7 +44,6 @@ const IslandMenu = () => {
     }, []);
 
     return (
-        <div>
             <div className="menuNavbarMobile">
                 <nav className="nav">
                     <ul className="nav-content">
@@ -82,7 +81,6 @@ const IslandMenu = () => {
                     </ul>
                 </nav>
             </div>
-        </div>
     )
 }
 

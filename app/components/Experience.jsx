@@ -11,7 +11,7 @@ const Experience = () => {
 
     return (
         <>
-            <div className='w-80 shadow-xltext-left  '>
+            <div className='p-10  text-left  glass-effect rounded'>
                 <h2 className='font-bold text-xl '>Experience</h2>
                 <ol className="relative border-s border-sky-900 my-4 ">
                     <li className="mb-10 ms-4">
