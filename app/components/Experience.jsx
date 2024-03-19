@@ -50,6 +50,7 @@ const Experience = () => {
                     </li>
 
                 </ol>
+                <div id="skills" className='mb-20'></div>
             </div>
         </>
     )

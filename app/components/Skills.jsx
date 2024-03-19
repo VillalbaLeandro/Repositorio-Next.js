@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 const Skills = () => {
     return (
-        <section className="w-80 lg:w-2/4 text-left mb-32">
+        <section className="w-80 lg:w-2/4 text-left ">
             <h2 className='font-bold text-xl '>Skills</h2>
             <div className="">
                 <div className="mx-auto px-6 max-w-6xl text-gray-500">
@@ -121,7 +121,7 @@ const Skills = () => {
             <div className="">
                 <div className="mx-auto px-6 max-w-6xl text-gray-500">
                     <div className="mt-6 relative  sm:mx-auto sm:px-0 ">
-                    <h2 className='font-bold text-xl mb-2 '>In proccess</h2>
+                        <h2 className='font-bold text-xl mb-2 '>In proccess</h2>
                         <div className=" flex flex-wrap  gap-3 text-gray-950 dark:text-white">
                             {/* Typescript */}
                             <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
@@ -131,11 +131,13 @@ const Skills = () => {
                             <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
                                 <img src='./img/postgre-logo.png' width={50} height={50} alt='Sql logo' />
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
+            <div id="proyects" className='mb-20'></div>
+
         </section>
     )
 }

@@ -5,6 +5,7 @@ import { MdOutlineWorkHistory } from "react-icons/md";
 import { RiToolsFill } from "react-icons/ri";
 import { GrDeploy } from "react-icons/gr";
 import { BiSolidContact } from "react-icons/bi";
+import { IoSchoolOutline } from "react-icons/io5";
 
 const IslandMenu = () => {
     useEffect(() => {
@@ -18,7 +19,7 @@ const IslandMenu = () => {
             }
             linkItems[index].classList.add("active");
         
-            indicator.style.left = `${index * 65 + 11}px`;
+            indicator.style.left = `${index * 52 + 26}px`;
         
             const targetId = linkItems[index].getAttribute("href").substring(1);
             const targetSection = document.getElementById(targetId);
@@ -66,9 +67,15 @@ const IslandMenu = () => {
                             </a>
                         </li>
                         <li className="nav-list">
-                            <a href="#works" className="link-item">
+                            <a href="#proyects" className="link-item">
                                 <i className=' link-icon'><GrDeploy /></i>
                                 <span className="link-text">Works</span>
+                            </a>
+                        </li>
+                        <li className="nav-list">
+                            <a href="#education" className="link-item">
+                                <i className='link-icon'><IoSchoolOutline /></i>
+                                <span className="link-text">Education</span>
                             </a>
                         </li>
                         <li className="nav-list">

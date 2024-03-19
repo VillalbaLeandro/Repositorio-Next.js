@@ -83,7 +83,7 @@ h3 {
 .glass-effect {
   background-color: rgba(255, 255, 255, 0);
   /* Color de fondo con transparencia */
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(4px);
   /* Aplicar desenfoque */
 }
 
@@ -150,7 +150,7 @@ h3 {
 .nav {
   border-radius: 32px;
   background: var(--gradient);
-  padding: 0 25px;
+  padding: 0 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 1);
   border: 9px solid var(--blue-bg);
 
@@ -158,7 +158,7 @@ h3 {
 
 .nav-content {
   display: flex;
-  height: 81px;
+  height: 72px;
   align-items: center;
   list-style: none;
   position: relative;
@@ -170,8 +170,7 @@ h3 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 75px;
-  width: 65px;
+  width: 48px;
   text-decoration: none;
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
@@ -211,7 +210,7 @@ h3 {
 .indicator {
   position: absolute;
   top: -21px;
-  left: 11px;
+  left: 28px;
   height: 30px;
   width: 30px;
   background-color: var(--iconNavbar);
