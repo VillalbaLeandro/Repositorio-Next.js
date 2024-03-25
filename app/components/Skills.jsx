@@ -11,7 +11,7 @@ const Skills = () => {
                             {/* Next.js */}
                             <div data-tip="Next js" className="tooltip">
                                 <div className="flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                    <img src='./img/Skills/Next.js.png' width={50} height={50} alt='Next.js logo' />
+                                    <img src='./img/skills/Next.js.png' width={50} height={50} alt='Next.js logo' />
                                 </div>
                             </div>
                             {/* REACT */}
@@ -43,7 +43,7 @@ const Skills = () => {
                             {/* html */}
                             <div data-tip="Html" className="tooltip">
                                 <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                    <img src='./img/Skills/html-logo.png' width={25} height={25} alt='Php.js logo' />
+                                    <img src='./img/skills/html-logo.png' width={25} height={25} alt='Php.js logo' />
                                 </div>
                             </div>
                             {/* css */}
@@ -64,13 +64,13 @@ const Skills = () => {
                             {/* Php */}
                             <div data-tip="Php" className="tooltip">
                                 <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                    <img src='./img/Skills/php-logo.png' width={50} height={50} alt='Php.js logo' />
+                                    <img src='./img/skills/php-logo.png' width={50} height={50} alt='Php.js logo' />
                                 </div>
                             </div>
                             {/* Jqery */}
                             <div data-tip="JQuery" className="tooltip">
                                 <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                    <img src='./img/Skills/jquery-logo.png' width={30} height={30} alt='Jqery  logo' />
+                                    <img src='./img/skills/jquery-logo.png' width={30} height={30} alt='Jqery  logo' />
                                 </div>
                             </div>
                             {/* Bootstrap */}
@@ -82,36 +82,36 @@ const Skills = () => {
                             {/* Node */}
                             <div data-tip="Node js" className="tooltip">
                                 <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                    <img src='./img/Skills/node-logo.png' width={25} height={25} alt='node  logo' />
+                                    <img src='./img/skills/node-logo.png' width={25} height={25} alt='node  logo' />
                                 </div>
                             </div>
                             {/* Git */}
                             <div data-tip="Git" className="tooltip">
                                 <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                    <img src='./img/Skills/git-logo.png' width={25} height={25} alt='git  logo' />
+                                    <img src='./img/skills/git-logo.png' width={25} height={25} alt='git  logo' />
                                 </div>
                             </div>
                             {/* gitlab */}
                             <div data-tip="Gitlab" className="tooltip">
                                 <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                    <img src='./img/Skills/gitlab-logo.png' width={25} height={25} alt='gitlab  logo' />
+                                    <img src='./img/skills/gitlab-logo.png' width={25} height={25} alt='gitlab  logo' />
                                 </div>
                             </div>
                             {/* Mysql */}
                             <div data-tip="MySQL" className="tooltip">
                                 <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                    <img src='./img/Skills/Mysql-logo.png' width={50} height={50} alt='Mysql logo' />
+                                    <img src='./img/skills/Mysql-logo.png' width={50} height={50} alt='Mysql logo' />
                                 </div>
                             </div>
                             {/* Docker */}
                             <div data-tip="JavaScript" className="tooltip">
                                 <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                    <img src='./img/Skills/docker-logo.png' width={60} height={60} alt='docker  logo' />
+                                    <img src='./img/skills/docker-logo.png' width={60} height={60} alt='docker  logo' />
                                 </div>
                             </div>
                             {/* Sql */}
                             <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                <img src='./img/Skills/sql-logo.png' width={50} height={50} alt='Sql logo' />
+                                <img src='./img/skills/sql-logo.png' width={50} height={50} alt='Sql logo' />
                             </div>
                         </div>
                     </div>
