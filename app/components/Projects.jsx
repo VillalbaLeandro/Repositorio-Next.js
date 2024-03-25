@@ -21,6 +21,24 @@ const Projects = () => {
       imageUrl: "./img/proyects/digital-games.png",
       repositorioUrl: 'https://github.com/VillalbaLeandro/grupo_10_DigitalGames',
       deployUrl: 'https://digital-games.onrender.com/home',
+    },
+    {
+      projectName: "Clock neumorphism",
+      projectDescription: "a",
+      category: "App",
+      projectTechnologies: ["next.js", "sql-logo"],
+      imageUrl: "./img/proyects/digital-games.png",
+      repositorioUrl: 'https://github.com/VillalbaLeandro/grupo_10_DigitalGames',
+      deployUrl: 'https://digital-games.onrender.com/home',
+    },
+    {
+      projectName: "Clock neumorphism",
+      projectDescription: "a",
+      category: "App",
+      projectTechnologies: ["next.js", "sql-logo"],
+      imageUrl: "./img/proyects/digital-games.png",
+      repositorioUrl: 'https://github.com/VillalbaLeandro/grupo_10_DigitalGames',
+      deployUrl: 'https://digital-games.onrender.com/home',
     }
   ]
 
@@ -28,7 +46,7 @@ const Projects = () => {
 
   return (
     <>
-      <section className='mb-32 p-5  text-left  glass-effect rounded'>
+      <section className=' p-5  text-left  glass-effect rounded'>
         <h2 className='font-bold text-xl '>Proyects</h2>
         <div className="w-[90vw] max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16 ">
           <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
