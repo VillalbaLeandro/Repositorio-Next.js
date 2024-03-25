@@ -125,11 +125,11 @@ const Skills = () => {
                         <div className=" flex flex-wrap  gap-3 text-gray-950 dark:text-white">
                             {/* Typescript */}
                             <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                <img src='./img/Skills/ts-logo.png' width={50} height={50} alt='Sql logo' />
+                                <img src='./img/skills/ts-logo.png' width={50} height={50} alt='Sql logo' />
                             </div>
                             {/* PostgreSQL */}
                             <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                <img src='./img/Skills/postgre-logo.png' width={50} height={50} alt='Sql logo' />
+                                <img src='./img/skills/postgre-logo.png' width={50} height={50} alt='Sql logo' />
                             </div>
 
                         </div>
