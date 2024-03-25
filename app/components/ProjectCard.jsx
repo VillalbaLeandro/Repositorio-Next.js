@@ -1,26 +1,33 @@
 import React from 'react';
+import CardButtons from './CardButtons';
 
-const ProjectCard = ({ projectName, projectDescription, projectTechnologies, imageUrl, repositorioUrl, deployUrl }) => {
+const ProjectCard = ({ projectName, projectDescription, projectTechnologies, imageUrl, repositorioUrl, deployUrl, category }) => {
   return (
-    <div className="group relative m-0 flex h-44 w-80 sm:mx-auto sm:max-w-lg">
-      <div className="z-10 h-full w-full overflow-hidden rounded-xl opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:opacity-70">
-        <img
-          src={imageUrl}
-          className="animate-fade-in block h-full w-full scale-100 transform object-cover object-top opacity-100 transition duration-300 group-hover:scale-110 filter group-hover:filter-none" // Added filter and transition
-          alt=""
-        />
-        <div className="overlay opacity-40 absolute bottom-0 left-0 w-full h-full bg-gradient-to-t from-black via-black to-2/3  to-transparent transition-all duration-300 ease-in-out  group-hover:opacity-90   "></div>
-      </div>
-      <div className="absolute bottom-0 z-20 m-0 pb-4 ps-4 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110">
-        <h4 className="translate-y-24 font-serif text-2xl font-bold text-white transition duration-500 ease-in-out group-hover:translate-y-0">{projectName}</h4>
-        <div className="opacity-0 translate-y-24  transition duration-700 ease-in-out  group-hover:opacity-100 group-hover:translate-y-0 ">
-          <h5 className=" text-sm font-light text-gray-200">{projectDescription}</h5>
-          <p className="text-sm font-light text-gray-200">{projectTechnologies}</p>
-          <div className="enlaces">
-            <a target="_blank" href={repositorioUrl}>Repositorio<i className="fas fa-external-link-alt"></i></a>
-            <a target="_blank" href={deployUrl}>Deploy <i className="fas fa-external-link-alt"></i></a>
+    <div className="relative group min-w-64">
+      <div className="rounded overflow-hidden">
+        <div className="z-40 relative h-40 transition duration-300">
+          <img
+            className="w-full h-full object-cover object-top"
+            src={imageUrl}
+            alt={`previsualizacion del proyecto ${projectName}`}
+          />
+          <div className="absolute -bottom-1 -top-14 -right-1 inset-0 bg-gradient-to-t via-black via-20% from-black to-transparent opacity-750 transition-all duration-300 group-hover:bg-transparent group-hover:top-0"></div>
+          <div className="opacity-25 transition duration-300 absolute bottom-0 top-0 right-0 -left-1 bg-black hover:opacity-90 group-hover:opacity-90"></div>
+          <h5 className="absolute bottom-9 left-0 px-4 py-2 text-white text-sm transition duration-300 group-hover:-translate-y-16">{projectName}</h5>
+          <p className="absolute bottom-5 left-0 px-4 py-2 text-gray-300 text-xs transition duration-300 group-hover:-translate-y-16">{category}</p>
+          <p className="absolute bottom-1 left-0 px-4 py-2 text-gray-300 text-xs opacity-0 transition duration-300 ease-in-out group-hover:opacity-100">{projectDescription}</p>
+          <div className="flex absolute gap-x-2 bottom-0 left-0 px-4 py-2 transition duration-300 group-hover:translate-y-8">
+            {projectTechnologies.map((technology, index) => (
+              <div key={index}>
+                <img className="h-4" src={`./img/Skills/${technology}.png`} alt={`${technology}`} />
+              </div>
+            ))}
+          </div>
+          <div className="flex opacity-0 transition duration-300 group-hover:translate-y-10 group-hover:opacity-100">
+            <CardButtons repositorioUrl={repositorioUrl} deployUrl={deployUrl} />
           </div>
         </div>
+        <div className="-translate-y-20 rounded h-16 px-6 py-4 bg-black shadow-lg transition-all duration-300 group-hover:translate-y-0"></div>
       </div>
     </div>
   );
