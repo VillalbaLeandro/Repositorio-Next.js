@@ -11,8 +11,8 @@ const ProjectCard = ({ projectName, projectDescription, projectTechnologies, ima
             src={imageUrl}
             alt={`previsualizacion del proyecto ${projectName}`}
           />
-          <div className="absolute -bottom-1 -top-14 -right-1 inset-0 bg-gradient-to-t via-black via-10% from-black to-transparent opacity-750 transition-all duration-300 group-hover:bg-transparent  group-hover:top-0 "></div>
-              <div className="opacity-25 transition duration-300 absolute bottom-0 top-0 -right-1 left-0 bg-black  group-hover:opacity-90"></div>
+          <div className="absolute bottom-0 -top-14 -right-1 inset-0 bg-gradient-to-t via-black via-10% from-black to-transparent opacity-750 transition-all duration-300 group-hover:bg-transparent  group-hover:top-0 dark:from-indigo  dark:via-indigo-950  dark:from-indigo dark:to-transparent dark:translate-y-20 dark:h-40"></div>
+          <div className="opacity-25 transition duration-300 absolute bottom-0 top-0 -right-1 left-0 bg-black  group-hover:opacity-90 dark:bg-indigo-950 dark:group-hover:opacity-60 "  ></div>
           <h5 className="absolute bottom-9 left-0 px-4 py-2 text-white text-sm transition duration-300 group-hover:-translate-y-16">{projectName}</h5>
           <p className="absolute bottom-5 left-0 px-4 py-2 text-gray-300 text-xs transition duration-300 group-hover:-translate-y-16">{category}</p>
           <p className="absolute bottom-1 left-0 px-4 py-2 text-gray-300 text-xs opacity-0 transition duration-300 ease-in-out group-hover:opacity-100">{projectDescription}</p>
@@ -27,7 +27,8 @@ const ProjectCard = ({ projectName, projectDescription, projectTechnologies, ima
             <CardButtons repositorioUrl={repositorioUrl} deployUrl={deployUrl} />
           </div>
         </div>
-        <div className="-translate-y-20 rounded h-16 px-6 py-4 bg-black shadow-lg transition-all duration-300 group-hover:translate-y-0"></div>
+        <div className="-translate-y-20 rounded h-20 px-6 py-4 bg-black shadow-lg transition-all duration-300 group-hover:-translate-y-2 "></div>
+        
       </div>
     </div>
   );

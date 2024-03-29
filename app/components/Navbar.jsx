@@ -1,13 +1,16 @@
 'use client'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import DarkModeSwitch from './DarkModeSwitch'
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  { name: 'Home', href: '#home', current: true },
+  { name: 'Experience', href: '#experience', current: false },
+  { name: 'Skills', href: '#skills', current: false },
+  { name: 'Proyects', href: '#proyects', current: false },
+  { name: 'Education', href: '#education', current: false },
+  { name: 'Contact', href: '#contact', current: false },
 ]
 
 function classNames(...classes) {
@@ -15,16 +18,21 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const [currentPage, setCurrentPage] = useState('Home'); // Estado para la página actual
+
+  const handleNavigationClick = (name) => {
+    setCurrentPage(name); // Actualiza la página actual cuando se hace clic en un enlace de navegación
+  };
   return (
-    <Disclosure className="shadow-xl glass-effect fixed top-0 left-0 w-full z-50" as="nav" >
+    <Disclosure className="shadow-xl glass-effect fixed top-0 left-0 w-full z-50  dark:shadow-gray-300/30" as="nav" >
 
       {({ open }) => (
         <>
-          <div id='navbar-top' className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div id='home' className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white  dark:text-gray-800 dark:hover:bg-gray-500 dark:hover:text-gray-800">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
                   {open ? (
@@ -36,23 +44,37 @@ export default function Navbar() {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="h-12 md:h-8 w-auto"
-                    src="/img/logo-white.png"
-                    alt="Your Company"
-                  />
+
+                  {document.body.classList.contains('dark') ?
+                    <img
+                      className="h-12 md:h-8 w-auto"
+                      src="/img/appsolutions-dark.png"
+                      alt="Your Company"
+                    />
+                    :
+                    <img
+                      className="h-12 md:h-8 w-auto"
+                      src="/img/logo-white.png"
+                      alt="Your Company"
+                    />
+                  }
+
+
                 </div>
+                <DarkModeSwitch />
+
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
+                        onClick={() => handleNavigationClick(item.name)} // Manejar el clic en el enlace
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                          currentPage === item.name ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                           'rounded-md px-3 py-2 text-sm font-medium'
                         )}
-                        aria-current={item.current ? 'page' : undefined}
+                        aria-current={currentPage === item.name ? 'page' : undefined}
                       >
                         {item.name}
                       </a>
@@ -61,11 +83,12 @@ export default function Navbar() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                
+
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
+
                     <Menu.Button className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
@@ -116,6 +139,7 @@ export default function Navbar() {
                           </a>
                         )}
                       </Menu.Item>
+
                     </Menu.Items>
                   </Transition>
                 </Menu>

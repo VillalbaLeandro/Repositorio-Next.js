@@ -9,7 +9,7 @@ const EducationItem = ({period, institution, title, certificatedLink, certificat
             </span>
             <time className="mb-1 ml-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{period}</time>
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{institution}</h3>
-            <p className='text-gray-300 text-sm mb-2'>{title}</p>
+            <p className='text-gray-300 text-sm mb-2 dark:text-gray-600'>{title}</p>
             {certificatedLink
                 &&
                 <Link target='_blank' href={certificatedLink}>

@@ -104,14 +104,16 @@ const Skills = () => {
                                 </div>
                             </div>
                             {/* Docker */}
-                            <div data-tip="JavaScript" className="tooltip">
+                            <div data-tip="Docker" className="tooltip">
                                 <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
                                     <img src='./img/skills/docker-logo.png' width={60} height={60} alt='docker  logo' />
                                 </div>
                             </div>
                             {/* Sql */}
-                            <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                <img src='./img/skills/sql-logo.png' width={50} height={50} alt='Sql logo' />
+                            <div data-tip="SQL" className="tooltip">
+                                <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
+                                    <img src='./img/skills/sql-logo.png' width={50} height={50} alt='Sql logo' />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -124,12 +126,16 @@ const Skills = () => {
                         <h2 className='font-bold text-xl mb-2 '>In proccess</h2>
                         <div className=" flex flex-wrap  gap-3 text-gray-950 dark:text-white">
                             {/* Typescript */}
-                            <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                <img src='./img/skills/ts-logo.png' width={50} height={50} alt='Sql logo' />
+                            <div data-tip="Typescript" className="tooltip">
+                                <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
+                                    <img src='./img/skills/ts-logo.png' width={50} height={50} alt='Sql logo' />
+                                </div>
                             </div>
                             {/* PostgreSQL */}
-                            <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                <img src='./img/skills/postgre-logo.png' width={50} height={50} alt='Sql logo' />
+                            <div data-tip="PostgreSQL" className="tooltip">
+                                <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
+                                    <img src='./img/skills/postgre-logo.png' width={50} height={50} alt='Sql logo' />
+                                </div>
                             </div>
 
                         </div>
