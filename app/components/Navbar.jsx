@@ -45,19 +45,19 @@ export default function Navbar() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
 
-                  {document.body.classList.contains('dark') ?
+                  {typeof document !== 'undefined' && document.body.classList.contains('dark') ? (
                     <img
                       className="h-12 md:h-8 w-auto"
                       src="/img/appsolutions-dark.png"
                       alt="Your Company"
                     />
-                    :
+                  ) : (
                     <img
                       className="h-12 md:h-8 w-auto"
                       src="/img/logo-white.png"
                       alt="Your Company"
                     />
-                  }
+                  )}
 
 
                 </div>
