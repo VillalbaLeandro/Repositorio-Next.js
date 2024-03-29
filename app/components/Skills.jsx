@@ -67,6 +67,12 @@ const Skills = () => {
                                     <img src='./img/skills/php-logo.png' width={50} height={50} alt='Php.js logo' />
                                 </div>
                             </div>
+                            {/* Laravel */}
+                            <div data-tip="Laravel" className="tooltip">
+                                <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
+                                    <img src='./img/skills/laravel-logo.png' width={30} height={30} alt='Php.js logo' />
+                                </div>
+                            </div>
                             {/* Jqery */}
                             <div data-tip="JQuery" className="tooltip">
                                 <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
