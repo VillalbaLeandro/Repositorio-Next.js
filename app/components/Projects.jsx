@@ -49,7 +49,6 @@ const Projects = () => {
       repositorioUrl: 'https://github.com/VillalbaLeandro/encriptador',
       deployUrl: 'https://villalbaleandro.github.io/encriptador/',
     },
-    
   ]
 
 
