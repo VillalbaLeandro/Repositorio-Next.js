@@ -44,7 +44,7 @@ const Education = () => {
     <>
       <div className='p-10  text-left  glass-effect rounded'>
 
-        <h2 className='font-bold text-xl '>Education</h2>
+        <h2 className='font-bold text-xl '>Formación</h2>
         <ol className="relative border-s border-sky-900 my-4 ">
           {educationData.map((item, index) => (
             <EducationItem key={index} {...item} />

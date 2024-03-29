@@ -57,7 +57,7 @@ const IslandMenu = () => {
                         <li className="nav-list">
                             <a href="#experience" className="link-item">
                                 <i className='link-icon'> <MdOutlineWorkHistory /></i>
-                                <span className="link-text">Experience</span>
+                                <span className="link-text">Experiencia</span>
                             </a>
                         </li>
                         <li className="nav-list">
@@ -69,19 +69,19 @@ const IslandMenu = () => {
                         <li className="nav-list">
                             <a href="#proyects" className="link-item">
                                 <i className=' link-icon'><GrDeploy /></i>
-                                <span className="link-text">Works</span>
+                                <span className="link-text">Proyectos</span>
                             </a>
                         </li>
                         <li className="nav-list">
                             <a href="#education" className="link-item">
                                 <i className='link-icon'><IoSchoolOutline /></i>
-                                <span className="link-text">Education</span>
+                                <span className="link-text">Formacion</span>
                             </a>
                         </li>
                         <li className="nav-list">
                             <a href="#contact" className="link-item">
                                 <i className='link-icon'><BiSolidContact /></i>
-                                <span className="link-text">Contact</span>
+                                <span className="link-text">Contacto</span>
                             </a>
                         </li>
                         <span className="indicator"></span>

@@ -5,12 +5,12 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import DarkModeSwitch from './DarkModeSwitch'
 
 const navigation = [
-  { name: 'Home', href: '#home', current: true },
-  { name: 'Experience', href: '#experience', current: false },
+  { name: 'Sobre mi', href: '#home', current: true },
+  { name: 'Experiencia', href: '#experience', current: false },
   { name: 'Skills', href: '#skills', current: false },
-  { name: 'Proyects', href: '#proyects', current: false },
-  { name: 'Education', href: '#education', current: false },
-  { name: 'Contact', href: '#contact', current: false },
+  { name: 'Proyectos', href: '#proyects', current: false },
+  { name: 'Formacion', href: '#education', current: false },
+  { name: 'Contacto', href: '#contact', current: false },
 ]
 
 function classNames(...classes) {

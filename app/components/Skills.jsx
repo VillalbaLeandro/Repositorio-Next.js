@@ -1,11 +1,10 @@
 import React from 'react'
-import Image from 'next/image'
 const Skills = () => {
     return (
-        <section className="w-80 lg:w-2/4 text-left ">
+        <div className='z-10'>
             <h2 className='font-bold text-xl '>Skills</h2>
-            <div className="">
-                <div className="mx-auto px-6 max-w-6xl text-gray-500">
+            <section className="lg:w-2/4 text-left ">
+                <div className=" w-80 mx-auto px-6 max-w-6xl text-gray-500">
                     <div className="mt-12 relative  sm:mx-auto sm:px-0 ">
                         <div className=" flex flex-wrap  gap-3 text-gray-950 dark:text-white">
                             {/* Next.js */}
@@ -39,7 +38,6 @@ const Skills = () => {
                                             fill="#f7df1e" /><path d="M324 370c10 17 24 29 47 29c20 0 33-10 33 -24c0-16 -13 -22 -35 -32l-12-5c-35-15 -58 -33 -58 -72c0-36 27 -64 70 -64c31 0 53 11 68 39l-37 24c-8-15 -17 -21 -31 -21c-14 0-23 9 -23 21c0 14 9 20 30 29l12 5c41 18 64 35 64 76c0 43-34 67 -80 67c-45 0-74 -21 -88 -49zm-170 4c8 13 14 25 31 25c16 0 26-6 26 -30V203h48v164c0 50-29 72 -72 72c-39 0-61 -20 -72 -44z" /></svg>
                                 </div>
                             </div>
-
                             {/* html */}
                             <div data-tip="Html" className="tooltip">
                                 <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
@@ -124,33 +122,32 @@ const Skills = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            {/* Lerning  */}
-            <div className="">
-                <div className="mx-auto px-6 max-w-6xl text-gray-500">
-                    <div className="mt-6 relative  sm:mx-auto sm:px-0 ">
-                        <h2 className='font-bold text-xl mb-2 '>In proccess</h2>
-                        <div className=" flex flex-wrap  gap-3 text-gray-950 dark:text-white">
-                            {/* Typescript */}
-                            <div data-tip="Typescript" className="tooltip">
-                                <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                    <img src='./img/skills/ts-logo.png' width={50} height={50} alt='Sql logo' />
+                {/* Lerning  */}
+                <div className="">
+                    <div className="mx-auto px-6 max-w-6xl text-gray-500">
+                        <div className="mt-6 relative  sm:mx-auto sm:px-0 ">
+                            <h2 className='font-bold text-xl mb-2 '>En proceso</h2>
+                            <div className=" flex flex-wrap  gap-3 text-gray-950 dark:text-white">
+                                {/* Typescript */}
+                                <div data-tip="Typescript" className="tooltip">
+                                    <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
+                                        <img src='./img/skills/ts-logo.png' width={50} height={50} alt='Sql logo' />
+                                    </div>
                                 </div>
-                            </div>
-                            {/* PostgreSQL */}
-                            <div data-tip="PostgreSQL" className="tooltip">
-                                <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
-                                    <img src='./img/skills/postgre-logo.png' width={50} height={50} alt='Sql logo' />
+                                {/* PostgreSQL */}
+                                <div data-tip="PostgreSQL" className="tooltip">
+                                    <div className=" flex relative *:relative  *:m-auto size-20  rounded-xl before:rounded-[11px] before:absolute before:inset-0  before:from-indigo-950  before:bg-gradient-to-b before:bg-transparent dark:before:from-indigo-200 dark:before:to-transparent ">
+                                        <img src='./img/skills/postgre-logo.png' width={50} height={50} alt='Sql logo' />
+                                    </div>
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="proyects" className='mb-20'></div>
-
-        </section>
+                <div id="proyects" className='mb-20'></div>
+            </section>
+        </div>
     )
 }
 
