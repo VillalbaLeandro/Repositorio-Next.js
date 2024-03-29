@@ -9,11 +9,11 @@ import Projects from "./components/Projects";
 import Education from "./components/Education";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import DialogBubble from "./components/DialogBubble";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between ">
-
       <AboutMe />
       <IslandMenu />
       <Experience />

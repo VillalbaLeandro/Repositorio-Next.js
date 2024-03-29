@@ -543,3 +543,16 @@ h3 {
   position: fixed;
   z-index: -1;
 }
+
+
+.dialog-bubble {
+  position: fixed;
+  bottom: 70px; /* Ajusta la posición según tu diseño */
+  right: 20px; /* Ajusta la posición según tu diseño */
+  max-width: 200px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: none; /* Oculta la burbuja por defecto */
+}
