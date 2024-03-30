@@ -8,7 +8,7 @@ const Projects = () => {
       projectName: "DigitalGames",
       projectDescription: "Desarrollé este proyecto como Fullstack Developer desde cero, utilizando tecnologías como Node.js, Sequelize y Express. Aprobado por Digital House",
       category: "e-commerce",
-      projectTechnologies: ["html-logo.png", "css-logo.png", "javascript-logo.png", "bootstrap-logo.svg", "react-logo.webp","git-logo.png", "node-logo.png"],
+      projectTechnologies: ["html-logo.png", "css-logo.png", "javascript-logo.png", "bootstrap-logo.png", "react-logo.webp","git-logo.png", "node-logo.png"],
       imageUrl: "./img/proyects/digital-games.png",
       repositorioUrl: 'https://github.com/VillalbaLeandro/grupo_10_DigitalGames',
       deployUrl: 'https://digital-games.onrender.com/home',

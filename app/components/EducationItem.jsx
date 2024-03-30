@@ -15,7 +15,9 @@ const EducationItem = ({period, institution, title, certificatedLink, certificat
                 <Link target='_blank' href={certificatedLink}>
                     <img
                         className="max-w-36 md:max-w-md "
-                        src={certificatedImage} alt={`${institution} certificated`} />
+                        src={certificatedImage} alt={`${institution} certificated`} 
+                        loading="lazy"
+                        />
                 </Link>
             }
         </li>

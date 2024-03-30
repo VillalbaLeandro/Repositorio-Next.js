@@ -19,7 +19,9 @@ const ProjectCard = ({ projectName, projectDescription, projectTechnologies, ima
           <div className="flex absolute gap-x-2 bottom-0 left-0 px-4 py-2 transition duration-300 group-hover:translate-y-8">
             {projectTechnologies.map((technology, index) => (
               <div key={index}>
-                <img className="h-4" src={`./img/skills/${technology}`} alt={`${technology}`} />
+                <img className="h-4" src={`./img/skills/${technology}`} alt={`${technology}`} 
+                  loading="lazy"
+                />
               </div>
             ))}
           </div>
