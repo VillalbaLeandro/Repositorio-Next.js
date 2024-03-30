@@ -1,18 +1,9 @@
 import React from 'react'
 
 const Experience = () => {
-
-    const experienciesInfo = [{
-        img: "/img/experiences/direccion-logo.png",
-        name: "Policia de la Provincia de Misiones",
-        rol: "Frontend Developer",
-        description: "Participé en proyectos clave de desarrollo frontend para la Policía de la Provincia de Misiones, enfocándome en el aprendizaje y la aplicación de tecnologías como Laravel, React y MySQL.",
-    }]
-
     return (
         <>
             <div className='p-10  text-left  glass-effect rounded'>
-
                 <h2 className='font-bold text-xl '>Experiencia</h2>
                 <ol className="relative border-s border-sky-900 my-4 ">
                     <li className="mb-10 ms-4">

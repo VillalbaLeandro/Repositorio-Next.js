@@ -4,12 +4,12 @@ import DownloadButton from './DownloadButton'
 
 const AboutMe = () => {
     return (
-        <div className='text-center glass-effect rounded xs:max-w-80 xl:max-w-96 flex items-center flex-col gap-1  p-10' >
-            <Image className='translate-y-10  ' src='/img/myPics/me2.png' alt='My beatiful picture' width={300} height={300} />
-            <h1 id="about-me" className='text-gray-100 font-bold text-base dark:text-gray-600'>Hola!  👋🏻 soy Leandro Villalba y soy</h1>
-            <h2 className='font-bold text-5xl  '>
+        <div className='text-center glass-effect rounded xs:max-w-80 xl:max-w-96 flex items-center flex-col p-5' >
+            <Image className='translate-y-10  ' src='/img/myPics/me-mobile.png' alt='My beatiful picture' width={280} height={304}  priority={true} />
+            <h1 id="about-me" className='text-gray-100 font-bold text-sm dark:text-gray-600'>Hola!  👋🏻 soy Leandro Villalba y soy</h1>
+            <h2 className='font-bold text-4xl  '>
                 FRONTEND  </h2>
-            <h2 className='font-bold text-5xl '>
+            <h2 className='font-bold text-4xl '>
                 DEVELOPER </h2>
             <h5 className='text-gray-100 text-sm lg:text-sm  dark:text-gray-600'>y estudiante avanzado en</h5>
             <h2 className='font-bold text-3xl'>Analista de Sistemas</h2>

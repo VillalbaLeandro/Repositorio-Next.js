@@ -84,6 +84,12 @@ h2 {
   background-size: 200% 100%;
   animation: gradient 2.5s infinite alternate;
 }
+/* 
+.gradiente{
+  background: linear-gradient(42deg, rgba(177, 80, 251, 1) 11%, rgba(118, 130, 237, 1) 50%, rgba(48, 210, 223, 1) 80%);
+  background-size: 200% 100%;
+  animation: gradient 2.5s infinite alternate;
+} */
 
 h3 {
   background: linear-gradient(42deg, rgba(177, 80, 251, 1) 11%, rgba(118, 130, 237, 1) 50%, rgba(48, 210, 223, 1) 80%);
