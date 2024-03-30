@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
-
+import confetti from 'canvas-confetti';
 const Contact = () => {
   const [message, setMessage] = useState('');
   const [sent, setSent] = useState(false);
@@ -23,12 +23,16 @@ const Contact = () => {
     }
     setMessage("Enviado con éxito");
     setSent(true);
+    confetti()
+
   };
 
   const handleResendMail = (e) => {
-    setSent(false)
-    e.target.reset
-  }
+    setSent(false);
+    e.target.closest('form').reset(); 
+    e.preventDefault(); 
+  };
+
   return (
     <form
       id='contact'
@@ -63,7 +67,7 @@ const Contact = () => {
                 <label htmlFor="message" className="absolute left-3 -top-6 bg-transparent text-sm leading-7 text-indigo-500 transition-all peer-placeholder-shown:left-3 peer-placeholder-shown:top-2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-3 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-indigo-500 dark:font-bold">Mensaje</label>
               </div>
             </div>
-            <div className="w-full p-2">
+            <div className="w-full p-2 text-center">
               {sent ?
                 <>
                   <button className='mx-auto flex items-center rounded border-0 bg-green-700 py-2 px-8 pr-4 text-lg text-white hover:bg-green-900 focus:outline-none' disabled={sent}>
@@ -76,11 +80,14 @@ const Contact = () => {
                       </div>
                     </div> */}
                   </button>
-                  <p onClick={handleResendMail}> Enviar otro Mensaje? Clikeame </p>
+                  <p className='text-center text-gray-300 mt-2'> Enviar otro Mensaje?</p>
+                  <a onClick={handleResendMail} className='text-center  underline text-gray-200 decoration-indigo-500 cursor-pointer hover:font-bold'>Clikeame</a>
                 </>
                 : <button className='mx-auto flex rounded border-0 bg-indigo-500 py-2 px-8 text-lg text-white hover:bg-indigo-600 focus:outline-none' >
                   Enviar
+
                 </button>}
+
             </div>
           </div>
         </div>
