@@ -1,7 +1,8 @@
 import React from 'react'
 const Skills = () => {
     return (
-        <div className='z-10'>
+        <section  id="skills" className='p-10 z-10'>
+
             <h2 className='font-bold text-xl '>Skills</h2>
             <section className="lg:w-2/4 text-left ">
                 <div className=" w-80 mx-auto px-6 max-w-6xl text-gray-500">
@@ -145,9 +146,8 @@ const Skills = () => {
                         </div>
                     </div>
                 </div>
-                <div id="proyects" className='mb-20'></div>
             </section>
-        </div>
+        </section>
     )
 }
 

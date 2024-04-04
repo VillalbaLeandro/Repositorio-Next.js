@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <div className="z-10 w-full border-t border-gray-800 p-2  text-center mb-28">
+        <section id='footer' className="z-10 w-full border-t border-gray-800 p-2  text-center mb-28">
             <p className="my-5 leading-normal text-gray-500">Posadas, Misiones, Argentina</p>
             <span className="inline-flex">
 
@@ -18,7 +18,7 @@ const Footer = () => {
                 </a>
               
             </span>
-        </div>
+        </section>
 
     )
 }

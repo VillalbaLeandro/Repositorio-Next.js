@@ -55,9 +55,8 @@ const Projects = () => {
 
   return (
     <>
-      <section className=' p-5  text-left  glass-effect rounded'>
-        <h2 className='font-bold text-xl '>Proyectos</h2>
-        <div className="w-[90vw] max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16 ">
+      <section id='projects' className=' p-10  text-left  glass-effect rounded w-[90vw] max-w-screen-xl mx-auto sm:p-10 md:p-16'>
+        <h2 className='font-bold text-center text-xl '>PROYECTOS</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
             {projectsData.map((project, index) =>
             (<ProjectCard
@@ -66,9 +65,7 @@ const Projects = () => {
             />)
             )}
           </div>
-        </div>
       </section>
-      <div id="education" className='mb-11'></div>
 
     </>
 

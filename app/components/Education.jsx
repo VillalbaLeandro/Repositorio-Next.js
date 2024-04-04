@@ -42,15 +42,14 @@ const Education = () => {
   ]
   return (
     <>
-      <div className='p-10  text-left  glass-effect rounded'>
-
+      <section id='education' className='p-10    glass-effect rounded'>
         <h2 className='font-bold text-xl '>Formación</h2>
         <ol className="relative border-s border-sky-900 my-4 ">
           {educationData.map((item, index) => (
-            <EducationItem key={index} {...item} />
+            <EducationItem key={index} {...item}  />
           ))}
         </ol>
-      </div>
+      </section>
     </>
   )
 }
