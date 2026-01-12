@@ -32,3 +32,5 @@ const DarkModeSwitch = ({ darkMode, handleDarkModeToggle }) => {
 };
 
 export default DarkModeSwitch;
+
+

@@ -1,11 +1,11 @@
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Background from "./components/Background";
 import Particles from "./components/Particles";
+import { ThemeProvider } from "./context/ThemeContext";
 
-const inter = Inter({ subsets: ["latin"] });+
-6
+const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Leandro Villalba",
@@ -15,12 +15,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html className="scroll-smooth" lang="en">
-      <body className={`${inter.className} `}>
-        <Background />
-        {/* <Particles /> */}
+      <body className={`${montserrat.className} `}>
+        <ThemeProvider>
+          <Background />
+          {/* <Particles /> */}
 
-        <Navbar />
-        {children}
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

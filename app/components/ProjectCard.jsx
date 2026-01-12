@@ -1,36 +1,87 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import CardButtons from './CardButtons';
 
 const ProjectCard = ({ projectName, projectDescription, projectTechnologies, imageUrl, repositorioUrl, deployUrl, category }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
-    <div className="relative group min-w-64 -mb-4">
-      <div className="rounded overflow-hidden">
-        <div className="z-40 relative h-40 transition duration-300">
-          <img
-            className="w-full h-full object-cover object-top"
-            src={imageUrl}
-            alt={`previsualizacion del proyecto ${projectName}`}
-          />
-          <div className="absolute bottom-0 -top-14 -right-1 inset-0 bg-gradient-to-t via-black via-10% from-black to-transparent opacity-750 transition-all duration-300 group-hover:bg-transparent  group-hover:top-0 dark:from-indigo  dark:via-indigo-950  dark:from-indigo dark:to-transparent dark:translate-y-20 dark:h-40"></div>
-          <div className="opacity-25 transition duration-300 absolute bottom-0 top-0 -right-1 left-0 bg-black  group-hover:opacity-90 dark:bg-indigo-950 dark:group-hover:opacity-60 "  ></div>
-          <h5 className="absolute bottom-9 left-0 px-4 py-2 text-white text-sm transition duration-300 group-hover:-translate-y-16">{projectName}</h5>
-          <p className="absolute bottom-5 left-0 px-4 py-2 text-gray-300 text-xs transition duration-300 group-hover:-translate-y-16">{category}</p>
-          <p className="absolute bottom-1 left-0 px-4 py-2 text-gray-300 text-xs opacity-0 transition duration-300 ease-in-out group-hover:opacity-100">{projectDescription}</p>
-          <div className="flex absolute gap-x-2 bottom-0 left-0 px-4 py-2 transition duration-300 group-hover:translate-y-8">
-            {projectTechnologies.map((technology, index) => (
-              <div key={index}>
-                <img className="h-4" src={`./img/skills/${technology}`} alt={`${technology}`} 
-                  loading="lazy"
-                />
-              </div>
-            ))}
-          </div>
-          <div className="flex opacity-0 transition duration-300 group-hover:translate-y-10 group-hover:opacity-100">
-            <CardButtons repositorioUrl={repositorioUrl} deployUrl={deployUrl} />
-          </div>
+    <div className="group relative overflow-hidden rounded-2xl bg-white dark:bg-[#0B1120] backdrop-blur-md border border-gray-100/80 dark:border-indigo-500/20 hover:border-indigo-500/50 transition-all duration-500 hover:scale-[1.02] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:hover:shadow-indigo-500/30 dark:shadow-none">
+      {/* Image Container */}
+      <div className="relative h-48 overflow-hidden">
+        <img
+          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+          src={imageUrl}
+          alt={`${projectName} preview`}
+          loading="lazy"
+        />
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 dark:from-black dark:via-gray-900/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+
+        {/* Decorative top gradient line for modern feel */}
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+        {/* Category Badge */}
+        <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-indigo-500/90 backdrop-blur-sm text-xs font-semibold text-white">
+          {category}
         </div>
-        <div className="-translate-y-20 rounded h-20 px-6 py-4 bg-black shadow-lg transition-all duration-300 group-hover:-translate-y-2 "></div>
-        
+      </div>
+
+      {/* Content */}
+      <div className="p-6 space-y-4">
+        {/* Title */}
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300">
+          {projectName}
+        </h3>
+
+        {/* Description */}
+        <div className="relative">
+          <p className={`text-sm text-gray-600 dark:text-gray-300 leading-relaxed transition-all duration-300 ${isExpanded ? '' : 'line-clamp-3'}`}>
+            {projectDescription}
+          </p>
+          {projectDescription.length > 100 && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 mt-1 focus:outline-none font-medium transition-colors cursor-pointer"
+            >
+              {isExpanded ? 'Leer menos' : 'Leer más'}
+            </button>
+          )}
+        </div>
+
+        {/* Technologies */}
+        <div className="flex flex-wrap gap-2 pt-2">
+          {projectTechnologies.map((technology, index) => {
+            // Simple extraction of technology name from filename
+            const techName = technology
+              .replace(/-logo\.(png|svg|webp|jpeg|jpg)/, '')
+              .replace(/-/g, ' ')
+              .toUpperCase();
+
+            return (
+              <div key={index} className="tooltip" data-tip={techName}>
+                <div className="p-2 rounded-lg bg-gray-100/80 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 hover:border-indigo-500/50 transition-all duration-300 shadow-sm dark:shadow-none">
+                  <img
+                    className="h-5 w-5 object-contain"
+                    src={`./img/skills/${technology}`}
+                    alt={technology}
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Buttons */}
+        <div className="pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <CardButtons repositorioUrl={repositorioUrl} deployUrl={deployUrl} />
+        </div>
+      </div>
+
+      {/* Shine Effect on Hover */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 dark:via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
       </div>
     </div>
   );

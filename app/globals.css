@@ -2,9 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: rgb(10 8 31);
-  --background-start-rgb: rgb(10 8 31);
+/* Dark Theme (Default) - Preserving current colors */
+:root,
+.dark {
+  --foreground-rgb: rgb(211, 210, 208);
+  --background-start-rgb: rgb(10, 8, 31);
   --background-end-rgb: rgb(31, 4, 42);
   --icon: rgb(211, 210, 208);
   --blue-bg: rgb(10, 8, 31);
@@ -12,27 +14,26 @@
   --iconNavbar: rgb(82, 37, 86);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: rgb(211, 210, 208);
-    --background-start-rgb: rgba(255, 255, 255, 0.562);
-    --background-end-rgb: rgb(163, 17, 221);
-    --icon: rgb(10, 8, 31);
-    --blue-bg: rgb(10, 8, 31);
-    --gradient: linear-gradient(42deg, rgba(177, 80, 251, 1) 11%, rgba(118, 130, 237, 1) 50%, rgba(48, 210, 223, 1) 80%);
-    --iconNavbar: rgb(82, 37, 86);
-
-  }
+/* Light Theme */
+.light {
+  --foreground-rgb: rgb(31, 41, 55);
+  --background-start-rgb: rgb(249, 250, 251);
+  --background-end-rgb: rgb(243, 244, 246);
+  --icon: rgb(31, 41, 55);
+  --blue-bg: rgb(255, 255, 255);
+  --gradient: linear-gradient(42deg, rgba(177, 80, 251, 0.7) 11%, rgba(118, 130, 237, 0.7) 50%, rgba(48, 210, 223, 0.7) 80%);
+  --iconNavbar: rgb(139, 92, 246);
 }
 
-.dark {
-  --foreground-rgb: rgb(211, 210, 208);
-  --background-start-rgb:  rgba(255, 255, 255, 0.562);
-  --background-end-rgb: rgb(163, 17, 221);
-  --icon: rgb(10, 8, 31);
-  --blue-bg: rgb(10, 8, 31);
-  --gradient: linear-gradient(42deg, rgba(177, 80, 251, 1) 11%, rgba(118, 130, 237, 1) 50%, rgba(48, 210, 223, 1) 80%);
-  --iconNavbar: rgb(82, 37, 86);
+/* Cyberpunk Theme */
+.cyberpunk {
+  --foreground-rgb: rgb(0, 255, 255);
+  --background-start-rgb: rgb(10, 0, 20);
+  --background-end-rgb: rgb(30, 0, 50);
+  --icon: rgb(255, 0, 255);
+  --blue-bg: rgb(10, 0, 20);
+  --gradient: linear-gradient(42deg, rgba(255, 0, 255, 1) 11%, rgba(0, 255, 255, 1) 50%, rgba(57, 255, 20, 1) 80%);
+  --iconNavbar: rgb(255, 0, 255);
 }
 
 
@@ -68,12 +69,19 @@ body {
 
 @keyframes gradient {
   0% {
-    background-position: 0% 0;
+    background-position: 0% 50%;
   }
-
+  50% {
+    background-position: 100% 50%;
+  }
   100% {
-    background-position: 100% 0;
+    background-position: 0% 50%;
   }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
 }
 
 
@@ -99,10 +107,17 @@ h3 {
 }
 
 .glass-effect {
+  /* Default (Dark / Base) */
   background-color: rgba(255, 255, 255, 0);
-  /* Color de fondo con transparencia */
   backdrop-filter: blur(2px);
-  /* Aplicar desenfoque */
+}
+
+/* iOS / Apple Style for Light Mode */
+.light .glass-effect {
+  background-color: rgba(255, 255, 255, 0.85); /* Translucent white base */
+  backdrop-filter: blur(20px); /* Heavy blur for depth */
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Very subtle border */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.05); /* Soft diffused shadow */
 }
 
 
@@ -156,7 +171,7 @@ h3 {
 
 .menuNavbarMobile {
   position: fixed;
-  bottom: 0;
+  bottom: 20px;
   z-index: 100;
   left: 0;
   right: 0;

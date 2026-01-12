@@ -1,23 +1,28 @@
 const CardButtons = ({ repositorioUrl, deployUrl }) => {
     return (
-        <div className="flex absolute -bottom-6 left-0 px-4 py-2 justify-center gap-x-2">
+        <div className="flex w-full justify-between gap-4">
             <a
-                className="w-auto h-5 group flex text-xs items-center disabled:opacity-50 disabled:hover:opacity-50 hover:opacity-95 justify-center ring-none rounded-lg shadow-lg font-semibold py-1 px-2 font-dm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-violet-500 border-b-violet-700 disabled:border-0 disabled:bg-violet-500 disabled:text-white ring-white text-white border-b-2 hover:border-0 active:border-0 hover:text-gray-100 active:bg-violet-800 active:text-gray-300 focus-visible:outline-violet-500 sm:text-xs"
+                className="flex-1 group flex text-xs items-center justify-center ring-none rounded-lg shadow-lg font-semibold py-2 px-4 font-dm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-indigo-600 hover:bg-indigo-500 text-white transition-all duration-200"
                 href={repositorioUrl}
+                target="_blank"
+                rel="noopener noreferrer"
             >
-                Repositorio
+                Start
             </a>
             <a
-                className="w-auto h-5 group flex ring-none items-center justify-center hover:opacity-95 disabled:opacity-50 rounded-lg py-1 px-1 font-dm focus:outline-none !ring-transparent text-violet-800 border border-violet-500 border-b-violet-400 border-b-2 hover:border active:border bg-white hover:text-violet-900 hover:bg-gray-50 active:bg-gray-100 active:text-violet-600 focus-visible:outline-violet-600 focus-visible:ring-violet-700 text-xs sm:text-xs"
+                className="flex-1 group flex items-center justify-center rounded-lg py-2 px-4 font-dm focus:outline-none text-indigo-100 border border-indigo-500/30 hover:bg-indigo-500/20 hover:border-indigo-500/50 transition-all duration-200 text-xs font-semibold backdrop-blur-sm"
                 href={deployUrl}
+                target="_blank"
+                rel="noopener noreferrer"
             >
+                <span className="mr-2">Demo</span>
                 <svg
                     aria-hidden="true"
-                    className="h-3 w-3 flex-none fill-violet-600 group-active:fill-current"
+                    className="h-3 w-3 fill-current"
+                    viewBox="0 0 10 10"
                 >
-                    <path d="m9.997 6.91-7.583 3.447A1 1 0 0 1 1 9.447V2.553a1 1 0 0 1 1.414-.91L9.997 5.09c.782.355.782 1.465 0 1.82Z"></path>
+                    <path d="M2.5 1h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.707L1.854 7.854a.5.5 0 0 1-.708-.708L6.293 2H2.5a.5.5 0 0 1 0-1z" />
                 </svg>
-                <span className="ml-1 font-bold">Demo</span>
             </a>
         </div>
     );
