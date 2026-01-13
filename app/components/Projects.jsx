@@ -1,7 +1,20 @@
+'use client';
 import React from 'react'
 import ProjectCard from './ProjectCard'
 
 const Projects = () => {
+  React.useEffect(() => {
+    const syncPointer = ({ x, y }) => {
+      document.documentElement.style.setProperty('--x', x.toFixed(2));
+      document.documentElement.style.setProperty('--xp', (x / window.innerWidth).toFixed(2));
+      document.documentElement.style.setProperty('--y', y.toFixed(2));
+      document.documentElement.style.setProperty('--yp', (y / window.innerHeight).toFixed(2));
+    };
+    document.body.addEventListener('pointermove', syncPointer);
+    return () => {
+      document.body.removeEventListener('pointermove', syncPointer);
+    };
+  }, []);
 
   const projectsData = [
     {
@@ -17,7 +30,7 @@ const Projects = () => {
       projectName: "Cálculo de Honorarios",
       projectDescription: "Sistema desarrollado para la Municipalidad de Posadas. Funciona como host que sirve el contenido consumido a través de un iframe embebido en la página oficial, permitiendo el cálculo digital de tasas y honorarios de construcción.",
       category: "App Web / Host",
-      projectTechnologies: ["php-logo.png", "javascript-logo.png", "bootstrap-logo.svg", "mysql-logo.png"],
+      projectTechnologies: ["php-logo.png", "javascript-logo.png", "bootstrap-logo.png", "mysql-logo.png"],
       imageUrl: "./img/proyects/honorarios-municipalidad.png",
       repositorioUrl: 'https://posadas.gov.ar/honorarios/',
       deployUrl: 'https://posadas.gov.ar/honorarios/',
@@ -26,7 +39,7 @@ const Projects = () => {
       projectName: "DrinkStore",
       projectDescription: "Un proyecto personal de gran escala realizado en Php, con sistema completo de venta, control de stock y caja. Actualmente migrándolo a Next.js.",
       category: "Sistema de ventas y stock",
-      projectTechnologies: ["php-logo.png", "html-logo.png", "css-logo.png", "javascript-logo.png", "jquery-logo.png", "bootstrap-logo.svg"],
+      projectTechnologies: ["php-logo.png", "html-logo.png", "css-logo.png", "javascript-logo.png", "jquery-logo.png", "bootstrap-logo.png"],
       imageUrl: "./img/proyects/drinkstore-sistema-stock.png",
       repositorioUrl: 'https://github.com/VillalbaLeandro/sistema-de-ventas-html-css.github.io',
       deployUrl: 'https://drinkstore24hs.000webhostapp.com/ventas/login.php',
@@ -62,19 +75,28 @@ const Projects = () => {
 
   return (
     <>
-      <section id='projects' className=' p-10  text-left   rounded w-[90vw] max-w-screen-xl mx-auto sm:p-10 md:p-16'>
-        <div className="flex items-center justify-center gap-4 mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-cyan-400 uppercase tracking-wide">
-            PROYECTOS
+      <section id='projects' className='p-6 text-left rounded w-[90vw] max-w-screen-xl mx-auto sm:p-6 md:p-10'>
+        <div className="flex items-center justify-center gap-3 mb-12">
+          <h2 className="relative inline-block text-3xl md:text-4xl font-bold uppercase tracking-widest leading-tight">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-blue-400 to-cyan-400">
+              Proyectos
+            </span>
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
-          {projectsData.map((project, index) =>
-          (<ProjectCard
-            key={index}
-            {...project}
-          />)
-          )}
+        <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-6">
+          {projectsData.map((project, index) => {
+            // Cycle through neon base hues: 80 (Lime), 220 (Blue), 280 (Purple), 320 (Pink)
+            const baseHue = [80, 220, 280, 320][index % 4];
+            const spread = [500, 200, 500, 200][index % 4];
+
+            return (
+              <ProjectCard
+                key={index}
+                style={{ '--base': baseHue, '--spread': spread, '--outer': 1 }}
+                {...project}
+              />
+            );
+          })}
         </div>
       </section>
 

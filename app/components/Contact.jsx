@@ -41,7 +41,7 @@ const Contact = () => {
       action="https://formspree.io/f/xdoqlzdd"
       method="POST"
       onSubmit={handleSubmit}
-      className="body-font relative bg-gray-900 text-gray-400 glass-effect"
+      className="body-font relative bg-gray-900 text-gray-400 glass-effect min-h-screen"
     >
       <div className="container mx-auto px-5 py-10">
         <div className="mb-12 flex w-full flex-col text-center">

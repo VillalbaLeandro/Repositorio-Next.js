@@ -29,7 +29,7 @@ export default function Navbar() {
     setCurrentPage(name); // Actualiza la página actual cuando se hace clic en un enlace de navegación
   };
   return (
-    <Disclosure className="glass-effect fixed top-0 left-0 w-full z-50" as="nav" >
+    <Disclosure className="glass-effect fixed top-0 left-0 w-full z-50 border-b border-white/10" as="nav" >
 
       {({ open }) => (
         <>
@@ -47,48 +47,41 @@ export default function Navbar() {
                   )}
                 </Disclosure.Button>
               </div>
-              {/* <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+
+              {/* Desktop Navigation */}
+              <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  {theme === 'light' ? (
-                    <img
-                      className="h-12 md:h-8 w-auto"
-                      alt="Your Company"
-                      src="/img/appsolutions-dark.png"
-                    />
-                  ) : (
-                    <img
-                      className="h-12 md:h-8 w-auto"
-                      src="/img/logo-white.png"
-                      alt="Your Company"
-                    />
-                  )}
+                  <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-cyan-400">
+                    LV
+                  </span>
                 </div>
-                <div className="hidden md:ml-1 md:block lg:ml-6">
-                  <div className="flex ">
+                <div className="hidden md:ml-10 md:block">
+                  <div className="flex space-x-1">
                     {navigation.map((item) => (
                       <Link
                         key={item.name}
-                        to={item.href}
+                        to={item.href.replace('#', '')}
                         smooth={true}
-                        offset={500}
+                        offset={-80}
                         duration={500}
-                        className={classNames(
-                          currentPage === item.name ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md md:px-3 lg:px-6  py-2 text-sm font-medium'
-                        )}
-                        aria-current={currentPage === item.name ? 'page' : undefined}
+                        spy={true}
+                        activeClass="active-nav-link"
+                        className="nav-link relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 cursor-pointer group"
+                        onClick={() => handleNavigationClick(item.name)}
                       >
                         {item.name}
+                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400 group-hover:w-full transition-all duration-300"></span>
                       </Link>
                     ))}
                   </div>
                 </div>
-              </div> */}
+              </div>
+
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="relative flex rounded-full bg-gray-800 p-1.5 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <Menu.Button className="relative flex rounded-full bg-gray-800/50 p-1.5 text-gray-400 hover:text-white hover:bg-gray-700/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-transparent transition-all">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open settings menu</span>
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -106,37 +99,7 @@ export default function Navbar() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-gray-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-700' : '', 'block px-4 py-2 text-sm text-gray-300')}
-                          >
-                            Your Profile
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-700' : '', 'block px-4 py-2 text-sm text-gray-300')}
-                          >
-                            Settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-700' : '', 'block px-4 py-2 text-sm text-gray-300')}
-                          >
-                            Sign out
-                          </a>
-                        )}
-                      </Menu.Item>
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-gray-800/95 backdrop-blur-xl py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-white/10">
                       <Menu.Item>
                         <ThemeSelector />
                       </Menu.Item>

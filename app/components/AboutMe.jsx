@@ -5,7 +5,7 @@ import DownloadButton from './DownloadButton'
 
 const AboutMe = () => {
     return (
-        <section id='home' className='mt-6 rounded xs:max-w-85 xl:max-w-screen-xl flex flex-col-reverse md:flex-row items-center justify-between w-[90vw] max-w-screen-xl mx-auto sm:p-10 md:p-16 relative overflow-visible gap-10'>
+        <section id='home' className='mt-2 rounded xs:max-w-85 xl:max-w-screen-xl flex flex-col-reverse md:flex-row items-center justify-between w-[90vw] max-w-screen-xl mx-auto sm:p-6 md:p-10 relative overflow-visible gap-6'>
 
             {/* Left Column: Text Content */}
             <div className='flex flex-col items-center md:items-start text-center md:text-left z-10 md:w-3/5'>

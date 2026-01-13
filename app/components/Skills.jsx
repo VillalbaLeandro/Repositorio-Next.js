@@ -10,15 +10,15 @@ const SkillIcon = ({ tip, children }) => (
 
 const Skills = () => {
     return (
-        <section id="skills" className='p-6 sm:p-10 z-10'>
-            <div className="flex items-center justify-center gap-4 mb-10">
+        <section id="skills" className='p-4 sm:p-6 z-10'>
+            <div className="flex items-center justify-center gap-3 mb-6">
                 <h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-cyan-400 uppercase tracking-wide">
                     Skills
                 </h2>
             </div>
 
             {/* Frontend */}
-            <div className="mb-8">
+            <div className="mb-6">
                 <h3 className='font-semibold text-lg mb-4 text-indigo-500 dark:text-indigo-400'>Frontend</h3>
                 <div className="flex flex-wrap gap-3">
                     <SkillIcon tip="React">
@@ -52,7 +52,7 @@ const Skills = () => {
             </div>
 
             {/* Backend */}
-            <div className="mb-8">
+            <div className="mb-6">
                 <h3 className='font-semibold text-lg mb-4 text-cyan-400'>Backend</h3>
                 <div className="flex flex-wrap gap-3">
                     <SkillIcon tip="Node.js">
@@ -71,7 +71,7 @@ const Skills = () => {
             </div>
 
             {/* Databases */}
-            <div className="mb-8">
+            <div className="mb-6">
                 <h3 className='font-semibold text-lg mb-4 text-green-400'>Databases</h3>
                 <div className="flex flex-wrap gap-3">
                     <SkillIcon tip="MySQL">
@@ -87,7 +87,7 @@ const Skills = () => {
             </div>
 
             {/* Tools & Others */}
-            <div className="mb-8">
+            <div className="mb-6">
                 <h3 className='font-semibold text-lg mb-4 text-purple-400'>Tools & Others</h3>
                 <div className="flex flex-wrap gap-3">
                     <SkillIcon tip="Git">
@@ -116,14 +116,12 @@ const Skills = () => {
 
             {/* Learning */}
             <div>
-                <h3 className='font-semibold text-lg mb-4 text-yellow-400'>Aprendiendo</h3>
+                <h3 className='font-semibold text-lg mb-4 text-yellow-400'>En proceso</h3>
                 <div className="flex flex-wrap gap-3">
                     <SkillIcon tip="React Native">
                         <img loading="lazy" src='./img/skills/react-native-logo.png' width={50} height={50} alt='React Native' />
                     </SkillIcon>
-                    <SkillIcon tip="Python">
-                        <img loading="lazy" src='./img/skills/python-logo.png' width={50} height={50} alt='Python' />
-                    </SkillIcon>
+
                 </div>
             </div>
         </section>

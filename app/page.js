@@ -17,8 +17,8 @@ export default function Home() {
       <AboutMe />
       <IslandMenu />
       <Experience />
-      <Skills />
       <Projects />
+      <Skills />
       <Education />
       <Contact />
       <Footer />

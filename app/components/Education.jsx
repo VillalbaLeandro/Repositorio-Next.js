@@ -43,8 +43,8 @@ const Education = () => {
   ]
   return (
     <>
-      <section id='education' className='p-10  mb-8  glass-effect rounded'>
-        <div className="flex items-center justify-center gap-4 mb-10">
+      <section id='education' className='p-6 mb-4 glass-effect rounded'>
+        <div className="flex items-center justify-center gap-3 mb-6">
           <h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-cyan-400 uppercase tracking-wide">
             Formación
           </h2>
