@@ -139,7 +139,7 @@ const Experience = () => {
     ];
 
     return (
-        <section id='experience' className='p-6 text-left mt-2 glass-effect rounded-xl overflow-hidden w-[90vw] max-w-screen-xl mx-auto sm:p-6 md:p-10'>
+        <section id='experience' className='text-left mt-2 glass-effect rounded-xl overflow-hidden w-[90vw] max-w-screen-xl mx-auto sm:p-6 md:p-10'>
             <div className="flex items-center justify-center gap-3 mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-cyan-400 uppercase tracking-widest">
                     Experiencia

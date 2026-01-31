@@ -1,6 +1,6 @@
-import Image from 'next/image'
 import React from 'react'
 import DownloadButton from './DownloadButton'
+import Avatar3D from './Avatar3D'
 
 
 const AboutMe = () => {
@@ -21,11 +21,11 @@ const AboutMe = () => {
 
                 <div className='max-w-2xl space-y-4 text-base md:text-lg'>
                     <p className='text-gray-800 dark:text-gray-300 leading-relaxed'>
-                        Con más de <strong className='text-gray-900 dark:text-white font-semibold'>4 años</strong> de experiencia creando aplicaciones web y mobile con <strong className='text-gray-900 dark:text-white font-semibold'>React, Next.js, Angular e Ionic</strong>, integradas a backends escalables en <strong className='text-gray-900 dark:text-white font-semibold'>Laravel, Node.js y MySQL</strong>.
+                        Con más de <strong className='text-gray-900 dark:text-white font-semibold'>4 años de experiencia</strong> en el desarrollo de aplicaciones <strong className='text-gray-900 dark:text-white font-semibold'>web y mobile</strong>, trabajo con tecnologías como <strong className='text-gray-900 dark:text-white font-semibold'>React, Next.js, Angular e Ionic</strong>, integrándolas con <strong className='text-gray-900 dark:text-white font-semibold'>backends escalables en Laravel y Node.js</strong>, y con <strong className='text-gray-900 dark:text-white font-semibold'>sólidos conocimientos en bases de datos MySQL</strong>.
                     </p>
 
                     <p className='text-gray-800 dark:text-gray-300 leading-relaxed'>
-                        Trabajé en proyectos de sector público, retail y logística, desarrollando soluciones con geolocalización, trazabilidad y flujos operativos críticos, logrando mejoras reales en eficiencia y rendimiento.
+                        Trabajé en diversos proyectos desarrollando soluciones con geolocalización, trazabilidad y flujos operativos críticos, logrando mejoras reales en eficiencia y rendimiento.
                     </p>
 
                     <p className='text-gray-800 dark:text-gray-300 leading-relaxed'>
@@ -37,22 +37,24 @@ const AboutMe = () => {
                     </p>
                 </div>
 
-                <div className="mt-8">
+                <div className="mt-8 md:hidden">
                     <DownloadButton />
                 </div>
             </div>
 
             {/* Right Column: Image with "Surprise" Glow Effect */}
-            <div className='relative md:w-2/5 flex justify-center'>
+            <div className='relative md:w-2/5 flex flex-col items-center justify-center '>
                 <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/30 to-purple-500/30 blur-3xl rounded-full scale-110 opacity-0 md:opacity-100 transition-opacity duration-1000 animate-pulse"></div>
-                <Image
-                    className='relative z-10 drop-shadow-2xl transition-transform duration-500 hover:scale-105 translate-y-[63px] md:translate-y-0'
-                    src='/img/myPics/me-mobile.png'
-                    alt='Leandro Villalba'
-                    width={400}
-                    height={434}
-                    priority={true}
-                />
+
+                {/* 3D Model Replacement */}
+                <Avatar3D />
+
+                <div className="hidden md:block -mt-14 z-20 w-full max-w-[300px]">
+                    <DownloadButton />
+                </div>
+                <a href="#contact" className="hidden md:block mt-4 transform active:scale-95 bg-indigo-600 hover:bg-indigo-500 text-white px-10 py-3 rounded-lg font-bold tracking-widest text-center shadow-lg transition-all duration-300 z-20 w-full max-w-[300px] border-2 border-transparent hover:border-indigo-400">
+                    <span className="uppercase">CONTACT ME</span>
+                </a>
             </div>
         </section>
     )

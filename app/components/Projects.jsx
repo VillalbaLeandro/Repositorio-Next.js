@@ -75,7 +75,7 @@ const Projects = () => {
 
   return (
     <>
-      <section id='projects' className='p-6 text-left rounded w-[90vw] max-w-screen-xl mx-auto sm:p-6 md:p-10'>
+      <section id='projects' className='text-left rounded w-[90vw] max-w-screen-xl mx-auto sm:p-6 md:p-10'>
         <div className="flex items-center justify-center gap-3 mb-12">
           <h2 className="relative inline-block text-3xl md:text-4xl font-bold uppercase tracking-widest leading-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-blue-400 to-cyan-400">

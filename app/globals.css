@@ -685,3 +685,63 @@ h3 {
 .nav-link.active-nav-link span {
   width: 100%;
 }
+
+/* Global overflow-x prevention */
+html, body { 
+  overflow-x: hidden; 
+}
+
+/* Skills Carousel Styles - Optimized to prevent horizontal scroll */
+.skills-carousel-row {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+/* Modern clip support */
+@supports (overflow: clip) {
+  .skills-carousel-row { 
+    overflow: clip; 
+  }
+}
+
+/* Anti-edge guards (prevents 1px rounding issues) */
+.skills-carousel-row::before,
+.skills-carousel-row::after {
+  content: "";
+  position: absolute;
+  top: 0; 
+  width: 1px; 
+  height: 100%;
+  pointer-events: none;
+}
+.skills-carousel-row::before { left: -1px; }
+.skills-carousel-row::after  { right: -1px; }
+
+.skills-carousel-track {
+  white-space: nowrap;
+}
+
+/* GPU-accelerated animations */
+@keyframes scroll-left {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-33.333%, 0, 0); }
+}
+
+@keyframes scroll-right {
+  from { transform: translate3d(-33.333%, 0, 0); }
+  to   { transform: translate3d(0, 0, 0); }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 25s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 25s linear infinite;
+}
+
+.skills-carousel-track:hover {
+  animation-play-state: paused;
+}
