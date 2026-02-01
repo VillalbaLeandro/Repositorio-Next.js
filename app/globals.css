@@ -79,9 +79,15 @@ body {
   }
 }
 
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient 3s ease infinite;
+  background-size: 300% 300%;
+  animation: gradientMove 6s ease-in-out infinite;
 }
 
 
@@ -107,17 +113,90 @@ h3 {
 }
 
 .glass-effect {
-  /* Default (Dark / Base) */
-  background-color: rgba(255, 255, 255, 0);
-  backdrop-filter: blur(2px);
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+
+  /* DARK (default) */
+  background: rgba(10, 12, 24, 0.55);            /* tint oscuro */
+  backdrop-filter: blur(18px) saturate(140%);    /* blur + saturación */
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);   /* borde vidrio */
+  box-shadow:
+    0 20px 70px rgba(0, 0, 0, 0.55),             /* profundidad */
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);     /* highlight interno */
 }
+
+/* Glow grande de fondo (blur brilloso) */
+.glass-effect::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(99,102,241,0.35), transparent 45%),
+    radial-gradient(circle at 80% 20%, rgba(168,85,247,0.28), transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(34,211,238,0.22), transparent 50%);
+  filter: blur(35px) saturate(140%);
+  opacity: 0.75;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Borde “neón” suave */
+.glass-effect::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(99,102,241,0.35),
+    rgba(168,85,247,0.28),
+    rgba(34,211,238,0.25)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.45;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Para que el contenido quede arriba de los glows */
+.glass-effect > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- NEUMORPHIC GLASS CARD (Experience Right Column) --- */
+/* --- NEUMORPHIC GLASS CARD (Experience Right Column) --- */
+.neuro-card {
+  position: relative;
+  /* background: rgba(15, 15, 25, 0.4); */ /* Let data-glow handle background/border */
+  border-radius: 16px;
+  padding: 1.5rem;
+  overflow: hidden;
+  /* transition: all 0.3s ease; */ /* Removed transition to avoid conflict with mouse tracking */
+}
+
+/* data-glow handles the rest */
 
 /* iOS / Apple Style for Light Mode */
 .light .glass-effect {
-  background-color: rgba(255, 255, 255, 0.85); /* Translucent white base */
-  backdrop-filter: blur(20px); /* Heavy blur for depth */
-  border: 1px solid rgba(0, 0, 0, 0.05); /* Very subtle border */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.05); /* Soft diffused shadow */
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 10px 15px -3px rgba(0, 0, 0, 0.05);
 }
 
 /* --- Project Card Glow Effect --- */
@@ -686,7 +765,11 @@ h3 {
   width: 100%;
 }
 
-/* Global overflow-x prevention */
+/* Global overflow-x prevention and smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 html, body { 
   overflow-x: hidden; 
 }
@@ -695,8 +778,8 @@ html, body {
 .skills-carousel-row {
   position: relative;
   overflow: hidden;
-  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }
 
 /* Modern clip support */
@@ -744,4 +827,88 @@ html, body {
 
 .skills-carousel-track:hover {
   animation-play-state: paused;
+}
+
+/* FLOATING BADGES WIDGETS */
+.floating-badge {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  min-width: 160px;
+  animation: floatBadge 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.floating-badge:hover {
+  transform: translateY(-3px) scale(1.03);
+  border-color: rgba(99, 102, 241, 0.5); /* Indigo 500 */
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.floating-badge .badge-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.1));
+}
+
+.badge-content {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.badge-title {
+  font-weight: 700;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.badge-libs {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* Badge Positions */
+.badge-1 {
+  top: 10%;
+  right: 0%;
+  animation-delay: 0s;
+}
+
+.badge-2 {
+  bottom: 20%;
+  right: -5%;
+  animation-delay: 1.5s;
+}
+
+.badge-3 {
+  bottom: 23%;
+  left: -5%;
+  animation-delay: 0.8s;
+}
+
+.badge-4 {
+  top: 30%;
+  left: -10%;
+  animation-delay: 2.2s;
+}
+
+/* Mobile: hide badges */
+@media (max-width: 768px) {
+  .floating-badge { display: none; }
 }

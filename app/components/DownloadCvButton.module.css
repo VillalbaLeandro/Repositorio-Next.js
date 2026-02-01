@@ -1,0 +1,235 @@
+.button {
+  --background: #4f46e5; /* Indigo 600 */
+  --rectangle: #4338ca; /* Indigo 700 */
+  --success: #10b981;   /* Emerald 500 */
+  --success-dark: #059669; /* Emerald 600 */
+  --text: #fff;
+  --arrow: #fff;
+  --checkmark: #fff;
+  --shadow: rgba(79, 70, 229, 0.3); /* Indigo shadow */
+  --duration: 2600;
+
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  text-decoration: none;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+  background: var(--background);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px -1px var(--shadow), 0 0 0 1px rgba(255,255,255,0.1) inset;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.6s ease;
+  user-select: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #4338ca; /* Indigo 700 */
+  box-shadow: 0 4px 12px -1px var(--shadow);
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: scale(0.98);
+  box-shadow: 0 1px 4px -1px var(--shadow);
+}
+
+.button.done {
+  background: var(--success);
+  box-shadow: 0 0 20px -5px rgba(16, 185, 129, 0.5); /* Green glow */
+}
+
+.button.done .iconBox {
+  background: var(--success-dark);
+}
+
+.text {
+  margin: 0;
+  padding: 14px 38px;
+  list-style: none;
+  text-align: center;
+  position: relative;
+  backface-visibility: hidden;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 28px;
+  color: var(--text);
+  text-transform: uppercase;
+  flex-grow: 1;
+}
+
+.text li:not(:first-child) {
+  top: 14px;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+
+.text li:nth-child(2) {
+  top: 70px;
+}
+
+.text li:nth-child(3) {
+  top: 126px;
+}
+
+.iconBox {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  background: var(--rectangle);
+  transition: background-color 0.6s ease;
+}
+
+.iconBox::before,
+.iconBox::after {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+.iconBox::before {
+  border-radius: 1px;
+  width: 2px;
+  top: 50%;
+  left: 50%;
+  height: 17px;
+  margin: -9px 0 0 -1px;
+  background: var(--arrow);
+}
+
+.iconBox::after {
+  width: 56px;
+  height: 56px;
+  transform-origin: 50% 0;
+  border-radius: 0 0 80% 80%;
+  background: var(--success-dark);
+  top: 0;
+  left: 0;
+  transform: scaleY(0);
+}
+  
+  .iconBox svg {
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    top: 50%;
+    margin: -9px 0 0 -10px;
+    fill: none;
+    z-index: 1;
+    stroke-width: 2px;
+    stroke: var(--arrow);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  
+  /* Estados */
+  .button.loading .text {
+    animation: text calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * 0.065ms);
+  }
+  
+  .button.loading .iconBox::before {
+    animation: line calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * 0.065ms);
+  }
+  
+  .button.loading .iconBox::after {
+    animation: background calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * 0.065ms);
+  }
+  
+  .button.loading .iconBox svg {
+    animation: svg calc(var(--duration) * 1ms) linear forwards calc(var(--duration) * 0.065ms);
+  }
+  
+  /* cuando termina, dejamos el texto en “Listo!” (3er li visible) */
+  .button.done .text {
+    transform: translateY(-200%);
+  }
+  
+  /* keyframes originales */
+  @keyframes text {
+    10%,
+    85% {
+      transform: translateY(-100%);
+    }
+    95%,
+    100% {
+      transform: translateY(-200%);
+    }
+  }
+  
+  @keyframes line {
+    5%,
+    10% {
+      transform: translateY(-30px);
+    }
+    40% {
+      transform: translateY(-20px);
+    }
+    65% {
+      transform: translateY(0);
+    }
+    75%,
+    100% {
+      transform: translateY(30px);
+    }
+  }
+  
+  @keyframes svg {
+    0%,
+    20% {
+      stroke-dasharray: 0;
+      stroke-dashoffset: 0;
+    }
+    21%,
+    89% {
+      stroke-dasharray: 26px;
+      stroke-dashoffset: 26px;
+      stroke-width: 3px;
+      margin: -10px 0 0 -10px;
+      stroke: var(--checkmark);
+    }
+    100% {
+      stroke-dasharray: 26px;
+      stroke-dashoffset: 0;
+      margin: -10px 0 0 -10px;
+      stroke: var(--checkmark);
+    }
+    12% {
+      opacity: 1;
+    }
+    20%,
+    89% {
+      opacity: 0;
+    }
+    90%,
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes background {
+    10% {
+      transform: scaleY(0);
+    }
+    40% {
+      transform: scaleY(0.15);
+    }
+    65% {
+      transform: scaleY(0.5);
+      border-radius: 0 0 50% 50%;
+    }
+    75% {
+      border-radius: 0 0 50% 50%;
+    }
+    90%,
+    100% {
+      border-radius: 0;
+    }
+    75%,
+    100% {
+      transform: scaleY(1);
+    }
+  }

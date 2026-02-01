@@ -9,8 +9,8 @@ import { Link, Element, animateScroll as scroll } from 'react-scroll';
 const navigation = [
   { name: 'home', href: '#home', current: true },
   { name: 'Experiencia', href: '#experience', current: false },
-  { name: 'Skills', href: '#skills', current: false },
   { name: 'Proyectos', href: '#projects', current: false },
+  { name: 'Skills', href: '#skills', current: false },
   { name: 'Formacion', href: '#education', current: false },
   { name: 'Contacto', href: '#contact', current: false },
 ]
@@ -29,7 +29,7 @@ export default function Navbar() {
     setCurrentPage(name); // Actualiza la página actual cuando se hace clic en un enlace de navegación
   };
   return (
-    <Disclosure className="glass-effect fixed top-0 left-0 w-full z-50 border-b border-white/10" as="nav" >
+    <Disclosure className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl rounded-full border border-white/10 bg-white/5 backdrop-blur-xl shadow-lg transition-all duration-300" as="nav" >
 
       {({ open }) => (
         <>
