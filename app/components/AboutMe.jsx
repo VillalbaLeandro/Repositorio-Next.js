@@ -212,10 +212,6 @@ const AboutMe = () => {
                     </p>
 
                     <p className='text-gray-800 dark:text-gray-300 leading-relaxed'>
-                        Trabajé en diversos proyectos desarrollando soluciones con geolocalización, trazabilidad y flujos operativos críticos, logrando mejoras reales en eficiencia y rendimiento.
-                    </p>
-
-                    <p className='text-gray-800 dark:text-gray-300 leading-relaxed'>
                         Me enfoco en <strong className='text-gray-900 dark:text-white font-semibold'>producto, UX y calidad de código</strong>, construyendo soluciones mantenibles, orientadas a datos y listas para escalar.
                     </p>
 

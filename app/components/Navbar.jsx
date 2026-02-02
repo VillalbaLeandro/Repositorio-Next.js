@@ -5,6 +5,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import ThemeSelector from './ThemeSelector'
 import { useTheme } from '../context/ThemeContext'
 import { Link, Element, animateScroll as scroll } from 'react-scroll';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const navigation = [
   { name: 'home', href: '#home', current: true },
@@ -29,10 +30,10 @@ export default function Navbar() {
     setCurrentPage(name); // Actualiza la página actual cuando se hace clic en un enlace de navegación
   };
   return (
-    <Disclosure className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl rounded-full border border-white/10 bg-white/5 backdrop-blur-xl shadow-lg transition-all duration-300" as="nav" >
+    <Disclosure as={Fragment}>
 
-      {({ open }) => (
-        <>
+      {({ open, close }) => (
+        <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-lg transition-all duration-300 rounded-full">
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -125,25 +126,38 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 px-2 pb-3 pt-2">
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
-                  )}
-                  aria-current={item.current ? 'page' : undefined}
+          <div className="md:hidden">
+            <AnimatePresence>
+              {open && (
+                <Disclosure.Panel static as={motion.div}
+                  initial={{ height: 0, opacity: 0, y: -20 }}
+                  animate={{ height: "auto", opacity: 1, y: 0 }}
+                  exit={{ height: 0, opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="absolute top-full left-0 w-full mt-2 rounded-3xl overflow-hidden bg-gray-900/95 backdrop-blur-xl border border-white/10 shadow-2xl"
                 >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
-            </div>
-          </Disclosure.Panel>
-        </>
+                  <div className="flex flex-col items-center justify-center space-y-6 py-8">
+                    {navigation.map((item) => (
+                      <Link
+                        key={item.name}
+                        to={item.href.replace('#', '')}
+                        smooth={true}
+                        offset={-100}
+                        duration={500}
+                        spy={true} // Enable spy for active class
+                        activeClass="text-cyan-400 bg-white/10" // Define active style
+                        className="block w-3/4 rounded-full px-4 py-3 text-center text-lg font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-all cursor-pointer"
+                        onClick={() => close()}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </Disclosure.Panel>
+              )}
+            </AnimatePresence>
+          </div>
+        </nav>
       )}
     </Disclosure>
   )
