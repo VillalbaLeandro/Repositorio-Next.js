@@ -31,7 +31,7 @@ export default function Home() {
       {loading ? (
         <Loader />
       ) : (
-        <main className="flex min-h-screen flex-col items-center justify-between pt-16 animate-fade-in">
+        <main className="flex min-h-screen flex-col items-center justify-between pt-16 pb-40 animate-fade-in">
           <AboutMe />
           <IslandMenu />
           <Experience />

@@ -94,7 +94,7 @@ const Contact = () => {
       onSubmit={handleSubmit}
       className="body-font relative text-gray-400 min-h-screen pt-8 pb-24 scroll-mt-10"
     >
-      <div className="w-[90vw] max-w-screen-xl mx-auto sm:p-6 md:p-10">
+      <div className="w-[90vw] max-w-screen-xl mx-auto px-4 sm:px-6 md:px-10">
         <div className="mb-12 flex w-full flex-col text-center">
           <div ref={containerRef} className="flex items-center justify-center gap-3 mb-12">
             <div className="relative z-10 text-center">
@@ -102,7 +102,7 @@ const Contact = () => {
               <div
                 className="
     pointer-events-none absolute left-1/2 top-1/2
-    h-24 w-[32rem] -translate-x-1/2 -translate-y-1/2
+    h-16 w-[20rem] sm:h-20 sm:w-[26rem] md:h-24 md:w-[32rem] -translate-x-1/2 -translate-y-1/2
     rounded-full
     bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-cyan-400
     blur-3xl opacity-35
@@ -113,7 +113,7 @@ const Contact = () => {
               <div
                 className="
     pointer-events-none absolute left-1/2 top-1/2
-    h-12 w-[22rem] -translate-x-1/2 -translate-y-1/2
+    h-8 w-[16rem] sm:h-10 sm:w-[20rem] md:h-12 md:w-[22rem] -translate-x-1/2 -translate-y-1/2
     rounded-full
     bg-gradient-to-r from-indigo-400 via-purple-500 to-cyan-300
     blur-2xl opacity-40
@@ -137,7 +137,7 @@ const Contact = () => {
           </p>
 
           {/* Action Row */}
-          <div className="flex flex-wrap justify-center gap-4 mt-8 mb-12">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 mt-8 mb-12">
             {/* WhatsApp Secure Reveal */}
             <motion.button
               whileHover={{ scale: 1.02 }}
@@ -146,7 +146,7 @@ const Contact = () => {
               onHoverStart={() => setShowPhone(true)}
               onHoverEnd={() => setShowPhone(false)}
               onClick={handleWhatsApp}
-              className="group relative flex items-center gap-3 px-6 py-3 rounded-xl bg-white/5 hover:bg-[#25D366] text-white border border-white/10 hover:border-[#25D366]/50 transition-colors duration-300 shadow-lg hover:shadow-[#25D366]/20"
+              className="w-64 group relative flex items-center justify-center sm:justify-start gap-3 px-6 py-3 rounded-xl bg-white/5 hover:bg-[#25D366] text-white border border-white/10 hover:border-[#25D366]/50 transition-colors duration-300 shadow-lg hover:shadow-[#25D366]/20"
             >
               <FaWhatsapp className="text-2xl text-[#25D366] group-hover:text-white transition-colors" />
               <div className="flex flex-col items-start">
@@ -187,7 +187,7 @@ const Contact = () => {
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               onClick={handleCopyEmail}
-              className="group relative flex items-center gap-3 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-indigo-500/50 transition-colors duration-300 shadow-lg"
+              className="w-64 group relative flex items-center justify-center sm:justify-start gap-3 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-indigo-500/50 transition-colors duration-300 shadow-lg"
             >
               <div className="relative">
                 <AnimatePresence mode="wait">
@@ -221,7 +221,7 @@ const Contact = () => {
             </motion.button>
 
             {/* Socials */}
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center">
               <motion.a
                 href="https://github.com/VillalbaLeandro"
                 target="_blank"
@@ -247,7 +247,7 @@ const Contact = () => {
         </div>
         <div className="mx-auto w-full bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 shadow-2xl">
           <div className="flex flex-wrap -m-2">
-            <div className="p-2 w-1/2">
+            <div className="p-2 w-full sm:w-1/2">
               <div className="relative group">
                 <input
                   type="text"
@@ -259,7 +259,7 @@ const Contact = () => {
                 <label htmlFor="name" className="absolute left-4 -top-6 text-sm text-indigo-400 font-medium transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2.5 peer-placeholder-shown:left-4 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-indigo-400">Tu nombre</label>
               </div>
             </div>
-            <div className="p-2 w-1/2">
+            <div className="p-2 w-full sm:w-1/2">
               <div className="relative group">
                 <input
                   type="email"

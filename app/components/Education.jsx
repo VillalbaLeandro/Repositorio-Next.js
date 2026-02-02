@@ -91,7 +91,7 @@ const Education = () => {
           <div
             className="
   pointer-events-none absolute left-1/2 top-1/2
-  h-24 w-[32rem] -translate-x-1/2 -translate-y-1/2
+  h-16 w-[20rem] sm:h-20 sm:w-[26rem] md:h-24 md:w-[32rem] -translate-x-1/2 -translate-y-1/2
   rounded-full
   bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-cyan-400
   blur-3xl opacity-35
@@ -102,7 +102,7 @@ const Education = () => {
           <div
             className="
   pointer-events-none absolute left-1/2 top-1/2
-  h-12 w-[22rem] -translate-x-1/2 -translate-y-1/2
+  h-8 w-[16rem] sm:h-10 sm:w-[20rem] md:h-12 md:w-[22rem] -translate-x-1/2 -translate-y-1/2
   rounded-full
   bg-gradient-to-r from-indigo-400 via-purple-500 to-cyan-300
   blur-2xl opacity-40

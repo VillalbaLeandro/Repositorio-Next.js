@@ -15,7 +15,7 @@ const TechnologyIcon = ({ name }) => {
         'Angular': './img/skills/angular-logo.png',
         'Ionic': './img/skills/ionic-logo.png',
         'React': './img/skills/react-logo.webp',
-        'Next.js': './img/skills/Next.js.png',
+        'Next.js': './img/skills/nextjs.svg',
         'Vite': './img/skills/vite-logo.png',
         'Laravel': './img/skills/laravel-logo.png',
         'Node.js': './img/skills/node-logo.png',
@@ -194,7 +194,7 @@ const Experience = () => {
                     <div
                         className="
       pointer-events-none absolute left-1/2 top-1/2
-      h-24 w-[32rem] -translate-x-1/2 -translate-y-1/2
+      h-16 w-[20rem] sm:h-20 sm:w-[26rem] md:h-24 md:w-[32rem] -translate-x-1/2 -translate-y-1/2
       rounded-full
       bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-cyan-400
       blur-3xl opacity-35
@@ -205,7 +205,7 @@ const Experience = () => {
                     <div
                         className="
       pointer-events-none absolute left-1/2 top-1/2
-      h-12 w-[22rem] -translate-x-1/2 -translate-y-1/2
+      h-8 w-[16rem] sm:h-10 sm:w-[20rem] md:h-12 md:w-[22rem] -translate-x-1/2 -translate-y-1/2
       rounded-full
       bg-gradient-to-r from-indigo-400 via-purple-500 to-cyan-300
       blur-2xl opacity-40
@@ -225,7 +225,7 @@ const Experience = () => {
                 </div>
             </div>
 
-            <MotionSection className='text-left mt-10 sm:p-6 md:p-10'>
+            <MotionSection className='text-left mt-10 p-4 sm:p-6 md:p-10'>
                 <div className="relative border-l-2 border-indigo-900/10 dark:border-indigo-500/10 ml-3 md:ml-6 my-4 space-y-16">
                     {experiences.map((exp, index) => {
                         const baseHue = [220, 280, 320][index % 3];
@@ -272,7 +272,7 @@ const Experience = () => {
                                     {/* Right Column: Neumorphic Card (Content) with Dynamic Glow */}
                                     {/* data-glow and custom properties for the mouse effect */}
                                     <div
-                                        className="md:w-2/3 w-full neuro-card relative"
+                                        className="md:w-2/3 w-full neuro-card2 relative"
                                         data-glow
                                         style={{ '--base': baseHue, '--spread': spread, '--outer': 1 }}
                                     >
@@ -321,9 +321,9 @@ const Experience = () => {
                     className="flex justify-center mt-24 mb-10"
                 >
                     <div className="relative group">
-                        <Link href="#contact" className="relative z-10 block px-10 py-4 rounded-full bg-indigo-950/30 border border-indigo-500/30 hover:border-indigo-400 text-gray-400 hover:text-white transition-all duration-300 backdrop-blur-sm overflow-hidden">
+                        <Link href="#contact" className="relative z-10 block px-10 py-4 rounded-full bg-indigo-950/30 border border-indigo-500/30 hover:border-indigo-400 text-center text-gray-400 hover:text-white transition-all duration-300 backdrop-blur-sm overflow-hidden">
                             <div className="absolute inset-0 bg-indigo-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                            <span className="relative font-medium tracking-wide text-lg">Trabajemos juntos - Contactame</span>
+                            <span className="relative font-medium tracking-wide text-lg">Trabajemos juntos Contactame</span>
                         </Link>
 
                         {/* Animated Cursor */}

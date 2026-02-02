@@ -79,7 +79,7 @@ const StaggeredTitle = ({ text, className = '', blurAmount = 10 }) => {
                 filter: `drop-shadow(0 0 ${blurAmount}px rgba(168,85,247,0.35))`
             }}
         >
-            <h2 className="uppercase tracking-widest text-5xl md:text-7xl font-extrabold">
+            <h2 className="uppercase tracking-widest text-4xl sm:text-5xl md:text-7xl font-extrabold">
                 {items.map((item, idx) => (
                     <motion.span
                         key={idx}

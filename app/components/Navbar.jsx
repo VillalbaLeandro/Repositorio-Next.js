@@ -58,20 +58,35 @@ export default function Navbar() {
                 <div className="hidden md:ml-10 md:block">
                   <div className="flex space-x-1">
                     {navigation.map((item) => (
-                      <Link
-                        key={item.name}
-                        to={item.href.replace('#', '')}
-                        smooth={true}
-                        offset={-80}
-                        duration={500}
-                        spy={true}
-                        activeClass="active-nav-link"
-                        className="nav-link relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 cursor-pointer group"
-                        onClick={() => handleNavigationClick(item.name)}
-                      >
-                        {item.name}
-                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400 group-hover:w-full transition-all duration-300"></span>
-                      </Link>
+                      item.name === 'Contacto' ? (
+                        <Link
+                          key={item.name}
+                          to={item.href.replace('#', '')}
+                          smooth={true}
+                          offset={-80}
+                          duration={500}
+                          spy={true}
+                          className="relative ml-2 px-6 py-2 text-sm font-bold text-white bg-gradient-to-r from-indigo-600 to-cyan-500 rounded-full shadow-lg hover:shadow-indigo-500/30 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+                          onClick={() => handleNavigationClick(item.name)}
+                        >
+                          {item.name}
+                        </Link>
+                      ) : (
+                        <Link
+                          key={item.name}
+                          to={item.href.replace('#', '')}
+                          smooth={true}
+                          offset={-80}
+                          duration={500}
+                          spy={true}
+                          activeClass="active-nav-link"
+                          className="nav-link relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 cursor-pointer group"
+                          onClick={() => handleNavigationClick(item.name)}
+                        >
+                          {item.name}
+                          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400 group-hover:w-full transition-all duration-300"></span>
+                        </Link>
+                      )
                     ))}
                   </div>
                 </div>

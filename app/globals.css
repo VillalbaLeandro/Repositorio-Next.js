@@ -42,6 +42,11 @@ body {
   background-color: var(--background-start-rgb);
 }
 
+canvas {
+  touch-action: none;
+  overscroll-behavior: contain;
+}
+
 .background-animate {
   background-size: 400%;
   -webkit-animation: AnimationName 30s ease infinite;
@@ -186,6 +191,14 @@ h3 {
   /* transition: all 0.3s ease; */ /* Removed transition to avoid conflict with mouse tracking */
 }
 
+.neuro-card2 {
+  position: relative;
+  /* background: rgba(15, 15, 25, 0.4); */ /* Let data-glow handle background/border */
+  border-radius: 16px;
+  /* padding: 1.5rem; */
+  overflow: hidden;
+  /* transition: all 0.3s ease; */ /* Removed transition to avoid conflict with mouse tracking */
+}
 /* data-glow handles the rest */
 
 /* iOS / Apple Style for Light Mode */
@@ -767,7 +780,7 @@ h3 {
 
 /* Global overflow-x prevention and smooth scrolling */
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; Conflict with react-scroll */
 }
 
 html, body { 
@@ -835,20 +848,31 @@ html, body {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 0.75rem 1rem;
+  border-radius: 50%;
+  padding: 0.5rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: center;
+  gap: 0;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  min-width: 160px;
-  animation: floatBadge 3s ease-in-out infinite;
-  transition: all 0.3s ease;
+  width: 3.5rem;
+  height: 3.5rem;
   z-index: 20;
+  /* Optimization */
+  touch-action: none;
+  user-select: none;
+  will-change: transform;
+}
+
+/* Clase para desactivar efectos costosos durante el drag */
+.dragging-lite {
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  background: rgba(255, 255, 255, 0.1) !important; /* Fallback visual simple */
 }
 
 .floating-badge:hover {
-  transform: translateY(-3px) scale(1.03);
+  /* Removed transform conflict */
   border-color: rgba(99, 102, 241, 0.5); /* Indigo 500 */
   box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.3);
   background: rgba(255, 255, 255, 0.08);
@@ -862,15 +886,7 @@ html, body {
 }
 
 .badge-content {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-
-.badge-title {
-  font-weight: 700;
-  color: #fff;
-  font-size: 0.9rem;
+  display: none;
 }
 
 .badge-libs {
@@ -886,7 +902,7 @@ html, body {
 /* Badge Positions */
 .badge-1 {
   top: 10%;
-  right: 0%;
+  right: 18%;
   animation-delay: 0s;
 }
 
@@ -908,7 +924,138 @@ html, body {
   animation-delay: 2.2s;
 }
 
-/* Mobile: hide badges */
+/* Mobile: Only show icons, hide text */
 @media (max-width: 768px) {
-  .floating-badge { display: none; }
+  .floating-badge {
+    min-width: auto;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    justify-content: center;
+  }
+
+  .floating-badge .badge-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .badge-content {
+    display: none;
+  }
+
+  /* Adjust positions for mobile */
+  .badge-1 {
+    top: 10%;
+    right: 18%;
+  }
+
+  .badge-2 {
+    bottom: 15%;
+    right: 0%;
+  }
+
+  .badge-3 {
+    bottom: 18%;
+    left: 0%;
+  }
+
+  .badge-4 {
+    top: 25%;
+    left: -5%;
+  }
+}
+
+/* Mobile: Only show icons, hide text */
+@media (max-width: 768px) {
+  .floating-badge {
+    min-width: auto;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    justify-content: center;
+  }
+  
+  .floating-badge .badge-icon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  
+  .badge-content {
+    display: none;
+  }
+  
+  /* Adjust positions for mobile */
+  .badge-1 {
+    top: 5%;
+    right: 5%;
+  }
+  
+  .badge-2 {
+    bottom: 66%;
+    right: 10%;
+  }
+  
+  .badge-3 {
+    bottom: 53%;
+    left: 10%;
+  }
+  
+  .badge-4 {
+    top: 25%;
+    left: -5%;
+  }
+}
+
+/* Badge Positions for new badges */
+.badge-5 {
+  top: 50%;
+  right: -8%;
+  animation-delay: 2.3s;
+}
+
+.badge-6 {
+  top: 6%;
+  left: 9%;
+  animation-delay: 2.5s;
+}
+
+.badge-7 {
+  bottom: 60%;
+  right: 13%;
+  animation-delay: 2.7s;
+}
+
+/* Mobile positions for new badges */
+@media (max-width: 768px) {
+  .badge-5 {
+    top: 40%;
+    right: -2%;
+  }
+  
+  .badge-6 {
+    top: 11%;
+    left: 16%;
+  }
+  
+  .badge-7 {
+    bottom: 29%;
+    right: 8%;
+  }
+}
+
+/* Badge Position for Next.js */
+.badge-8 {
+  bottom: 43%;
+  left: 5%;
+  animation-delay: 2.9s;
+}
+
+/* Mobile position for Next.js */
+@media (max-width: 768px) {
+  .badge-8 {
+    bottom: 30%;
+    left: 3%;
+  }
 }

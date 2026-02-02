@@ -2,8 +2,9 @@
 
 import React, { useRef, useEffect, useMemo, useState } from 'react';
 import * as THREE from 'three';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, OrbitControls, Sparkles, Float } from '@react-three/drei';
+import { motion } from 'framer-motion';
 
 function useAdvancedHologram(isMobile = false) {
     const uniforms = useMemo(
@@ -184,6 +185,8 @@ function Model({ isDragging, isMobile, ...props }) {
         );
     });
 
+    const { invalidate } = useThree();
+
     useEffect(() => {
         scene.traverse((child) => {
             if (!child.isMesh) return;
@@ -215,7 +218,11 @@ function Model({ isDragging, isMobile, ...props }) {
                 child.add(wire);
             }
         });
-    }, [scene, material]);
+
+        // 🔥 Importante: Forzar un frame nuevo para que se vea el cambio de material
+        // al iniciar en modo 'demand'
+        invalidate();
+    }, [scene, material, invalidate]);
 
     return (
         <Float speed={2} rotationIntensity={0.1} floatIntensity={0.3}>
@@ -224,46 +231,52 @@ function Model({ isDragging, isMobile, ...props }) {
     );
 }
 
-export default function Avatar3D() {
+export default function Avatar3D({ isDraggingProp = false }) {
     const [isMobile, setIsMobile] = useState(false);
-    const [isDragging, setIsDragging] = useState(false);
+    const [isRotating, setIsRotating] = useState(false); // Renamed from isDragging to avoid confusion
+    const controlsRef = useRef(null);
 
-    // 🔥 Perf: bajar DPR y partículas mientras arrastrás
-    const [dpr, setDpr] = useState([1, 2]);
-    const [sparklesCount, setSparklesCount] = useState(35);
+    // Combine both states for performance optimizations
+    const effectiveIsDragging = isRotating || isDraggingProp;
+
+    // 🔥 Perf: Calcular DPR y partículas dinámicamente según estado
+    const dpr = effectiveIsDragging ? [1, 1] : (isMobile ? [1, 1] : [1, 2]);
+    const sparklesCount = effectiveIsDragging ? (isMobile ? 8 : 12) : (isMobile ? 15 : 35);
 
     useEffect(() => {
         const checkMobile = () => {
-            const mobile = window.innerWidth < 768;
-            setIsMobile(mobile);
-
-            // Default quality según dispositivo
-            setDpr(mobile ? [1, 1] : [1, 2]);
-            setSparklesCount(mobile ? 15 : 35);
+            setIsMobile(window.innerWidth < 768);
         };
-
         checkMobile();
         window.addEventListener('resize', checkMobile);
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    // Modo rendimiento durante drag (clave para evitar drop)
+    // Toggle OrbitControls cuando draggeás UI (no 3D)
     useEffect(() => {
-        if (isDragging) {
-            setDpr([1, 1]);
-            setSparklesCount(isMobile ? 8 : 12);
-        } else {
-            setDpr(isMobile ? [1, 1] : [1, 2]);
-            setSparklesCount(isMobile ? 15 : 35);
-        }
-    }, [isDragging, isMobile]);
+        if (!controlsRef.current) return;
+        // Si se arrastra un badge, desactivamos los controles para evitar conflictos
+        controlsRef.current.enabled = !isDraggingProp;
+    }, [isDraggingProp]);
 
     return (
-        <div className={`w-full ${isMobile ? 'h-[400px]' : 'h-[550px]'} bg-transparent overflow-hidden touch-none`}>
+        <motion.div
+            className={`w-full ${isMobile ? 'h-[400px]' : 'h-[550px]'} bg-transparent overflow-hidden touch-none`}
+            initial={isMobile ? { y: 100, opacity: 0 } : false}
+            animate={isMobile ? { y: 0, opacity: 1 } : {}}
+            transition={isMobile ? {
+                duration: 0.8,
+                delay: 0.3,
+                ease: [0.16, 1, 0.3, 1] // easeOutExpo
+            } : {}}
+        >
             <Canvas
                 events={null} // ok: evita el raycasting de R3F
                 camera={{ position: [0, 0, 8], fov: 20 }}
                 dpr={dpr}
+                shadows={!effectiveIsDragging}
+                frameloop="always"
+                onPointerDown={(e) => e.stopPropagation()}
                 gl={{
                     antialias: !isMobile,
                     alpha: true,
@@ -271,6 +284,9 @@ export default function Avatar3D() {
                 }}
                 onCreated={({ gl }) => {
                     gl.setClearColor(0x000000, 0);
+                    // Evitar scroll/gestos nativos que compiten
+                    gl.domElement.style.touchAction = 'none';
+                    gl.domElement.style.overscrollBehavior = 'contain';
                 }}
             >
                 <ambientLight intensity={0.5} />
@@ -283,23 +299,24 @@ export default function Avatar3D() {
                 />
 
                 <group position={[0, -1.6, 0]}>
-                    <Model scale={5} isDragging={isDragging} isMobile={isMobile} />
+                    <Model scale={5} isDragging={effectiveIsDragging} isMobile={isMobile} />
                 </group>
 
                 <OrbitControls
+                    ref={controlsRef}
                     enableZoom={false}
                     enablePan={false}
                     enableDamping={true}
                     dampingFactor={0.05}
-                    autoRotate={!isDragging}          // 🔥 corta autorotate cuando arrastrás
+                    autoRotate={!effectiveIsDragging}          // 🔥 corta autorotate cuando arrastrás
                     autoRotateSpeed={0.5}
                     maxPolarAngle={Math.PI / 1.7}
                     minPolarAngle={Math.PI / 2.3}
-                    onStart={() => setIsDragging(true)}
-                    onEnd={() => setIsDragging(false)}
+                    onStart={() => setIsRotating(true)}
+                    onEnd={() => setIsRotating(false)}
                 />
             </Canvas>
-        </div>
+        </motion.div>
     );
 }
 
