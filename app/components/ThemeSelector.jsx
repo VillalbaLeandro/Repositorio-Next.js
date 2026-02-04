@@ -1,100 +1,73 @@
-'use client'
-import React, { Fragment } from 'react';
-import { Menu, Transition } from '@headlessui/react';
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTheme, THEMES } from '../context/ThemeContext';
-import { MoonIcon, SunIcon, SparklesIcon } from '@heroicons/react/24/outline';
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ');
-}
-
-const themeConfig = {
-    [THEMES.DARK]: {
-        name: 'Dark',
-        icon: MoonIcon,
-        description: 'Modo oscuro'
-    },
-    [THEMES.LIGHT]: {
-        name: 'Light',
-        icon: SunIcon,
-        description: 'Modo claro'
-    },
-    [THEMES.CYBERPUNK]: {
-        name: 'Cyberpunk',
-        icon: SparklesIcon,
-        description: 'Modo neón'
-    }
-};
+import styles from './ThemeToggle.module.css';
 
 const ThemeSelector = () => {
-    const { theme, setTheme, themes } = useTheme();
-    const currentTheme = themeConfig[theme];
-    const CurrentIcon = currentTheme.icon;
+    const { theme, setTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    // Para disparar animación solo cuando clickeás (no en mount)
+    const [anim, setAnim] = useState(null); // 'roll' | 'rollback' | null
+    const firstPaintRef = useRef(true);
+
+    const isLight = theme === THEMES.LIGHT;
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    // Evita animación en el primer render/hidratación
+    useEffect(() => {
+        if (firstPaintRef.current) {
+            firstPaintRef.current = false;
+            return;
+        }
+        setAnim(isLight ? 'roll' : 'rollback');
+    }, [isLight]);
+
+    const handleToggle = () => {
+        const newTheme = isLight ? THEMES.DARK : THEMES.LIGHT;
+        setTheme(newTheme);
+    };
+
+    if (!mounted) return null;
+
+    const containerClasses = [
+        styles.container,
+        isLight ? styles.containerLight : styles.containerDark,
+    ].join(' ');
+
+    const borderClasses = [
+        styles.border,
+        isLight ? styles.borderLight : styles.borderDark,
+    ].join(' ');
+
+    const toggleClasses = [
+        styles.toggle,
+        isLight ? styles.toggleLight : styles.toggleDark,
+        anim === 'roll' ? styles.roll : '',
+        anim === 'rollback' ? styles.rollback : '',
+    ].join(' ');
 
     return (
-        <Menu as="div" className="relative">
-            <Menu.Button className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 w-full transition-colors">
-                <CurrentIcon className="h-5 w-5" />
-                <span>Tema: {currentTheme.name}</span>
-            </Menu.Button>
-
-            <Transition
-                as={Fragment}
-                enter="transition ease-out duration-100"
-                enterFrom="transform opacity-0 scale-95"
-                enterTo="transform opacity-100 scale-100"
-                leave="transition ease-in duration-75"
-                leaveFrom="transform opacity-100 scale-100"
-                leaveTo="transform opacity-0 scale-95"
-            >
-                <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white dark:bg-gray-800 shadow-lg ring-1 ring-gray-200 dark:ring-black ring-opacity-5 focus:outline-none z-50 border border-gray-200 dark:border-transparent">
-                    <div className="py-1">
-                        {Object.values(THEMES).map((themeOption) => {
-                            const config = themeConfig[themeOption];
-                            const Icon = config.icon;
-                            const isActive = theme === themeOption;
-
-                            return (
-                                <Menu.Item key={themeOption} as="div">
-                                    {({ active }) => (
-                                        <button
-                                            onClick={() => setTheme(themeOption)}
-                                            className={classNames(
-                                                active ? 'bg-gray-100 dark:bg-gray-700' : '',
-                                                isActive ? 'bg-[#6c63ff]/10 text-[#6c63ff] dark:bg-indigo-900 dark:text-indigo-200' : 'text-gray-700 dark:text-gray-300',
-                                                'flex items-center gap-3 px-4 py-2 text-sm w-full transition-colors'
-                                            )}
-                                        >
-                                            <Icon className="h-5 w-5" />
-                                            <div className="flex flex-col items-start">
-                                                <span className="font-medium">{config.name}</span>
-                                                <span className="text-xs opacity-75">{config.description}</span>
-                                            </div>
-                                            {isActive && (
-                                                <svg
-                                                    className="ml-auto h-5 w-5"
-                                                    fill="currentColor"
-                                                    viewBox="0 0 20 20"
-                                                >
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                        clipRule="evenodd"
-                                                    />
-                                                </svg>
-                                            )}
-                                        </button>
-                                    )}
-                                </Menu.Item>
-                            );
-                        })}
-                    </div>
-                </Menu.Items>
-            </Transition>
-        </Menu>
+        <div className={styles.wrapper} title="Toggle theme">
+            <div className={containerClasses}>
+                <div className={borderClasses}>
+                    <div
+                        className={toggleClasses}
+                        onClick={handleToggle}
+                        role="button"
+                        tabIndex={0}
+                        aria-label="Toggle theme"
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') handleToggle();
+                        }}
+                    />
+                </div>
+            </div>
+        </div>
     );
 };
 
 export default ThemeSelector;
-
-

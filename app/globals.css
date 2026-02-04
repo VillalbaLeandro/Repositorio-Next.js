@@ -472,6 +472,31 @@ h3 {
   width: 21px;
 }
 
+/* Light Mode Overrides for Mobile Navigation */
+.light .nav {
+  background: #44476a;
+  border-color: var(--blue-bg); /* Match page background (white/off-white) */
+}
+
+.light .link-icon {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.light .link-item.active .link-icon {
+  color: #ffffff;
+  background: none;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.light .link-text {
+  color: #ffffff; /* Same as icons */
+}
+
+.light .indicator {
+  background-color: #44476a; /* Same as menu background */
+  border-color: var(--blue-bg);
+}
+
 
 
 /* BACKGROUND  */

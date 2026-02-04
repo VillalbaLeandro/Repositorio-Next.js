@@ -178,7 +178,7 @@ const Skills = () => {
                 <motion.div variants={itemVariants} className="flex justify-center mb-8">
                     <button
                         onClick={() => setShowList(!showList)}
-                        className="px-6 py-2.5 rounded-full bg-[#6c63ff]/10 dark:bg-indigo-500/10 hover:bg-[#6c63ff]/20 dark:hover:bg-indigo-500/20 border border-[#6c63ff]/30 dark:border-indigo-500/30 text-[#6c63ff] dark:text-indigo-400 font-medium transition-all duration-300 flex items-center gap-2 group cursor-pointer z-50 relative"
+                        className="px-6 py-2.5 rounded-full bg-[#6c63ff]/10 dark:bg-indigo-500/10 hover:bg-[#6c63ff]/20 dark:hover:bg-indigo-500/20 border border-[#6c63ff]/30 dark:border-indigo-500/30 text-[#6c63ff] dark:text-indigo-400 font-medium transition-all duration-300 flex items-center gap-2 group cursor-pointer z-20 relative"
                     >
                         {showList ? (
                             <>

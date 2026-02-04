@@ -1,0 +1,136 @@
+/* Ajuste de escala para navbar */
+.wrapper {
+  display: inline-block;
+  transform: scale(0.30);
+  transform-origin: center right;
+  width: 300px;
+  height: 130px;
+}
+
+/* TRACK OUTER */
+.container {
+  width: 300px;
+  height: 130px;
+  margin: auto;
+  display: flex;
+  border-radius: 70px;
+  padding: 2px;
+  background: transparent;
+  transition: box-shadow 0.5s;
+}
+
+.containerDark {
+  box-shadow:
+    10px 10px 10px rgba(16, 16, 16, 0.667),
+    0px -8px 10px rgba(32, 32, 32, 0.453),
+    -5px -5px 15px rgb(17, 17, 17) inset,
+    15px 15px 50px rgb(26, 26, 26) inset;
+}
+
+.containerLight {
+  box-shadow:
+    10px 10px 10px rgb(242, 241, 241),
+    -4px -7px 15px rgb(242, 241, 241),
+    2px -5px 10px rgb(255, 255, 255) inset,
+    -10px -1px 5px yellow inset;
+}
+
+/* TRACK INNER */
+.border {
+  width: 300px;
+  height: 130px;
+  border-radius: 70px;
+  margin: auto;
+  display: flex;
+  transition: background-color 0.5s, box-shadow 0.5s, border-color 0.5s;
+}
+
+.borderDark {
+  background-color: #0B1120;
+  box-shadow:
+    5px 5px 10px rgba(0, 0, 0, 0.5) inset,
+    -4px -10px 10px rgba(255, 255, 255, 0.05) inset;
+  border: 1px solid rgba(255, 255, 255, 0.08); /* slight border for definition */
+}
+
+.borderLight {
+  background-color: rgb(255, 255, 255);
+  box-shadow:
+    2px 5px 10px rgb(236, 235, 235) inset,
+    -2px 0px 2px rgb(254, 254, 1) inset;
+  border-color: transparent;
+}
+
+/* KNOB */
+.toggle {
+  margin: auto;
+  margin-left: 15px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.5s, box-shadow 0.5s, border-color 0.5s;
+}
+
+/* DARK = luna (crescent) */
+.toggleDark {
+  background-color: #0B1120;
+  border: 1px solid rgba(255, 255, 255, 0.05); /* slightly visible border */
+  box-shadow:
+    10px 10px 15px rgba(0, 0, 0, 0.5),
+    -10px -10px 10px rgba(255, 255, 255, 0.05),
+    -2px 5px 10px rgba(11, 17, 32, 0.986) inset;
+  overflow: hidden; /* clave */
+}
+
+/* Dibujo de la luna (siempre visible) */
+.toggleDark::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  background: #ffffff;
+  border-radius: 999px;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.35));
+}
+
+/* “corte” para formar creciente */
+.toggleDark::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  background: #0B1120; /* Match toggle bg exactly */
+  border-radius: 999px;
+  transform: translateX(18px); /* mueve el corte a la derecha */
+}
+
+/* LIGHT = sol */
+.toggleLight {
+  background-color: orange;
+  border: 1px solid rgb(255, 255, 255);
+  box-shadow:
+    5px 5px 500px rgb(255, 255, 0) inset,
+    0.5px 0.5px 50px yellow;
+}
+
+/* Cuando es sol, escondemos la luna */
+.toggleLight::before,
+.toggleLight::after {
+  opacity: 0;
+}
+
+/* Animaciones */
+.roll {
+  animation: roll 1.5s forwards;
+}
+.rollback {
+  animation: rollback 1.5s forwards;
+}
+
+@keyframes roll {
+  100% { transform: translateX(170px) rotate(360deg); }
+}
+@keyframes rollback {
+  0% { transform: translateX(170px) rotate(360deg); }
+  100% { transform: translateX(0px) rotate(0deg); }
+}

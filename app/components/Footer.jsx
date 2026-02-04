@@ -8,7 +8,7 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="w-full bg-[#44476a] dark:bg-white/5 backdrop-blur-md border-t border-white/10 pt-16 pb-8 mt-20 transition-colors duration-300">
+        <footer className="w-full bg-[#44476a] dark:bg-white/5 backdrop-blur-md border-t border-white/10 pt-16 pb-40 md:pb-8 mt-20 transition-colors duration-300">
             <div className="max-w-screen-xl mx-auto px-6 md:px-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                     {/* Brand Column */}
@@ -27,7 +27,8 @@ const Footer = () => {
 
                     {/* Quick Links */}
                     <div className="flex flex-col gap-4">
-                        <h4 className="text-white font-semibold tracking-wider text-sm">|</h4>
+                        {/* Spacer to align links with other columns content */}
+                        <div className="h-5"></div>
                         <ul className="space-y-2 text-gray-300 dark:text-gray-400 text-sm">
                             <li><a href="#home" className="hover:text-white dark:hover:text-indigo-400 transition-colors">Inicio</a></li>
                             <li><a href="#experience" className="hover:text-white dark:hover:text-indigo-400 transition-colors">Experiencia</a></li>

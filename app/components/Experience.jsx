@@ -13,6 +13,7 @@ const TechnologyIcon = ({ name }) => {
         'CSS': './img/skills/css-logo.png',
         'MySQL': './img/skills/Mysql-logo.png',
         'WordPress': './img/skills/wordpress-logo.png',
+        'elementor': './img/skills/elementor.png',
         'Angular': './img/skills/angular-logo.png',
         'Ionic': './img/skills/ionic-logo.png',
         'React': './img/skills/react-logo.webp',
@@ -23,7 +24,7 @@ const TechnologyIcon = ({ name }) => {
         'Express': './img/skills/express-logo.png',
         'Oracle': './img/skills/oracle-logo.png',
         'SQL': './img/skills/sql-logo.png',
-        'Android': './img/skills/android-logo.png',
+        'Android': './img/skills/android.png',
         'Jest': './img/skills/jest-logo.png',
         'Git': './img/skills/git-logo.png',
         'Docker': './img/skills/docker-logo.png',
@@ -78,17 +79,20 @@ const Experience = () => {
             starAchievement: <>Automaticé procesos de inspección y notificación de obras, reemplazando flujos manuales por soluciones móviles y web con trazabilidad, geolocalización y evidencia digital.</>,
             achievements: [
                 {
-                    text: <><span className='font-bold text-gray-900 dark:text-gray-100'>Sistema de Fiscalización:</span> App Android + Oracle con geolocalización e integración con <span className="font-bold text-emerald-500">terminales POS</span> para impresión de actas en tiempo real.</>
+                    text: <><span className='font-bold text-gray-900 dark:text-gray-100'>Sistema de Fiscalización:</span> App Android + Oracle con geolocalización e integración con <span className="font-bold text-emerald-500">terminales POS</span> para impresión de actas en tiempo real.
+                        <a href="#sistema-multas" className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-200 hover:bg-indigo-200 dark:hover:bg-indigo-900 transition-colors border border-indigo-200 dark:border-indigo-700">Ver Proyecto</a></>
                 },
                 {
                     text: <><span className='font-bold text-gray-900 dark:text-gray-100'>Dashboard & Analytics:</span> Panel administrativo en Laravel/Angular para control y auditoría de actas con estadísticas de gestión.</>
                 },
                 {
-                    text: <><span className='font-bold text-gray-900 dark:text-gray-100'>Cálculo de Honorarios:</span> Herramienta de autogestión que automatizó procesos manuales, optimizando tiempos de gestión.</>,
+                    text: <><span className='font-bold text-gray-900 dark:text-gray-100'>Cálculo de Honorarios:</span> Herramienta de autogestión que automatizó procesos manuales, optimizando tiempos de gestión.
+                        <a href="#calculo-honorarios" className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-200 hover:bg-indigo-200 dark:hover:bg-indigo-900 transition-colors border border-indigo-200 dark:border-indigo-700">Ver Proyecto</a></>,
                     link: "https://calcular-honorarios.infinityfreeapp.com/?i=3"
                 },
                 {
-                    text: <><span className='font-bold text-gray-900 dark:text-gray-100'>Plan Urbano:</span> Optimización de performance y rediseño en WordPress para datos públicos municipales.</>,
+                    text: <><span className='font-bold text-gray-900 dark:text-gray-100'>Plan Urbano:</span> Optimización de performance y rediseño en WordPress para datos públicos municipales.
+                        <a href="#plan-urbano" className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-200 hover:bg-indigo-200 dark:hover:bg-indigo-900 transition-colors border border-indigo-200 dark:border-indigo-700">Ver Proyecto</a></>,
                     link: "https://posadas.gov.ar/planurbano/"
                 }
             ],
@@ -282,7 +286,7 @@ const Experience = () => {
                                         {/* Right Column: Neumorphic Card (Content) with Dynamic Glow */}
                                         {/* data-glow and custom properties for the mouse effect */}
                                         <div
-                                            className="md:w-2/3 w-full neuro-card2 relative"
+                                            className="md:w-2/3 w-full neuro-card2 relative !overflow-visible"
                                             data-glow
                                             style={{ '--base': baseHue, '--spread': spread, '--outer': 1 }}
                                         >

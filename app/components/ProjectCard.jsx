@@ -1,11 +1,29 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CardButtons from './CardButtons';
 import ImageCarousel from './ImageCarousel';
 import { FaLock, FaGlobe } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const ProjectCard = ({ projectName, projectDescription, projectTechnologies, projectImages, repositorioUrl, deployUrl, category, status, style }) => {
+const ProjectCard = ({ id, projectName, projectDescription, projectTechnologies, projectImages, repositorioUrl, deployUrl, category, status, style }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isHighlighted, setIsHighlighted] = useState(false);
+
+  // Effect to handle highlighting when linked via hash
+  useEffect(() => {
+    if (typeof window !== 'undefined' && id) {
+      const checkHash = () => {
+        if (window.location.hash === `#${id}`) {
+          setIsHighlighted(true);
+          setTimeout(() => setIsHighlighted(false), 3000);
+        }
+      };
+
+      checkHash();
+      window.addEventListener('hashchange', checkHash);
+      return () => window.removeEventListener('hashchange', checkHash);
+    }
+  }, [id]);
 
   // Badge configuration based on status
   const getBadgeConfig = () => {
@@ -28,14 +46,23 @@ const ProjectCard = ({ projectName, projectDescription, projectTechnologies, pro
   const badgeConfig = getBadgeConfig();
 
   return (
-    <article style={style} data-glow className="group relative overflow-hidden rounded-2xl bg-white dark:bg-[#0B1120] backdrop-blur-md transition-all duration-500 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] h-full flex flex-col">
+    <article
+      id={id}
+      style={style}
+      data-glow
+      className={`group relative rounded-2xl bg-white dark:bg-[#0B1120] backdrop-blur-md transition-all duration-500 flex flex-col h-full
+        ${isHighlighted
+          ? 'ring-4 ring-[#6c63ff] shadow-[0_0_30px_rgba(108,99,255,0.3)] scale-[1.02] z-10'
+          : 'shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]'
+        }`}
+    >
       <div data-glow></div>
       <div className="relative z-10 flex flex-col flex-1">
         {/* Image Container */}
         <div className="relative h-48 overflow-hidden rounded-t-xl shrink-0">
           <ImageCarousel images={projectImages} projectName={projectName} />
 
-          {/* Decorative top gradient line for modern feel */}
+          {/* Decorative top gradient line */}
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
           {/* Status Badge */}
@@ -59,25 +86,36 @@ const ProjectCard = ({ projectName, projectDescription, projectTechnologies, pro
               {projectName}
             </h3>
 
-            {/* Description */}
+            {/* Description with Smooth Animation */}
             <div className="relative">
-              <p className={`text-sm text-gray-600 dark:text-gray-300 leading-relaxed transition-all duration-300 ${isExpanded ? '' : 'line-clamp-3'}`}>
-                {projectDescription}
-              </p>
+              <motion.div
+                initial={false}
+                animate={{ height: isExpanded ? 'auto' : '4.5rem' }} // approx 3 lines
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className="overflow-hidden"
+              >
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                  {projectDescription}
+                </p>
+              </motion.div>
+
               {projectDescription.length > 100 && (
                 <button
                   onClick={() => setIsExpanded(!isExpanded)}
-                  className="text-xs text-[#6c63ff] dark:text-indigo-400 hover:text-[#554fd8] dark:hover:text-indigo-300 mt-1 focus:outline-none font-medium transition-colors cursor-pointer"
+                  className="text-xs text-[#6c63ff] dark:text-indigo-400 hover:text-[#554fd8] dark:hover:text-indigo-300 mt-2 focus:outline-none font-medium transition-colors cursor-pointer relative z-10"
                 >
                   {isExpanded ? 'Leer menos' : 'Leer más'}
                 </button>
               )}
             </div>
 
+          </div>
+
+          {/* Lower section: Technologies and Buttons with flex-end */}
+          <div className="pt-4 mt-auto flex flex-col justify-end gap-4">
             {/* Technologies */}
-            <div className="flex flex-wrap gap-2 pt-2">
+            <div className="flex flex-wrap gap-2">
               {projectTechnologies.map((technology, index) => {
-                // Simple extraction of technology name from filename
                 const techName = technology
                   .replace(/-logo\.(png|svg|webp|jpeg|jpg)/, '')
                   .replace(/-/g, ' ')
@@ -97,15 +135,12 @@ const ProjectCard = ({ projectName, projectDescription, projectTechnologies, pro
                 );
               })}
             </div>
-          </div>
 
-          {/* Lower section: Buttons with flex-end */}
-          <div className="pt-4 mt-auto flex flex-col justify-end">
             <CardButtons repositorioUrl={repositorioUrl} deployUrl={deployUrl} status={status} />
           </div>
         </div>
       </div>
-    </article>
+    </article >
   );
 };
 

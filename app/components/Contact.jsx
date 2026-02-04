@@ -58,7 +58,7 @@ const Contact = () => {
   const handleWhatsApp = () => {
     // Dynamic generation on click only
     const p = '543765230488';
-    const message = encodeURIComponent('¡Hola Leandro! 👋 Vengo desde tu portfolio 💼✨');
+    const message = encodeURIComponent('¡Hola Leandro! Vengo desde tu portfolio');
     window.open(`https://wa.me/${p}?text=${message}`, '_blank');
   };
 
