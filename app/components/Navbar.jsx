@@ -33,7 +33,7 @@ export default function Navbar() {
     <Disclosure as={Fragment}>
 
       {({ open, close }) => (
-        <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-lg transition-all duration-300 rounded-full">
+        <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl border border-gray-200 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur-xl shadow-lg transition-all duration-300 rounded-full">
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -52,7 +52,7 @@ export default function Navbar() {
               {/* Desktop Navigation */}
               <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
                 <div className="flex flex-shrink-0 items-center">
-                  <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-cyan-400">
+                  <span className="text-xl font-bold dark:bg-clip-text dark:text-transparent dark:bg-gradient-to-r dark:from-indigo-500 dark:to-cyan-400 text-[#6c63ff]">
                     LV
                   </span>
                 </div>
@@ -67,7 +67,7 @@ export default function Navbar() {
                           offset={-80}
                           duration={500}
                           spy={true}
-                          className="relative ml-2 px-6 py-2 text-sm font-bold text-white bg-gradient-to-r from-indigo-600 to-cyan-500 rounded-full shadow-lg hover:shadow-indigo-500/30 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+                          className="relative ml-2 px-6 py-2 text-sm font-bold text-white bg-[#6c63ff] hover:bg-[#554fd8] dark:bg-gradient-to-r dark:from-indigo-600 dark:to-cyan-500 rounded-full shadow-lg hover:shadow-[#6c63ff]/30 dark:hover:shadow-indigo-500/30 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
                           onClick={() => handleNavigationClick(item.name)}
                         >
                           {item.name}
@@ -81,11 +81,11 @@ export default function Navbar() {
                           duration={500}
                           spy={true}
                           activeClass="active-nav-link"
-                          className="nav-link relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-all duration-300 cursor-pointer group"
+                          className="nav-link relative px-4 py-2 text-sm font-medium text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-all duration-300 cursor-pointer group"
                           onClick={() => handleNavigationClick(item.name)}
                         >
                           {item.name}
-                          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-400 group-hover:w-full transition-all duration-300"></span>
+                          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#6c63ff] dark:bg-gradient-to-r dark:from-indigo-500 dark:to-cyan-400 group-hover:w-full transition-all duration-300"></span>
                         </Link>
                       )
                     ))}
@@ -97,7 +97,7 @@ export default function Navbar() {
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="relative flex rounded-full bg-gray-800/50 p-1.5 text-gray-400 hover:text-white hover:bg-gray-700/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-transparent transition-all">
+                    <Menu.Button className="relative flex rounded-full bg-gray-200 dark:bg-gray-800/50 p-1.5 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-300 dark:hover:bg-gray-700/50 focus:outline-none focus:ring-2 focus:ring-slate-500 dark:focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-transparent transition-all">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open settings menu</span>
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -115,7 +115,7 @@ export default function Navbar() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-gray-800/95 backdrop-blur-xl py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none border border-white/10">
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white dark:bg-gray-800/95 backdrop-blur-xl py-1 shadow-lg ring-1 ring-gray-200 dark:ring-black ring-opacity-5 focus:outline-none border border-gray-200 dark:border-white/10">
                       <Menu.Item>
                         <ThemeSelector />
                       </Menu.Item>

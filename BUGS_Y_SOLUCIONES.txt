@@ -1,0 +1,228 @@
+================================================================================
+                    BUGS ENCONTRADOS Y SOLUCIONES
+                    Repositorio Portfolio Next.js
+================================================================================
+
+Fecha: 2026-02-02
+Última actualización: 2026-02-02
+
+================================================================================
+1. BUG: TEXTO INVISIBLE EN LIGHT MODE (StaggeredTitle)
+================================================================================
+
+SÍNTOMA:
+- El texto del título (StaggeredTitle) no se ve en light mode
+- El HTML muestra las clases correctas pero el color no se aplica
+- Al desactivar "will-change-transform" en DevTools, aparece el gradiente de dark mode
+
+CAUSA RAÍZ:
+- Bug de compositing en Chrome/Safari con "will-change: transform"
+- Cuando se usa "will-change: transform" junto con "background-clip: text" o 
+  "text-fill-color", el navegador crea una capa de composición GPU que rompe
+  el renderizado del color del texto
+- Tailwind arbitrary values (text-[#44476a]) pueden no compilarse correctamente
+  dependiendo de la configuración de purge/JIT
+
+SOLUCIÓN APLICADA:
+1. Remover "will-change-transform" SOLO en light mode:
+   ```javascript
+   const baseLetterClass = "inline-block"
+   const letterClass = isLight
+     ? baseLetterClass // sin will-change-transform
+     : `${baseLetterClass} will-change-transform text-transparent bg-clip-text ...`
+   ```
+
+2. Aplicar color via inline style (no depender de Tailwind):
+   ```javascript
+   style={isLight ? { color: '#44476a', WebkitTextFillColor: '#44476a' } : undefined}
+   ```
+
+3. WebkitTextFillColor asegura que Chrome/Safari no usen "transparent"
+
+ARCHIVOS MODIFICADOS:
+- app/components/StaggeredTitle.jsx
+
+LECCIÓN APRENDIDA:
+- "will-change: transform" + "background-clip: text" = bug de compositing
+- Siempre usar inline styles para colores críticos en lugar de arbitrary values
+- En light mode, evitar optimizaciones GPU innecesarias
+
+================================================================================
+2. WIREFRAME 3D NO CAMBIA DE COLOR CON EL TEMA
+================================================================================
+
+SÍNTOMA:
+- El wireframe del holograma 3D (Avatar3D) no cambia de color al cambiar de tema
+- El cuerpo del holograma sí cambia, pero el wireframe permanece cyan siempre
+
+CAUSA RAÍZ:
+- El wireframe se crea una sola vez en el useEffect inicial
+- No se recrea cuando cambia el tema
+- El useEffect no tiene "theme" en las dependencias
+
+SOLUCIÓN APLICADA:
+1. Agregar "theme" a las dependencias del useEffect:
+   ```javascript
+   useEffect(() => {
+     // ... código del wireframe
+   }, [scene, material, invalidate, theme]); // ← theme agregado
+   ```
+
+2. Remover y recrear el wireframe cuando cambia el tema:
+   ```javascript
+   const existing = child.getObjectByName('wireframe-overlay');
+   if (existing) {
+     child.remove(existing);
+     existing.geometry.dispose();
+     existing.material.dispose();
+   }
+   ```
+
+3. Aplicar color dinámico según tema:
+   ```javascript
+   const wireframeColor = theme === 'light' ? '#475569' : '#00ffff';
+   const wireframeOpacity = theme === 'light' ? 0.18 : 0.05;
+   const wireframeBlending = theme === 'light' ? THREE.NormalBlending : THREE.AdditiveBlending;
+   ```
+
+ARCHIVOS MODIFICADOS:
+- app/components/Avatar3D.jsx
+
+CONFIGURACIÓN DE COLORES:
+- Light mode: #475569 (slate-600), opacity 0.18, NormalBlending
+- Dark mode: #00ffff (cyan), opacity 0.05, AdditiveBlending
+
+LECCIÓN APRENDIDA:
+- Siempre incluir variables de estado/contexto en dependencias de useEffect
+- Limpiar recursos (dispose) antes de recrear objetos Three.js
+- Diferentes blending modes para diferentes temas (NormalBlending vs AdditiveBlending)
+
+================================================================================
+3. HALOS Y EFECTOS VISUALES ENSUCIAN EL LIGHT MODE
+================================================================================
+
+SÍNTOMA:
+- En light mode, los halos blur y drop-shadows bajan el contraste
+- El texto se ve "lavado" o desenfocado
+- La estética minimalista se pierde
+
+SOLUCIÓN APLICADA:
+1. Ocultar halos completamente en light mode:
+   ```javascript
+   {!isLight && (
+     <>
+       {/* Halos con gradientes */}
+     </>
+   )}
+   ```
+
+2. Remover blur del separator en light mode:
+   ```javascript
+   className={`... ${isLight ? 'blur-[0px]' : 'blur-[1px]'} ...`}
+   ```
+
+3. Remover drop-shadow del título en light mode:
+   ```javascript
+   filter: isLight ? 'none' : `drop-shadow(0 0 ${blurAmount}px rgba(168,85,247,0.35))`
+   ```
+
+ARCHIVOS MODIFICADOS:
+- app/components/Experience.jsx
+- app/components/StaggeredTitle.jsx
+
+LECCIÓN APRENDIDA:
+- Light mode debe ser 100% sólido y limpio (sin efectos)
+- Dark mode puede tener todos los efectos visuales
+- Usar renderizado condicional (!isLight) en lugar de opacity: 0
+
+================================================================================
+4. PARTÍCULAS Y BLUR DEL HOLOGRAMA EN LIGHT MODE
+================================================================================
+
+SÍNTOMA:
+- Las partículas del background ensucian el light mode
+- El blur del holograma reduce el contraste
+
+SOLUCIÓN APLICADA:
+1. Ocultar partículas en light mode:
+   ```javascript
+   <div className="background-particles hidden dark:block">
+   ```
+
+2. Ocultar blur del holograma en light mode:
+   ```javascript
+   <div className="... hidden dark:block">
+   ```
+
+ARCHIVOS MODIFICADOS:
+- app/components/Background.jsx
+- app/components/AboutMe.jsx
+
+LECCIÓN APRENDIDA:
+- Usar "hidden dark:block" para elementos que solo deben verse en dark mode
+- Mantener light mode limpio y minimalista
+
+================================================================================
+5. NAVBAR Y MENÚ DE CONFIGURACIÓN NO SE ADAPTAN AL TEMA
+================================================================================
+
+SÍNTOMA:
+- El botón de settings y el menú desplegable siempre se ven oscuros
+- En light mode no se leen bien
+
+SOLUCIÓN APLICADA:
+1. Hacer el botón theme-aware:
+   ```javascript
+   className="... bg-gray-200 dark:bg-gray-800/50 text-gray-600 dark:text-gray-400 ..."
+   ```
+
+2. Hacer el menú desplegable theme-aware:
+   ```javascript
+   className="... bg-white dark:bg-gray-800/95 ..."
+   ```
+
+3. Actualizar ThemeSelector:
+   ```javascript
+   className="... text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 ..."
+   ```
+
+ARCHIVOS MODIFICADOS:
+- app/components/Navbar.jsx
+- app/components/ThemeSelector.jsx
+
+LECCIÓN APRENDIDA:
+- Siempre usar clases condicionales "light-class dark:dark-class"
+- Probar todos los componentes en ambos temas
+
+================================================================================
+TIPS GENERALES PARA EVITAR BUGS
+================================================================================
+
+1. COLORES:
+   - Usar inline styles para colores críticos
+   - Evitar arbitrary values de Tailwind en producción
+   - Siempre incluir WebkitTextFillColor para compatibilidad
+
+2. EFECTOS VISUALES:
+   - Evitar "will-change: transform" con "background-clip: text"
+   - En light mode: sin blur, sin shadows, sin halos
+   - En dark mode: todos los efectos permitidos
+
+3. THREE.JS:
+   - Siempre hacer dispose() antes de recrear objetos
+   - Incluir todas las variables en dependencias de useEffect
+   - Usar invalidate() después de cambios de material
+
+4. TEMAS:
+   - Probar TODOS los componentes en ambos temas
+   - Usar renderizado condicional (!isLight) en lugar de opacity
+   - Documentar colores específicos por tema
+
+5. DEBUGGING:
+   - Usar console.log con emojis para identificar logs
+   - Inspeccionar DevTools para ver qué CSS se aplica
+   - Desactivar reglas CSS una por una para encontrar conflictos
+
+================================================================================
+FIN DEL DOCUMENTO
+================================================================================

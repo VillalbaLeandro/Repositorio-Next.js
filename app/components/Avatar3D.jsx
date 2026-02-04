@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, OrbitControls, Sparkles, Float } from '@react-three/drei';
 import { motion } from 'framer-motion';
+import { useTheme } from '../context/ThemeContext';
 
 function useAdvancedHologram(isMobile = false) {
     const uniforms = useMemo(
@@ -147,7 +148,7 @@ function useAdvancedHologram(isMobile = false) {
     return { material, uniforms };
 }
 
-function Model({ isDragging, isMobile, ...props }) {
+function Model({ isDragging, isMobile, theme, ...props }) {
     const { scene } = useGLTF('/img/myPics/hologram.glb');
     const { material, uniforms } = useAdvancedHologram(isMobile);
 
@@ -187,6 +188,42 @@ function Model({ isDragging, isMobile, ...props }) {
 
     const { invalidate } = useThree();
 
+    // 🎨 Actualizar shader y material cuando cambia el tema
+    useEffect(() => {
+        // Paleta por tema
+        const palette = theme === 'light'
+            ? {
+                emissive: '#00a3ff',     // azul más oscuro para light
+                baseColor: '#00151a',
+                emissiveIntensity: 0.7,
+                opacity: 0.45,
+                blending: THREE.NormalBlending  // evita "lavado" en fondos claros
+            }
+            : {
+                emissive: '#00ffff',     // cian brillante para dark
+                baseColor: '#00151a',
+                emissiveIntensity: 0.9,
+                opacity: 0.35,
+                blending: THREE.AdditiveBlending
+            };
+
+        // Actualizar uniforms del shader
+        uniforms.uEmissiveColor.value.set(palette.emissive);
+
+        // Actualizar propiedades del material
+        material.color.set(palette.baseColor);
+        material.emissive.set(palette.emissive);
+        material.emissiveIntensity = palette.emissiveIntensity;
+        material.opacity = palette.opacity;
+
+        if (material.blending !== palette.blending) {
+            material.blending = palette.blending;
+            material.needsUpdate = true; // fuerza recompilado si cambia blending
+        }
+
+        invalidate(); // render inmediato para ver el cambio
+    }, [theme, uniforms, material, invalidate]);
+
     useEffect(() => {
         scene.traverse((child) => {
             if (!child.isMesh) return;
@@ -196,33 +233,43 @@ function Model({ isDragging, isMobile, ...props }) {
 
             child.material = material;
 
-            // Overlay wireframe una sola vez por mesh
-            const already = child.getObjectByName('wireframe-overlay');
-            if (!already) {
-                const wireMat = new THREE.MeshBasicMaterial({
-                    color: '#00ffff',
-                    wireframe: true,
-                    transparent: true,
-                    opacity: 0.04,
-                    depthWrite: false,
-                    depthTest: false,
-                    polygonOffset: true,
-                    polygonOffsetFactor: -1,
-                    polygonOffsetUnits: -1,
-                    blending: THREE.AdditiveBlending,
-                });
+            // Determinar color según tema
+            const wireframeColor = theme === 'light' ? '#475569' : '#00ffff';
+            const wireframeOpacity = theme === 'light' ? 0.18 : 0.05; // Opacidad reducida para líneas más finas
+            const wireframeBlending = theme === 'light' ? THREE.NormalBlending : THREE.AdditiveBlending;
 
-                const wire = new THREE.Mesh(child.geometry, wireMat);
-                wire.name = 'wireframe-overlay';
-                wire.userData.isWireframe = true;
-                child.add(wire);
+            // Remover wireframe existente si hay cambio de tema
+            const existing = child.getObjectByName('wireframe-overlay');
+            if (existing) {
+                child.remove(existing);
+                existing.geometry.dispose();
+                existing.material.dispose();
             }
+
+            // Crear nuevo wireframe con el color correcto
+            const wireMat = new THREE.MeshBasicMaterial({
+                color: wireframeColor,
+                wireframe: true,
+                transparent: true,
+                opacity: wireframeOpacity,
+                depthWrite: false,
+                depthTest: false,
+                polygonOffset: true,
+                polygonOffsetFactor: -1,
+                polygonOffsetUnits: -1,
+                blending: wireframeBlending,
+            });
+
+            const wire = new THREE.Mesh(child.geometry, wireMat);
+            wire.name = 'wireframe-overlay';
+            wire.userData.isWireframe = true;
+            child.add(wire);
         });
 
         // 🔥 Importante: Forzar un frame nuevo para que se vea el cambio de material
-        // al iniciar en modo 'demand'
+        // al iniciar en modo 'demand' o cuando cambia el tema
         invalidate();
-    }, [scene, material, invalidate]);
+    }, [scene, material, invalidate, theme]);
 
     return (
         <Float speed={2} rotationIntensity={0.1} floatIntensity={0.3}>
@@ -232,6 +279,8 @@ function Model({ isDragging, isMobile, ...props }) {
 }
 
 export default function Avatar3D({ isDraggingProp = false }) {
+    const { theme } = useTheme();
+
     const [isMobile, setIsMobile] = useState(false);
     const [isRotating, setIsRotating] = useState(false); // Renamed from isDragging to avoid confusion
     const controlsRef = useRef(null);
@@ -295,11 +344,11 @@ export default function Avatar3D({ isDraggingProp = false }) {
                     count={sparklesCount}
                     scale={[4, 6, 4]}
                     speed={0.2}
-                    color="#ff00ff"
+                    color={theme === 'light' ? '#64748b' : '#ff00ff'}
                 />
 
                 <group position={[0, -1.6, 0]}>
-                    <Model scale={5} isDragging={effectiveIsDragging} isMobile={isMobile} />
+                    <Model scale={5} isDragging={effectiveIsDragging} isMobile={isMobile} theme={theme} />
                 </group>
 
                 <OrbitControls

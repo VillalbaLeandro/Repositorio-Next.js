@@ -14,15 +14,19 @@
   --iconNavbar: rgb(82, 37, 86);
 }
 
-/* Light Theme */
+/* Light Theme - Minimalist & Professional */
 .light {
-  --foreground-rgb: rgb(31, 41, 55);
-  --background-start-rgb: rgb(249, 250, 251);
-  --background-end-rgb: rgb(243, 244, 246);
-  --icon: rgb(31, 41, 55);
+  --foreground-rgb: rgb(68, 71, 106); /* #44476a */
+  --background-start-rgb: rgb(235, 235, 235); /* Off-white cálido (hueso) */
+  --background-end-rgb: rgb(245, 243, 241); /* Gris muy suave cálido */
+  --icon: rgb(108, 99, 255); /* #6c63ff */
   --blue-bg: rgb(255, 255, 255);
-  --gradient: linear-gradient(42deg, rgba(177, 80, 251, 0.7) 11%, rgba(118, 130, 237, 0.7) 50%, rgba(48, 210, 223, 0.7) 80%);
-  --iconNavbar: rgb(139, 92, 246);
+  --gradient: none; /* Removed gradient for light mode */
+  --iconNavbar: rgb(85, 79, 216); /* #554fd8 */
+  --primary-color: #6c63ff;
+  --primary-dark: #554fd8;
+  --text-main: #44476a;
+  --text-light: #7a7d9c;
 }
 
 /* Cyberpunk Theme */
@@ -103,6 +107,13 @@ h2 {
   background-size: 200% 100%;
   animation: gradient 2.5s infinite alternate;
 }
+
+.light h2 {
+  background: none;
+  -webkit-text-fill-color: #44476a;
+  color: #44476a;
+  animation: none;
+}
 /* 
 .gradiente{
   background: linear-gradient(42deg, rgba(177, 80, 251, 1) 11%, rgba(118, 130, 237, 1) 50%, rgba(48, 210, 223, 1) 80%);
@@ -115,6 +126,12 @@ h3 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: background-position 0.5s;
+}
+
+.light h3 {
+  background: none;
+  -webkit-text-fill-color: #44476a;
+  color: #44476a;
 }
 
 .glass-effect {
@@ -198,6 +215,12 @@ h3 {
   /* padding: 1.5rem; */
   overflow: hidden;
   /* transition: all 0.3s ease; */ /* Removed transition to avoid conflict with mouse tracking */
+}
+
+@media (min-width: 768px) {
+  .neuro-card2 {
+    padding: 1.5rem;
+  }
 }
 /* data-glow handles the rest */
 
@@ -771,17 +794,19 @@ h3 {
 }
 
 .nav-link.active-nav-link {
-  color: white;
+  color: rgb(15, 23, 42); /* Slate oscuro para light mode */
+}
+
+.dark .nav-link.active-nav-link {
+  color: white; /* Blanco para dark mode */
 }
 
 .nav-link.active-nav-link span {
   width: 100%;
 }
 
-/* Global overflow-x prevention and smooth scrolling */
-html {
-  /* scroll-behavior: smooth; Conflict with react-scroll */
-}
+/* Global overflow-x prevention */
+/* scroll-behavior: smooth removed - conflicts with react-scroll */
 
 html, body { 
   overflow-x: hidden; 

@@ -4,8 +4,11 @@ import { motion } from 'framer-motion'
 import ProjectCard from './ProjectCard'
 import MotionSection, { itemVariants, containerVariants } from './MotionSection'
 import StaggeredTitle from './StaggeredTitle'
+import { useTheme, THEMES } from '../context/ThemeContext'
 
 const Projects = () => {
+  const { theme } = useTheme()
+  const isLight = theme === THEMES.LIGHT
   const containerRef = useRef(null)
   const [proximity, setProximity] = useState(1)
 
@@ -55,54 +58,60 @@ const Projects = () => {
       projectDescription: "Plataforma informativa gestionada con WordPress en un subdominio municipal. Optimicé el rendimiento y la estructura para garantizar un acceso rápido a la información urbanística de la ciudad.",
       category: "WordPress / Institucional",
       projectTechnologies: ["wordpress-logo.png", "css-logo.png", "php-logo.png"],
-      imageUrl: "./img/proyects/plan-urbano-wordpress.png",
-      repositorioUrl: 'https://posadas.gov.ar/planurbano/',
+      projectImages: ["./img/proyects/plan-urbano/1.png"],
+      repositorioUrl: 'private',
       deployUrl: 'https://posadas.gov.ar/planurbano/',
+      status: 'public', // Sitio Oficial en Producción
     },
     {
       projectName: "Cálculo de Honorarios",
       projectDescription: "Sistema desarrollado para la Municipalidad de Posadas. Funciona como host que sirve el contenido consumido a través de un iframe embebido en la página oficial, permitiendo el cálculo digital de tasas y honorarios de construcción.",
       category: "App Web / Host",
       projectTechnologies: ["php-logo.png", "javascript-logo.png", "bootstrap-logo.png", "mysql-logo.png"],
-      imageUrl: "./img/proyects/honorarios-municipalidad.png",
-      repositorioUrl: 'https://posadas.gov.ar/honorarios/',
-      deployUrl: 'https://posadas.gov.ar/honorarios/',
+      projectImages: ["./img/proyects/honorarios/1.png"],
+      repositorioUrl: 'private',
+      deployUrl: 'https://calcular-honorarios.infinityfreeapp.com/',
+      status: 'public', // Sistema Privado con Demo
     },
     {
-      projectName: "DrinkStore",
+      projectName: "Control de Ventas y Stock",
       projectDescription: "Un proyecto personal de gran escala realizado en Php, con sistema completo de venta, control de stock y caja. Actualmente migrándolo a Next.js.",
       category: "Sistema de ventas y stock",
       projectTechnologies: ["php-logo.png", "html-logo.png", "css-logo.png", "javascript-logo.png", "jquery-logo.png", "bootstrap-logo.png"],
-      imageUrl: "./img/proyects/drinkstore-sistema-stock.png",
+      projectImages: ["./img/proyects/drinkstore-sistema/1.png"],
       repositorioUrl: 'https://github.com/VillalbaLeandro/sistema-de-ventas-html-css.github.io',
-      deployUrl: 'https://drinkstore24hs.000webhostapp.com/ventas/login.php',
+      deployUrl: 'https://drinkstore.wuaze.com/ventas/index.php',
+      status: 'private', // Sistema Privado con Demo
     },
     {
       projectName: "DigitalGames",
-      projectDescription: "Desarrollé este proyecto como Fullstack Developer desde cero, utilizando tecnologías como Node.js, Sequelize y Express. Aprobado por Digital House",
+      projectDescription: "Desarrollé este e-commerce Fullstack desde cero, utilizando Node.js, Sequelize y Express. Realicé una migración exitosa de la base de datos de MySQL a PostgreSQL para mejorar la escalabilidad y el rendimiento.",
       category: "e-commerce",
-      projectTechnologies: ["html-logo.png", "css-logo.png", "javascript-logo.png", "bootstrap-logo.png", "react-logo.webp", "git-logo.png", "node-logo.png"],
-      imageUrl: "./img/proyects/digital-games.png",
+      projectTechnologies: ["html-logo.png", "css-logo.png", "javascript-logo.png", "bootstrap-logo.png", "react-logo.webp", "node-logo.png", "Mysql-logo.png", "postgre-logo.png", "git-logo.png"],
+      projectImages: ["./img/proyects/digital-games/1.png"],
       repositorioUrl: 'https://github.com/VillalbaLeandro/grupo_10_DigitalGames',
-      deployUrl: 'https://digital-games.onrender.com/home',
+      deployUrl: 'https://grupo-10-digitalgames.onrender.com/',
+      status: 'public', // Sitio Oficial en Producción
     },
     {
       projectName: "DrinkStore",
       projectDescription: "Diseñé esta landing page con un estilo oscuro y delicado. La combinación de HTML, CSS y JavaScript permite una navegación fluida y una presentación atractiva de los productos, atrayendo la atención de los usuarios desde el primer vistazo.",
       category: "Landing page ",
       projectTechnologies: ["html-logo.png", "css-logo.png", "javascript-logo.png"],
-      imageUrl: "./img/proyects/drinkstore landing.png",
+      projectImages: ["./img/proyects/drinkstore-landing/1.png"],
       repositorioUrl: 'https://github.com/VillalbaLeandro/sistema-de-ventas-html-css.github.io',
-      deployUrl: 'https://drinkstore24hs.000webhostapp.com/',
+      deployUrl: 'https://drinkstore.wuaze.com/',
+      status: 'public', // Sitio Oficial en Producción
     },
     {
       projectName: "Clock neumorphism",
       projectDescription: "Uno de mis proyectos favoritos, donde trabajé intensamente con CSS para lograr un efecto de relieve e iluminación.",
       category: "App",
       projectTechnologies: ["html-logo.png", "css-logo.png", "javascript-logo.png"],
-      imageUrl: "./img/proyects/reloj-neumorfismo.png",
+      projectImages: ["./img/proyects/clock-neumorphism/1.png"],
       repositorioUrl: 'https://github.com/VillalbaLeandro/NeuphormClock.github.io',
       deployUrl: 'https://villalbaleandro.github.io/NeuphormClock.github.io/',
+      status: 'public', // Sitio Oficial en Producción
     },
   ]
 
@@ -112,33 +121,37 @@ const Projects = () => {
         <MotionSection className='w-[90vw] max-w-screen-xl mx-auto mt-15 scroll-mt-48'>
           <div ref={containerRef} className="flex items-center justify-center gap-3 mb-12">
             <div className="relative z-10 text-center">
-              {/* Halo gigante (glow externo) */}
-              <div
-                className="
-      pointer-events-none absolute left-1/2 top-1/2
-      h-16 w-[20rem] sm:h-20 sm:w-[26rem] md:h-24 md:w-[32rem] -translate-x-1/2 -translate-y-1/2
-      rounded-full
-      bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-cyan-400
-      blur-3xl opacity-35
-    "
-              />
+              {!isLight && (
+                <>
+                  {/* Halo gigante (glow externo) */}
+                  <div
+                    className="
+          pointer-events-none absolute left-1/2 top-1/2
+          h-16 w-[20rem] sm:h-20 sm:w-[26rem] md:h-24 md:w-[32rem] -translate-x-1/2 -translate-y-1/2
+          rounded-full
+          bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-cyan-400
+          blur-3xl opacity-35
+        "
+                  />
 
-              {/* Halo secundario más “apretado” */}
-              <div
-                className="
-      pointer-events-none absolute left-1/2 top-1/2
-      h-8 w-[16rem] sm:h-10 sm:w-[20rem] md:h-12 md:w-[22rem] -translate-x-1/2 -translate-y-1/2
-      rounded-full
-      bg-gradient-to-r from-indigo-400 via-purple-500 to-cyan-300
-      blur-2xl opacity-40
-    "
-              />
+                  {/* Halo secundario más “apretado” */}
+                  <div
+                    className="
+          pointer-events-none absolute left-1/2 top-1/2
+          h-8 w-[16rem] sm:h-10 sm:w-[20rem] md:h-12 md:w-[22rem] -translate-x-1/2 -translate-y-1/2
+          rounded-full
+          bg-gradient-to-r from-indigo-400 via-purple-500 to-cyan-300
+          blur-2xl opacity-40
+        "
+                  />
+                </>
+              )}
 
               <StaggeredTitle text="PROYECTOS" blurAmount={blurAmount} />
 
               {/* Title separator */}
               <div
-                className="h-[2px] mx-auto mt-6 bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-[1px] transition-all duration-300"
+                className={`h-[2px] mx-auto mt-6 transition-all duration-300 bg-gradient-to-r from-transparent ${isLight ? 'via-[#44476a]' : 'via-indigo-500'} to-transparent blur-[1px]`}
                 style={{
                   width: `${separatorWidth}px`,
                   opacity: separatorOpacity
@@ -153,7 +166,7 @@ const Projects = () => {
               const spread = [500, 200, 500, 200][index % 4];
 
               return (
-                <motion.div key={index} variants={itemVariants}>
+                <motion.div key={index} variants={itemVariants} className="flex flex-col h-full">
                   <ProjectCard
                     style={{ '--base': baseHue, '--spread': spread, '--outer': 1 }}
                     {...project}

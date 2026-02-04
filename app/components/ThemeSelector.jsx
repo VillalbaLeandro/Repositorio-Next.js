@@ -33,7 +33,7 @@ const ThemeSelector = () => {
 
     return (
         <Menu as="div" className="relative">
-            <Menu.Button className="flex items-center gap-2 px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 w-full transition-colors">
+            <Menu.Button className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 w-full transition-colors">
                 <CurrentIcon className="h-5 w-5" />
                 <span>Tema: {currentTheme.name}</span>
             </Menu.Button>
@@ -47,7 +47,7 @@ const ThemeSelector = () => {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
             >
-                <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-gray-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
+                <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-white dark:bg-gray-800 shadow-lg ring-1 ring-gray-200 dark:ring-black ring-opacity-5 focus:outline-none z-50 border border-gray-200 dark:border-transparent">
                     <div className="py-1">
                         {Object.values(THEMES).map((themeOption) => {
                             const config = themeConfig[themeOption];
@@ -55,13 +55,13 @@ const ThemeSelector = () => {
                             const isActive = theme === themeOption;
 
                             return (
-                                <Menu.Item key={themeOption}>
+                                <Menu.Item key={themeOption} as="div">
                                     {({ active }) => (
                                         <button
                                             onClick={() => setTheme(themeOption)}
                                             className={classNames(
-                                                active ? 'bg-gray-700' : '',
-                                                isActive ? 'bg-indigo-900 text-indigo-200' : 'text-gray-300',
+                                                active ? 'bg-gray-100 dark:bg-gray-700' : '',
+                                                isActive ? 'bg-[#6c63ff]/10 text-[#6c63ff] dark:bg-indigo-900 dark:text-indigo-200' : 'text-gray-700 dark:text-gray-300',
                                                 'flex items-center gap-3 px-4 py-2 text-sm w-full transition-colors'
                                             )}
                                         >

@@ -4,9 +4,12 @@ import { motion } from 'framer-motion'
 import DownloadCvButton from './DownloadCvButton'
 import Avatar3D from './Avatar3D'
 import DraggableBadge from './DraggableBadge'
+import { useTheme, THEMES } from '../context/ThemeContext'
 
 
 const AboutMe = () => {
+    const { theme } = useTheme()
+    const isLight = theme === THEMES.LIGHT
 
     const [isAnyBadgeDragging, setIsAnyBadgeDragging] = React.useState(false)
 
@@ -57,12 +60,12 @@ const AboutMe = () => {
 
                 {/* Giant title text */}
                 <motion.div variants={itemVariants}>
-                    <h2 className='font-extrabold text-[10.5vw] sm:text-6xl md:text-7xl lg:text-8xl leading-none bg-clip-text text-transparent bg-gradient-to-b from-purple-400 via-blue-500/70 to-transparent animate-gradient whitespace-nowrap mb-0'>
+                    <h2 className='font-extrabold text-[10.5vw] sm:text-6xl md:text-7xl lg:text-8xl leading-none dark:bg-clip-text dark:text-transparent dark:bg-gradient-to-b dark:from-purple-400 dark:via-blue-500/70 dark:to-transparent dark:animate-gradient text-[#44476a] dark:text-transparent whitespace-nowrap mb-0'>
                         FULLSTACK
                     </h2>
                 </motion.div>
                 <motion.div variants={itemVariants}>
-                    <h2 className='font-extrabold text-[10.5vw] sm:text-6xl md:text-7xl lg:text-8xl leading-none bg-clip-text text-transparent bg-gradient-to-b from-blue-500 via-cyan-400/70 to-transparent animate-gradient whitespace-nowrap -mt-2 md:mb-6'>
+                    <h2 className='font-extrabold text-[10.5vw] sm:text-6xl md:text-7xl lg:text-8xl leading-none dark:bg-clip-text dark:text-transparent dark:bg-gradient-to-b dark:from-blue-500 dark:via-cyan-400/70 dark:to-transparent dark:animate-gradient text-[#44476a] dark:text-transparent whitespace-nowrap -mt-2 md:mb-6'>
                         DEVELOPER
                     </h2>
                 </motion.div>
@@ -89,7 +92,7 @@ const AboutMe = () => {
 
             {/* Right Column: Image with "Surprise" Glow Effect */}
             <motion.div className='relative md:w-2/5 flex flex-col items-center justify-center w-full order-2 md:order-none' variants={avatarVariants}>
-                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/30 to-purple-500/30 blur-3xl rounded-full scale-110 opacity-0 md:opacity-100 transition-opacity duration-1000 animate-pulse pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/30 to-purple-500/30 blur-3xl rounded-full scale-110 opacity-0 md:opacity-100 transition-opacity duration-1000 animate-pulse pointer-events-none hidden dark:block"></div>
 
                 {/* 3D Model Replacement */}
                 <Avatar3D isDraggingProp={isAnyBadgeDragging} />
@@ -199,7 +202,7 @@ const AboutMe = () => {
                         label="DESCARGAR CV"
                     />
                 </motion.div>
-                <motion.a href="#contact" variants={itemVariants} className="my-4 transform active:scale-95 bg-indigo-600 hover:bg-indigo-500 text-white px-10 py-3 rounded-lg font-bold tracking-widest text-center shadow-lg transition-all duration-300 z-20 w-full max-w-[300px] border-2 border-transparent hover:border-indigo-400">
+                <motion.a href="#contact" variants={itemVariants} className="my-4 transform active:scale-95 bg-slate-700 hover:bg-slate-600 dark:bg-indigo-600 dark:hover:bg-indigo-500 text-white px-10 py-3 rounded-lg font-bold tracking-widest text-center shadow-lg transition-all duration-300 z-20 w-full max-w-[300px] border-2 border-transparent hover:border-slate-500 dark:hover:border-indigo-400">
                     <span className="uppercase">CONTACTAME</span>
                 </motion.a>
             </motion.div>

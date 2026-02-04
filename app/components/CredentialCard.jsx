@@ -38,7 +38,7 @@ const CredentialCard = ({ period, institution, title, certificatedLink, certific
             {/* CONTENT SECTION (Left) */}
             <div className="relative z-10 flex-1 p-6 md:p-8 flex flex-col justify-center">
                 <div className="mb-4 flex items-center justify-between">
-                    <span className="inline-flex items-center gap-2 rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400 backdrop-blur-sm border border-indigo-500/20">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-[#6c63ff]/10 dark:bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-[#6c63ff] dark:text-indigo-400 backdrop-blur-sm border border-[#6c63ff]/20 dark:border-indigo-500/20">
                         <FaCertificate className="text-[10px]" />
                         {period}
                     </span>
@@ -50,12 +50,12 @@ const CredentialCard = ({ period, institution, title, certificatedLink, certific
                     )}
                 </div>
 
-                <h3 className="mb-2 text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 group-hover:from-indigo-500 group-hover:to-cyan-400 transition-all duration-300">
+                <h3 className="mb-2 text-xl md:text-2xl font-bold dark:bg-clip-text dark:text-transparent dark:bg-gradient-to-r dark:from-white dark:to-gray-300 text-[#44476a] dark:group-hover:from-indigo-500 dark:group-hover:to-cyan-400 transition-all duration-300">
                     {title}
                 </h3>
 
                 <div className="flex items-start gap-3 mb-4 md:mb-0">
-                    <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-indigo-500/20 text-indigo-600 dark:text-indigo-400">
+                    <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#6c63ff]/20 dark:bg-indigo-500/20 text-[#6c63ff] dark:text-indigo-400">
                         <FaGraduationCap />
                     </div>
                     <p className="text-sm md:text-base leading-relaxed text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-200 transition-colors">
@@ -78,7 +78,7 @@ const CredentialCard = ({ period, institution, title, certificatedLink, certific
                             <IoEyeSharp className="text-white text-2xl drop-shadow-md opacity-80 group-hover/img:opacity-0 transition-opacity" />
                         </div>
                     </div>
-                    <span className="text-xs font-semibold text-indigo-500 group-hover/img:text-indigo-400 flex items-center gap-1">
+                    <span className="text-xs font-semibold text-[#6c63ff] dark:text-indigo-500 group-hover/img:text-[#554fd8] dark:group-hover/img:text-indigo-400 flex items-center gap-1">
                         Ver certificado <IoEyeSharp />
                     </span>
 
@@ -115,7 +115,7 @@ const CredentialCard = ({ period, institution, title, certificatedLink, certific
                             <Link
                                 href={certificatedLink}
                                 target="_blank"
-                                className="btn btn-sm btn-primary bg-indigo-600 hover:bg-indigo-700 border-none text-white shadow-lg shadow-indigo-500/20"
+                                className="btn btn-sm bg-[#6c63ff] hover:bg-[#554fd8] dark:bg-indigo-600 dark:hover:bg-indigo-700 border-none text-white shadow-lg shadow-[#6c63ff]/20 dark:shadow-indigo-500/20"
                             >
                                 Descargar / Ver PDF
                             </Link>

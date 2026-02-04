@@ -3,8 +3,11 @@ import StaggeredTitle from './StaggeredTitle'
 import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import CredentialCard from './CredentialCard'
+import { useTheme, THEMES } from '../context/ThemeContext'
 
 const Education = () => {
+  const { theme } = useTheme()
+  const isLight = theme === THEMES.LIGHT
   const containerRef = useRef(null)
   const [proximity, setProximity] = useState(1)
 
@@ -87,33 +90,37 @@ const Education = () => {
     <section id='education' className='mb-20'>
       <div ref={containerRef} className="flex items-center justify-center gap-3 mb-16">
         <div className="relative z-10 text-center">
-          {/* Halo gigante (glow externo) */}
-          <div
-            className="
-  pointer-events-none absolute left-1/2 top-1/2
-  h-16 w-[20rem] sm:h-20 sm:w-[26rem] md:h-24 md:w-[32rem] -translate-x-1/2 -translate-y-1/2
-  rounded-full
-  bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-cyan-400
-  blur-3xl opacity-35
-"
-          />
+          {!isLight && (
+            <>
+              {/* Halo gigante (glow externo) */}
+              <div
+                className="
+      pointer-events-none absolute left-1/2 top-1/2
+      h-16 w-[20rem] sm:h-20 sm:w-[26rem] md:h-24 md:w-[32rem] -translate-x-1/2 -translate-y-1/2
+      rounded-full
+      bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-cyan-400
+      blur-3xl opacity-35
+    "
+              />
 
-          {/* Halo secundario más “apretado” */}
-          <div
-            className="
-  pointer-events-none absolute left-1/2 top-1/2
-  h-8 w-[16rem] sm:h-10 sm:w-[20rem] md:h-12 md:w-[22rem] -translate-x-1/2 -translate-y-1/2
-  rounded-full
-  bg-gradient-to-r from-indigo-400 via-purple-500 to-cyan-300
-  blur-2xl opacity-40
-"
-          />
+              {/* Halo secundario más “apretado” */}
+              <div
+                className="
+      pointer-events-none absolute left-1/2 top-1/2
+      h-8 w-[16rem] sm:h-10 sm:w-[20rem] md:h-12 md:w-[22rem] -translate-x-1/2 -translate-y-1/2
+      rounded-full
+      bg-gradient-to-r from-indigo-400 via-purple-500 to-cyan-300
+      blur-2xl opacity-40
+    "
+              />
+            </>
+          )}
 
           <StaggeredTitle text="FORMACIÓN" blurAmount={blurAmount} />
 
           {/* Title separator */}
           <div
-            className="h-[2px] mx-auto mt-6 bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-[1px] transition-all duration-300"
+            className={`h-[2px] mx-auto mt-6 transition-all duration-300 bg-gradient-to-r from-transparent ${isLight ? 'via-[#44476a]' : 'via-indigo-500'} to-transparent blur-[1px]`}
             style={{
               width: `${separatorWidth}px`,
               opacity: separatorOpacity

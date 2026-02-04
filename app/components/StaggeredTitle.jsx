@@ -1,6 +1,7 @@
 'use client'
 import React, { useLayoutEffect, useMemo, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { useTheme, THEMES } from '../context/ThemeContext' // 👈 agrega esto
 
 const variants = {
     hidden: { y: 36, opacity: 0 },
@@ -16,6 +17,9 @@ const variants = {
 }
 
 const StaggeredTitle = ({ text, className = '', blurAmount = 10 }) => {
+    const { theme } = useTheme()
+    const isLight = theme === THEMES.LIGHT
+
     const rootRef = useRef(null)
     const spansRef = useRef([])
 
@@ -33,8 +37,10 @@ const StaggeredTitle = ({ text, className = '', blurAmount = 10 }) => {
         if (el) spansRef.current[i] = el
     }
 
-    // Alinear gradiente global
+    // ✅ Alinear gradiente global SOLO cuando hay gradiente (dark/cyberpunk)
     useLayoutEffect(() => {
+        if (isLight) return
+
         const root = rootRef.current
         if (!root) return
 
@@ -60,13 +66,13 @@ const StaggeredTitle = ({ text, className = '', blurAmount = 10 }) => {
             ro.disconnect()
             window.removeEventListener('resize', apply)
         }
-    }, [text])
+    }, [text, isLight])
 
-    const letterClass =
-        "inline-block will-change-transform " +
-        "text-transparent bg-clip-text " +
-        "bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-cyan-300 " +
-        "[text-shadow:0_0_14px_rgba(168,85,247,.55)]"
+    // ✅ Clases por theme
+    const baseLetterClass = "inline-block"
+    const letterClass = isLight
+        ? baseLetterClass // ✅ sin will-change-transform (evita bug de compositing en Chrome)
+        : `${baseLetterClass} will-change-transform text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-fuchsia-400 to-cyan-300 [text-shadow:0_0_14px_rgba(168,85,247,.55)]`
 
     return (
         <motion.div
@@ -76,7 +82,10 @@ const StaggeredTitle = ({ text, className = '', blurAmount = 10 }) => {
             whileInView="visible"
             viewport={{ once: true, margin: '-100px' }}
             style={{
-                filter: `drop-shadow(0 0 ${blurAmount}px rgba(168,85,247,0.35))`
+                // ✅ En Light: sin drop-shadow (sobrio)
+                filter: isLight
+                    ? 'none'
+                    : `drop-shadow(0 0 ${blurAmount}px rgba(168,85,247,0.35))`,
             }}
         >
             <h2 className="uppercase tracking-widest text-4xl sm:text-5xl md:text-7xl font-extrabold">
@@ -87,6 +96,7 @@ const StaggeredTitle = ({ text, className = '', blurAmount = 10 }) => {
                         custom={item.groupIndex}
                         variants={variants}
                         className={letterClass}
+                        style={isLight ? { color: '#44476a', WebkitTextFillColor: '#44476a' } : undefined}
                     >
                         {item.letter === ' ' ? '\u00A0' : item.letter}
                     </motion.span>

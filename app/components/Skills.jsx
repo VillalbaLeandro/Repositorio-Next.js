@@ -3,6 +3,7 @@ import React, { useMemo, useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import MotionSection, { itemVariants } from './MotionSection'
 import StaggeredTitle from './StaggeredTitle'
+import { useTheme, THEMES } from '../context/ThemeContext'
 
 const SkillIcon = ({ tip, children, showName = false }) => (
     <div className="flex flex-col items-center gap-2 group cursor-default">
@@ -10,7 +11,7 @@ const SkillIcon = ({ tip, children, showName = false }) => (
             {children}
         </div>
         {showName && (
-            <span className="text-xs font-medium text-gray-400 group-hover:text-indigo-400 transition-colors tracking-wide">
+            <span className="text-xs font-medium text-gray-500 dark:text-gray-400 group-hover:text-[#6c63ff] dark:group-hover:text-indigo-400 transition-colors tracking-wide">
                 {tip}
             </span>
         )}
@@ -41,6 +42,8 @@ const listItemVariants = {
 };
 
 const Skills = () => {
+    const { theme } = useTheme()
+    const isLight = theme === THEMES.LIGHT
     const containerRef = useRef(null)
     const [proximity, setProximity] = useState(1)
 
@@ -99,6 +102,7 @@ const Skills = () => {
         { tip: "PHP", content: <img loading="lazy" src='/img/skills/php-logo.png' width={50} height={50} alt='PHP' />, category: "Backend" },
         { tip: "Laravel", content: <img loading="lazy" src='/img/skills/laravel-logo.png' width={30} height={30} alt='Laravel' />, category: "Backend" },
         { tip: "MySQL", content: <img loading="lazy" src='/img/skills/Mysql-logo.png' width={50} height={50} alt='MySQL' />, category: "Database" },
+        { tip: "PostgreSQL", content: <img loading="lazy" src='/img/skills/postgre-logo.png' width={50} height={50} alt='PostgreSQL' />, category: "Database" },
         { tip: "Oracle", content: <img loading="lazy" src='/img/skills/oracle-logo.png' width={50} height={50} alt='Oracle' />, category: "Database" },
         { tip: "SQL", content: <img loading="lazy" src='/img/skills/sql-logo.png' width={50} height={50} alt='SQL' />, category: "Database" },
         { tip: "Git", content: <img loading="lazy" src='/img/skills/git-logo.png' width={25} height={25} alt='Git' />, category: "Tools" },
@@ -127,130 +131,136 @@ const Skills = () => {
     const shuffledRow3 = useMemo(() => shuffleArray(allSkills), []);
 
     return (
-        <MotionSection id="skills" className="mt-40 mb-40 min-h-[50vh] p-4 sm:p-6 z-10 w-[90vw] max-w-screen-xl mx-auto [overflow-x:clip] touch-pan-y">
-            <div ref={containerRef} className="flex items-center justify-center gap-3 mb-12">
-                <div className="relative z-10 text-center">
-                    {/* Halo gigante (glow externo) */}
-                    <div
-                        className="
-    pointer-events-none absolute left-1/2 top-1/2
-    h-16 w-[20rem] sm:h-20 sm:w-[26rem] md:h-24 md:w-[32rem] -translate-x-1/2 -translate-y-1/2
-    rounded-full
-    bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-cyan-400
-    blur-3xl opacity-35
-  "
-                    />
+        <div className="w-full bg-slate-50 dark:bg-transparent py-24 my-24 border-y border-slate-200 dark:border-none transition-colors duration-300">
+            <MotionSection id="skills" className="min-h-[50vh] p-4 sm:p-6 z-10 w-[90vw] max-w-screen-xl mx-auto [overflow-x:clip] touch-pan-y">
+                <div ref={containerRef} className="flex items-center justify-center gap-3 mb-12">
+                    <div className="relative z-10 text-center">
+                        {!isLight && (
+                            <>
+                                {/* Halo gigante (glow externo) */}
+                                <div
+                                    className="
+            pointer-events-none absolute left-1/2 top-1/2
+            h-16 w-[20rem] sm:h-20 sm:w-[26rem] md:h-24 md:w-[32rem] -translate-x-1/2 -translate-y-1/2
+            rounded-full
+            bg-gradient-to-r from-indigo-500 via-fuchsia-500 to-cyan-400
+            blur-3xl opacity-35
+          "
+                                />
 
-                    {/* Halo secundario más “apretado” */}
-                    <div
-                        className="
-    pointer-events-none absolute left-1/2 top-1/2
-    h-8 w-[16rem] sm:h-10 sm:w-[20rem] md:h-12 md:w-[22rem] -translate-x-1/2 -translate-y-1/2
-    rounded-full
-    bg-gradient-to-r from-indigo-400 via-purple-500 to-cyan-300
-    blur-2xl opacity-40
-  "
-                    />
+                                {/* Halo secundario más “apretado” */}
+                                <div
+                                    className="
+            pointer-events-none absolute left-1/2 top-1/2
+            h-8 w-[16rem] sm:h-10 sm:w-[20rem] md:h-12 md:w-[22rem] -translate-x-1/2 -translate-y-1/2
+            rounded-full
+            bg-gradient-to-r from-indigo-400 via-purple-500 to-cyan-300
+            blur-2xl opacity-40
+          "
+                                />
+                            </>
+                        )}
 
-                    <StaggeredTitle text="SKILLS" blurAmount={blurAmount} />
+                        <StaggeredTitle text="SKILLS" blurAmount={blurAmount} />
 
-                    {/* Title separator */}
-                    <div
-                        className="h-[2px] mx-auto mt-6 bg-gradient-to-r from-transparent via-indigo-500 to-transparent blur-[1px] transition-all duration-300"
-                        style={{
-                            width: `${separatorWidth}px`,
-                            opacity: separatorOpacity
-                        }}
-                    ></div>
+                        {/* Title separator */}
+                        <div
+                            className={`h-[2px] mx-auto mt-6 blur-[1px] transition-all duration-300 bg-gradient-to-r from-transparent ${isLight ? 'via-[#44476a]' : 'via-indigo-500'} to-transparent`}
+                            style={{
+                                width: `${separatorWidth}px`,
+                                opacity: separatorOpacity
+                            }}
+                        ></div>
+                    </div>
                 </div>
-            </div>
 
-            {/* Toggle Button */}
-            <motion.div variants={itemVariants} className="flex justify-center mb-8">
-                <button
-                    onClick={() => setShowList(!showList)}
-                    className="px-6 py-2.5 rounded-full bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 text-indigo-500 dark:text-indigo-400 font-medium transition-all duration-300 flex items-center gap-2 group"
-                >
-                    {showList ? (
-                        <>
-                            <svg className="w-5 h-5 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                            Ver Carousel
-                        </>
-                    ) : (
-                        <>
-                            <svg className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                            </svg>
-                            Listar Skills
-                        </>
-                    )}
-                </button>
-            </motion.div>
+                {/* Toggle Button */}
+                <motion.div variants={itemVariants} className="flex justify-center mb-8">
+                    <button
+                        onClick={() => setShowList(!showList)}
+                        className="px-6 py-2.5 rounded-full bg-[#6c63ff]/10 dark:bg-indigo-500/10 hover:bg-[#6c63ff]/20 dark:hover:bg-indigo-500/20 border border-[#6c63ff]/30 dark:border-indigo-500/30 text-[#6c63ff] dark:text-indigo-400 font-medium transition-all duration-300 flex items-center gap-2 group cursor-pointer z-50 relative"
+                    >
+                        {showList ? (
+                            <>
+                                <svg className="w-5 h-5 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
+                                Ver Carousel
+                            </>
+                        ) : (
+                            <>
+                                <svg className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                                </svg>
+                                Listar Skills
+                            </>
+                        )}
+                    </button>
+                </motion.div>
 
-            {showList ? (
-                /* List View - Organized by Category */
-                <motion.div
-                    variants={listContainerVariants}
-                    initial="hidden"
-                    animate="show"
-                    className="max-w-6xl mx-auto space-y-4"
-                >
-                    {Object.entries(skillsByCategory).map(([category, skills]) => (
-                        <div key={category}>
-                            <h3 className='font-semibold text-lg text-center text-indigo-500 dark:text-indigo-400 tracking-wider uppercase text-xs opacity-70'>{category}</h3>
-                            <div className="w-64 h-[2px] mx-auto mt-2 mb-6 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-75 blur-[1px]"></div>
-                            <div className="flex flex-wrap justify-center gap-6">
-                                {skills.map((skill, index) => (
-                                    <motion.div key={`${category}-${index}`} variants={listItemVariants}>
-                                        <SkillIcon tip={skill.tip} showName={true}>
-                                            {skill.content}
-                                        </SkillIcon>
-                                    </motion.div>
+                {showList ? (
+                    /* List View - Organized by Category */
+                    <motion.div
+                        variants={listContainerVariants}
+                        initial="hidden"
+                        animate="show"
+                        className="max-w-6xl mx-auto space-y-4"
+                    >
+                        {Object.entries(skillsByCategory).map(([category, skills]) => (
+                            <div key={category}>
+                                <h3 className='font-semibold text-lg text-center text-[#44476a] dark:text-indigo-400 tracking-wider uppercase text-xs opacity-70'>{category}</h3>
+                                <div className={`w-64 h-[2px] mx-auto mt-2 mb-6 bg-gradient-to-r from-transparent ${isLight ? 'via-[#44476a]' : 'via-indigo-500'} to-transparent opacity-75 blur-[1px]`}></div>
+                                <div className="flex flex-wrap justify-center gap-6">
+                                    {skills.map((skill, index) => (
+                                        <motion.div key={`${category}-${index}`} variants={listItemVariants}>
+                                            <SkillIcon tip={skill.tip} showName={true}>
+                                                {skill.content}
+                                            </SkillIcon>
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </motion.div>
+                ) : (
+                    /* Carousel View */
+                    <motion.div variants={itemVariants} className="relative w-full">
+                        {/* Row 1 - Moving Left */}
+                        <div className="skills-carousel-row relative w-full overflow-hidden [overflow:clip] mb-6">
+                            <div className="skills-carousel-track flex items-center gap-3 min-w-max will-change-transform [backface-visibility:hidden] [transform:translate3d(0,0,0)] animate-scroll-left select-none pointer-events-none">
+                                {[...shuffledRow1, ...shuffledRow1, ...shuffledRow1].map((skill, index) => (
+                                    <SkillIcon key={`row1-${index}`} tip={skill.tip}>
+                                        {skill.content}
+                                    </SkillIcon>
                                 ))}
                             </div>
                         </div>
-                    ))}
-                </motion.div>
-            ) : (
-                /* Carousel View */
-                <motion.div variants={itemVariants} className="relative w-full">
-                    {/* Row 1 - Moving Left */}
-                    <div className="skills-carousel-row relative w-full overflow-hidden [overflow:clip] mb-6">
-                        <div className="skills-carousel-track flex items-center gap-3 min-w-max will-change-transform [backface-visibility:hidden] [transform:translate3d(0,0,0)] animate-scroll-left select-none pointer-events-none">
-                            {[...shuffledRow1, ...shuffledRow1, ...shuffledRow1].map((skill, index) => (
-                                <SkillIcon key={`row1-${index}`} tip={skill.tip}>
-                                    {skill.content}
-                                </SkillIcon>
-                            ))}
-                        </div>
-                    </div>
 
-                    {/* Row 2 - Moving Right */}
-                    <div className="skills-carousel-row relative w-full overflow-hidden [overflow:clip] mb-6">
-                        <div className="skills-carousel-track flex items-center gap-3 min-w-max will-change-transform [backface-visibility:hidden] [transform:translate3d(0,0,0)] animate-scroll-right select-none pointer-events-none">
-                            {[...shuffledRow2, ...shuffledRow2, ...shuffledRow2].map((skill, index) => (
-                                <SkillIcon key={`row2-${index}`} tip={skill.tip}>
-                                    {skill.content}
-                                </SkillIcon>
-                            ))}
+                        {/* Row 2 - Moving Right */}
+                        <div className="skills-carousel-row relative w-full overflow-hidden [overflow:clip] mb-6">
+                            <div className="skills-carousel-track flex items-center gap-3 min-w-max will-change-transform [backface-visibility:hidden] [transform:translate3d(0,0,0)] animate-scroll-right select-none pointer-events-none">
+                                {[...shuffledRow2, ...shuffledRow2, ...shuffledRow2].map((skill, index) => (
+                                    <SkillIcon key={`row2-${index}`} tip={skill.tip}>
+                                        {skill.content}
+                                    </SkillIcon>
+                                ))}
+                            </div>
                         </div>
-                    </div>
 
-                    {/* Row 3 - Moving Left */}
-                    <div className="skills-carousel-row relative w-full overflow-hidden [overflow:clip]">
-                        <div className="skills-carousel-track flex items-center gap-3 min-w-max will-change-transform [backface-visibility:hidden] [transform:translate3d(0,0,0)] animate-scroll-left select-none pointer-events-none">
-                            {[...shuffledRow3, ...shuffledRow3, ...shuffledRow3].map((skill, index) => (
-                                <SkillIcon key={`row3-${index}`} tip={skill.tip}>
-                                    {skill.content}
-                                </SkillIcon>
-                            ))}
+                        {/* Row 3 - Moving Left */}
+                        <div className="skills-carousel-row relative w-full overflow-hidden [overflow:clip]">
+                            <div className="skills-carousel-track flex items-center gap-3 min-w-max will-change-transform [backface-visibility:hidden] [transform:translate3d(0,0,0)] animate-scroll-left select-none pointer-events-none">
+                                {[...shuffledRow3, ...shuffledRow3, ...shuffledRow3].map((skill, index) => (
+                                    <SkillIcon key={`row3-${index}`} tip={skill.tip}>
+                                        {skill.content}
+                                    </SkillIcon>
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                </motion.div>
-            )}
-        </MotionSection>
+                    </motion.div>
+                )}
+            </MotionSection>
+        </div>
     )
 }
 
