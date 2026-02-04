@@ -83,7 +83,7 @@ const Projects = () => {
       projectName: "Plan Urbano",
       projectDescription: "Plataforma informativa gestionada con WordPress y Elementor. Rediseñé y optimicé el rendimiento y la estructura para garantizar un acceso rápido a la información urbanística de la ciudad.",
       category: "WordPress / Institucional",
-      projectTechnologies: ["wordpress-logo.png", "elementor.png", "css-logo.png", "php-logo.png"],
+      projectTechnologies: ["wordpress-logo.png", "elementor.png", "php-logo.png", "html-logo.png", "css-logo.png"],
       projectImages: [
         "./img/proyects/plan-urbano/1.webp",
         "./img/proyects/plan-urbano/2.webp",
@@ -99,7 +99,7 @@ const Projects = () => {
       projectName: "Control de Ventas y Stock",
       projectDescription: "Un proyecto de gran escala realizado en Php, con sistema completo de venta, control de stock y caja. Actualmente migrándolo a Next.js.",
       category: "Sistema de ventas y stock",
-      projectTechnologies: ["php-logo.png", "html-logo.png", "css-logo.png", "javascript-logo.png", "jquery-logo.png", "bootstrap-logo.png"],
+      projectTechnologies: ["php-logo.png", "javascript-logo.png", "jquery-logo.png", "html-logo.png", "css-logo.png", "bootstrap-logo.png", "Mysql-logo.png"],
       projectImages: [
         "./img/proyects/drinkstore-sistema/1.webp",
         "./img/proyects/drinkstore-sistema/2.webp",
@@ -119,7 +119,7 @@ const Projects = () => {
       projectName: "Cálculo de Honorarios",
       projectDescription: "Sistema desarrollado para la Municipalidad de Posadas. Funciona como host que sirve el contenido consumido a través de un iframe embebido en la página oficial, permitiendo el cálculo digital de tasas y honorarios de construcción.",
       category: "App Web / Host",
-      projectTechnologies: ["php-logo.png", "javascript-logo.png", "bootstrap-logo.png", "mysql-logo.png"],
+      projectTechnologies: ["php-logo.png", "javascript-logo.png", "bootstrap-logo.png", "Mysql-logo.png"],
       projectImages: [
         "./img/proyects/honorarios/1.webp",
         "./img/proyects/honorarios/2.webp",
@@ -153,7 +153,7 @@ const Projects = () => {
       projectName: "App de Tickets",
       projectDescription: "Proyecto personal de sistema de turnos y tickets de libre uso. Cuenta con pantalla general para visualizar la cola de espera, interfaz de atención para operadores y terminal de solicitud de turnos para clientes.",
       category: "Sistema de soporte",
-      projectTechnologies: ["react-logo.webp", "node-logo.png", "css-logo.png", "git-logo.png"],
+      projectTechnologies: ["react-logo.webp", "node-logo.png", "html-logo.png", "css-logo.png", "git-logo.png"],
       projectImages: [
         "./img/proyects/app-tickets/1.webp",
         "./img/proyects/app-tickets/2.webp",
@@ -196,7 +196,7 @@ const Projects = () => {
       projectName: "DigitalGames",
       projectDescription: "Desarrollé este e-commerce Fullstack desde cero, utilizando Node.js, Sequelize y Express. Realicé una migración exitosa de la base de datos de MySQL a PostgreSQL para mejorar la escalabilidad y el rendimiento.",
       category: "e-commerce",
-      projectTechnologies: ["html-logo.png", "css-logo.png", "javascript-logo.png", "bootstrap-logo.png", "react-logo.webp", "node-logo.png", "Mysql-logo.png", "postgre-logo.png", "git-logo.png"],
+      projectTechnologies: ["react-logo.webp", "node-logo.png", "javascript-logo.png", "html-logo.png", "css-logo.png", "bootstrap-logo.png", "postgre-logo.png", "Mysql-logo.png", "git-logo.png"],
       projectImages: [
         "./img/proyects/digital-games/1.webp",
         "./img/proyects/digital-games/2.webp",

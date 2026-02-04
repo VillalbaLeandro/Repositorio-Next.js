@@ -96,7 +96,7 @@ const Experience = () => {
                     link: "https://posadas.gov.ar/planurbano/"
                 }
             ],
-            tech: ["Laravel", "PHP", "JavaScript", "MySQL", "Oracle", "WordPress", "Bootstrap", "Git", "Android"]
+            tech: ["Laravel", "PHP", "JavaScript", "Android", "MySQL", "Oracle", "WordPress", "Bootstrap", "Git"]
         },
         {
             company: "GLOBALTECH Software",
@@ -119,7 +119,7 @@ const Experience = () => {
                     text: <><span className="font-bold text-gray-900 dark:text-gray-100">Liderazgo Técnico:</span> Realicé estimaciones de tiempos, soporte técnico de nivel 3 y estandaricé documentación que redujo el onboarding del equipo en un <span className="font-bold text-emerald-500">50%</span>.</>
                 }
             ],
-            tech: ["Node.js", "Laravel", "Slim", "React Native", "Sc", "Angular", "Ionic", "SQL", "Jest", "Vite", "Git"]
+            tech: ["Node.js", "Laravel", "Slim", "React Native", "Ionic", "Angular", "SQL", "Jest", "Vite", "Git", "Sc"]
         },
         {
             company: "Roble Sistemas SRL",
@@ -145,7 +145,7 @@ const Experience = () => {
                 { text: "Diseñé una librería de componentes reutilizables en React/Next.js para aplicaciones de misión crítica." },
                 { text: "Optimicé interfaces de usuario intuitivas y seguras para mejorar la experiencia operativa." }
             ],
-            tech: ["React", "Next.js", "JavaScript", "Vite", "Bootstrap", "jQuery", "Laravel", "MySQL", "Docker"]
+            tech: ["React", "Next.js", "JavaScript", "Laravel", "MySQL", "Docker", "Vite", "Bootstrap", "jQuery"]
         },
         {
             company: "Drinkstore 24hs",
@@ -158,7 +158,7 @@ const Experience = () => {
                 { text: "Implementé un sistema de ventas seguro y una landing page de alto rendimiento." },
                 { text: "Optimicé el acceso a información crítica y la gestión interna de inventario." }
             ],
-            tech: ["JavaScript", "PHP", "HTML", "CSS", "Bootstrap", "jQuery", "MySQL"]
+            tech: ["PHP", "JavaScript", "jQuery", "HTML", "CSS", "Bootstrap", "MySQL"]
         }
     ];
 
