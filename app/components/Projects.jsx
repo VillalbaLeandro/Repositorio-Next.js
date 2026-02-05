@@ -59,7 +59,7 @@ const Projects = () => {
       projectName: "Sistema de Multas Inmobiliarias GOP",
       projectDescription: "Sistema integral para la gestión de multas y actas inmobiliarias de la Municipalidad de Posadas. Incluye App Android para inspectores (ubicación de parcelas, actas) y Dashboard web para administración.",
       category: "Sistema Municipal",
-      projectTechnologies: ["laravel-logo.png", "php-logo.png", "javascript-logo.png", "bootstrap-logo.png", "oracle-logo.png", "android.png"],
+      projectTechnologies: ["laravel-logo.webp", "php-logo.webp", "javascript-logo.webp", "bootstrap-logo.webp", "oracle-logo.webp", "android.webp"],
       projectImages: [
         "./img/proyects/Sistema de multas - inmo/1.webp",
         "./img/proyects/Sistema de multas - inmo/2.webp",
@@ -83,7 +83,7 @@ const Projects = () => {
       projectName: "Plan Urbano",
       projectDescription: "Plataforma informativa gestionada con WordPress y Elementor. Rediseñé y optimicé el rendimiento y la estructura para garantizar un acceso rápido a la información urbanística de la ciudad.",
       category: "WordPress / Institucional",
-      projectTechnologies: ["wordpress-logo.png", "elementor.png", "php-logo.png", "html-logo.png", "css-logo.png"],
+      projectTechnologies: ["wordpress-logo.webp", "elementor.webp", "php-logo.webp", "html-logo.webp", "css-logo.webp"],
       projectImages: [
         "./img/proyects/plan-urbano/1.webp",
         "./img/proyects/plan-urbano/2.webp",
@@ -99,7 +99,7 @@ const Projects = () => {
       projectName: "Control de Ventas y Stock",
       projectDescription: "Un proyecto de gran escala realizado en Php, con sistema completo de venta, control de stock y caja. Actualmente migrándolo a Next.js.",
       category: "Sistema de ventas y stock",
-      projectTechnologies: ["php-logo.png", "javascript-logo.png", "jquery-logo.png", "html-logo.png", "css-logo.png", "bootstrap-logo.png", "Mysql-logo.png"],
+      projectTechnologies: ["php-logo.webp", "javascript-logo.webp", "jquery-logo.webp", "html-logo.webp", "css-logo.webp", "bootstrap-logo.webp", "Mysql-logo.webp"],
       projectImages: [
         "./img/proyects/drinkstore-sistema/1.webp",
         "./img/proyects/drinkstore-sistema/2.webp",
@@ -119,7 +119,7 @@ const Projects = () => {
       projectName: "Cálculo de Honorarios",
       projectDescription: "Sistema desarrollado para la Municipalidad de Posadas. Funciona como host que sirve el contenido consumido a través de un iframe embebido en la página oficial, permitiendo el cálculo digital de tasas y honorarios de construcción.",
       category: "App Web / Host",
-      projectTechnologies: ["php-logo.png", "javascript-logo.png", "bootstrap-logo.png", "Mysql-logo.png"],
+      projectTechnologies: ["php-logo.webp", "javascript-logo.webp", "bootstrap-logo.webp", "Mysql-logo.webp"],
       projectImages: [
         "./img/proyects/honorarios/1.webp",
         "./img/proyects/honorarios/2.webp",
@@ -136,7 +136,7 @@ const Projects = () => {
       projectName: "Aberturas Fair",
       projectDescription: "Sitio web para fábrica de aberturas artesanales. Muestra catálogo de trabajos y detalles de la empresa. Actualmente en proceso de aprobación y despliegue.",
       category: "Catálogo Web",
-      projectTechnologies: ["html-logo.png", "css-logo.png", "javascript-logo.png", "git-logo.png"],
+      projectTechnologies: ["html-logo.webp", "css-logo.webp", "javascript-logo.webp", "git-logo.webp"],
       projectImages: [
         "./img/proyects/aberturas-fair/1.webp",
         "./img/proyects/aberturas-fair/2.webp",
@@ -153,7 +153,7 @@ const Projects = () => {
       projectName: "App de Tickets",
       projectDescription: "Proyecto personal de sistema de turnos y tickets de libre uso. Cuenta con pantalla general para visualizar la cola de espera, interfaz de atención para operadores y terminal de solicitud de turnos para clientes.",
       category: "Sistema de soporte",
-      projectTechnologies: ["react-logo.webp", "node-logo.png", "html-logo.png", "css-logo.png", "git-logo.png"],
+      projectTechnologies: ["react-logo.webp", "node-logo.webp", "html-logo.webp", "css-logo.webp", "git-logo.webp"],
       projectImages: [
         "./img/proyects/app-tickets/1.webp",
         "./img/proyects/app-tickets/2.webp",
@@ -168,7 +168,7 @@ const Projects = () => {
       projectName: "Clock neumorphism",
       projectDescription: "Uno de mis proyectos favoritos, donde trabajé intensamente con CSS para lograr un efecto de relieve e iluminación.",
       category: "App",
-      projectTechnologies: ["html-logo.png", "css-logo.png", "javascript-logo.png"],
+      projectTechnologies: ["html-logo.webp", "css-logo.webp", "javascript-logo.webp"],
       projectImages: [
         "./img/proyects/clock-neumorphism/1.webp",
         "./img/proyects/clock-neumorphism/2.webp"
@@ -181,7 +181,7 @@ const Projects = () => {
       projectName: "DrinkStore",
       projectDescription: "Diseñé esta landing page con un estilo oscuro y delicado. La combinación de HTML, CSS y JavaScript permite una navegación fluida y una presentación atractiva de los productos, atrayendo la atención de los usuarios desde el primer vistazo.",
       category: "Landing page ",
-      projectTechnologies: ["html-logo.png", "css-logo.png", "javascript-logo.png"],
+      projectTechnologies: ["html-logo.webp", "css-logo.webp", "javascript-logo.webp"],
       projectImages: [
         "./img/proyects/drinkstore-landing/1.webp",
         "./img/proyects/drinkstore-landing/2.webp",
@@ -196,7 +196,7 @@ const Projects = () => {
       projectName: "DigitalGames",
       projectDescription: "Desarrollé este e-commerce Fullstack desde cero, utilizando Node.js, Sequelize y Express. Realicé una migración exitosa de la base de datos de MySQL a PostgreSQL para mejorar la escalabilidad y el rendimiento.",
       category: "e-commerce",
-      projectTechnologies: ["react-logo.webp", "node-logo.png", "javascript-logo.png", "html-logo.png", "css-logo.png", "bootstrap-logo.png", "postgre-logo.png", "Mysql-logo.png", "git-logo.png"],
+      projectTechnologies: ["react-logo.webp", "node-logo.webp", "javascript-logo.webp", "html-logo.webp", "css-logo.webp", "bootstrap-logo.webp", "postgre-logo.webp", "Mysql-logo.webp", "git-logo.webp"],
       projectImages: [
         "./img/proyects/digital-games/1.webp",
         "./img/proyects/digital-games/2.webp",

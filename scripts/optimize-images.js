@@ -2,7 +2,7 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const PROJECTS_DIR = path.join(__dirname, '../public/img/proyects');
+const PROJECTS_DIR = path.join(__dirname, '../public/img/skills');
 const MAX_WIDTH = 1200;
 const WEBP_QUALITY = 80;
 

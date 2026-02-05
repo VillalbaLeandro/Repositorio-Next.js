@@ -7,33 +7,33 @@ import { useTheme, THEMES } from '../context/ThemeContext'
 
 const TechnologyIcon = ({ name }) => {
     const iconMap = {
-        'PHP': './img/skills/php-logo.png',
-        'JavaScript': './img/skills/javascript-logo.png',
-        'HTML': './img/skills/html-logo.png',
-        'CSS': './img/skills/css-logo.png',
-        'MySQL': './img/skills/Mysql-logo.png',
-        'WordPress': './img/skills/wordpress-logo.png',
-        'elementor': './img/skills/elementor.png',
-        'Angular': './img/skills/angular-logo.png',
-        'Ionic': './img/skills/ionic-logo.png',
+        'PHP': './img/skills/php-logo.webp',
+        'JavaScript': './img/skills/javascript-logo.webp',
+        'HTML': './img/skills/html-logo.webp',
+        'CSS': './img/skills/css-logo.webp',
+        'MySQL': './img/skills/Mysql-logo.webp',
+        'WordPress': './img/skills/wordpress-logo.webp',
+        'elementor': './img/skills/elementor.webp',
+        'Angular': './img/skills/angular-logo.webp',
+        'Ionic': './img/skills/ionic-logo.webp',
         'React': './img/skills/react-logo.webp',
         'Next.js': './img/skills/nextjs.svg',
-        'Vite': './img/skills/vite-logo.png',
-        'Laravel': './img/skills/laravel-logo.png',
-        'Node.js': './img/skills/node-logo.png',
-        'Express': './img/skills/express-logo.png',
-        'Oracle': './img/skills/oracle-logo.png',
-        'SQL': './img/skills/sql-logo.png',
-        'Android': './img/skills/android.png',
-        'Jest': './img/skills/jest-logo.png',
-        'Git': './img/skills/git-logo.png',
-        'Docker': './img/skills/docker-logo.png',
-        'MongoDB': './img/skills/mongodb-logo.png',
-        'Bootstrap': './img/skills/bootstrap-logo.png',
-        'jQuery': './img/skills/jquery-logo.png',
-        'React Native': './img/skills/react-native-logo.png',
-        'Slim': './img/skills/php-logo.png',
-        'Sc': './img/skills/sc-logo.png',
+        'Vite': './img/skills/vite-logo.webp',
+        'Laravel': './img/skills/laravel-logo.webp',
+        'Node.js': './img/skills/node-logo.webp',
+        'Express': './img/skills/express-logo.webp',
+        'Oracle': './img/skills/oracle-logo.webp',
+        'SQL': './img/skills/sql-logo.webp',
+        'Android': './img/skills/android.webp',
+        'Jest': './img/skills/jest-logo.webp',
+        'Git': './img/skills/git-logo.webp',
+        'Docker': './img/skills/docker-logo.webp',
+        'MongoDB': './img/skills/mongodb-logo.webp',
+        'Bootstrap': './img/skills/bootstrap-logo.webp',
+        'jQuery': './img/skills/jquery-logo.webp',
+        'React Native': './img/skills/react-native-logo.webp',
+        'Slim': './img/skills/slim-logo.webp',
+        'Scriptcase': './img/skills/sc-logo.webp',
     };
 
     const src = iconMap[name] || iconMap[name.split(' ')[0]];
@@ -116,10 +116,10 @@ const Experience = () => {
                     text: <><span className="font-bold text-gray-900 dark:text-gray-100">Performance & Infra:</span> Creé consultas SQL y endpoints de tracking real-time, mejorando latencias un <span className="font-bold text-emerald-500">1.8x</span> y reduciendo el tiempo de armado de cartas de porte y creacion de pedidos en un <span className="font-bold text-emerald-500">28%</span>.</>
                 },
                 {
-                    text: <><span className="font-bold text-gray-900 dark:text-gray-100">Liderazgo Técnico:</span> Realicé estimaciones de tiempos, soporte técnico de nivel 3 y estandaricé documentación que redujo el onboarding del equipo en un <span className="font-bold text-emerald-500">50%</span>.</>
+                    text: <><span className="font-bold text-gray-900 dark:text-gray-100">Procesos y Documentación:</span> Realicé estimaciones de tiempos, soporte técnico de nivel 3 y estandaricé documentación que redujo el onboarding del equipo en un <span className="font-bold text-emerald-500">50%</span>.</>
                 }
             ],
-            tech: ["Node.js", "Laravel", "Slim", "React Native", "Ionic", "Angular", "SQL", "Jest", "Vite", "Git", "Sc"]
+            tech: ["Node.js", "Laravel", "Slim", "PHP", "React Native", "Ionic", "Angular", "SQL", "Jest", "Vite", "Git", "Scriptcase"]
         },
         {
             company: "Roble Sistemas SRL",
@@ -140,12 +140,12 @@ const Experience = () => {
             period: "Mar 2023 - Ene 2024",
             logo: "/img/experiences/direccion-logo.png",
             url: "https://policiamisiones.gob.ar/",
-            starAchievement: <>Reduje los tiempos de respuesta del sistema en un <span className='text-emerald-500'>30%</span>.</>,
+            starAchievement: <>Mejoré la usabilidad y reduje los tiempos de respuesta del sistema en un <span className='text-emerald-500'>30%</span>.</>,
             achievements: [
-                { text: "Diseñé una librería de componentes reutilizables en React/Next.js para aplicaciones de misión crítica." },
-                { text: "Optimicé interfaces de usuario intuitivas y seguras para mejorar la experiencia operativa." }
+                { text: "Optimicé interfaces de aplicaciones web de misión crítica, garantizando una experiencia de usuario intuitiva y segura." },
+                { text: "Desarrollé una librería de componentes frontend reutilizables, acelerando la adaptación a nuevos requisitos." }
             ],
-            tech: ["React", "Next.js", "JavaScript", "Laravel", "MySQL", "Docker", "Vite", "Bootstrap", "jQuery"]
+            tech: ["React", "Next.js", "JavaScript", "PHP", "Laravel", "MySQL", "Docker", "Vite", "Bootstrap", "jQuery"]
         },
         {
             company: "Drinkstore 24hs",

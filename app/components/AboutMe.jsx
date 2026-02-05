@@ -112,7 +112,7 @@ const AboutMe = () => {
 
                 <DraggableBadge
                     className="badge-2"
-                    iconSrc="./img/skills/node-logo.png"
+                    iconSrc="./img/skills/node-logo.webp"
                     iconAlt="Backend"
                     title="Backend"
                     libs="Node.js, Laravel"
@@ -124,7 +124,7 @@ const AboutMe = () => {
 
                 <DraggableBadge
                     className="badge-3"
-                    iconSrc="./img/skills/react-native-logo.png"
+                    iconSrc="./img/skills/react-native-logo.webp"
                     iconAlt="Mobile"
                     title="Mobile"
                     libs="React Native, Ionic"
@@ -136,7 +136,7 @@ const AboutMe = () => {
 
                 <DraggableBadge
                     className="badge-4"
-                    iconSrc="./img/skills/sql-logo.png"
+                    iconSrc="./img/skills/sql-logo.webp"
                     iconAlt="Data"
                     title="Data & Infra"
                     libs="MySQL, Oracle, Docker"
@@ -148,7 +148,7 @@ const AboutMe = () => {
 
                 <DraggableBadge
                     className="badge-5"
-                    iconSrc="./img/skills/android.png"
+                    iconSrc="./img/skills/android.webp"
                     iconAlt="Angular"
                     title="Angular"
                     libs="TypeScript, RxJS"
@@ -172,7 +172,7 @@ const AboutMe = () => {
 
                 <DraggableBadge
                     className="badge-7"
-                    iconSrc="./img/skills/angular-logo.png"
+                    iconSrc="./img/skills/angular-logo.webp"
                     iconAlt="Android"
                     title="Android"
                     libs="Ionic, Capacitor"
@@ -184,7 +184,7 @@ const AboutMe = () => {
 
                 <DraggableBadge
                     className="badge-8"
-                    iconSrc="./img/skills/oracle-logo.png"
+                    iconSrc="./img/skills/oracle-logo.webp"
                     iconAlt="Next.js"
                     title="Next.js"
                     libs="React, SSR"
